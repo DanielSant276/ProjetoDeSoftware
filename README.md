@@ -1,4 +1,4 @@
-# ProjetoDeSoftware
+# Projeto de Software
 Trabalho de Projeto de Software - Locadora de Livros  
 Membros do Grupo 4:  
   - Ana Clara Costa Gonçalvez
