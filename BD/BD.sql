@@ -1,5 +1,5 @@
-CREATE DATABASE livrariabd;
-
+CREATE DATABASE livrariabdteste;
+ 
 CREATE TABLE cliente (
   idCliente INT AUTO_INCREMENT,
   clienteQtdLocada INT NOT NULL,
