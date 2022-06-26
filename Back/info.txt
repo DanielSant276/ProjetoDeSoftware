@@ -1,0 +1,13 @@
+Para dúvidas acessar a playlist: https://www.youtube.com/watch?v=u3MrPxq_RyA&list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B
+
+
+coisas a se instalar:
+  - npm install express --save
+  - npm install mysql
+  - npm install nodemon -g
+  - npm install --save sequelize
+  - npm install --save mysql2
+
+O nodemon serve para atualizar o server a qualquer mudança, não é necessário ficar abrindo e fechando o servidor.
+Para acessar pelo nodemon é só escrever: nodemon start - informação pode ser modificada no package.json
+
