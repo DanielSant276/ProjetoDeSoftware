@@ -2,12 +2,17 @@ Para dúvidas acessar a playlist: https://www.youtube.com/watch?v=u3MrPxq_RyA&li
 
 Para instalar todas as dependências é necessário digitar: npm install no powerShell
 
+Se quiser colocar o powerShell como default no terminal do vscode é necessário abrir o command palett: ctrl + shift + p
+e colar a seguinte informação: Terminal: Select Default Profile
+depois disso, aperte enter e seleciona o powerShell
+
 dependências utilizadas:
   - npm install express --save
   - npm install mysql
   - npm install nodemon -g <------- único necessário instalar, o resto só dar npm install para poder instalar tudo
   - npm install --save sequelize
   - npm install --save mysql2
+  - npm install body-parser <------ transforma o body do html em um json, não sei se vai ser necessário utilizar isso mais tarde
 
 
 O nodemon serve para atualizar o server a qualquer mudança, não é necessário ficar abrindo e fechando o servidor.
