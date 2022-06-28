@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const bp = require("body-parser");
+const crypto = require("crypto");
 
 app.use(bp.urlencoded({ extended: true })); 
 
@@ -23,20 +24,25 @@ app.post("/", function (req, res){
     const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"];
 
     console.log(isNaN(parseInt(key)));
-    //Verifica se a chave é numérica ou textual
-    if (isNaN(parseInt(key))) {
+    //Verifica se a chave é numérica ou textual, se for um espaço utiliza SHA256
+    if (key == "") {
+      // Se não informar uma chave utiliza a criptografia SHA256
+      cryptoPass = encryptSHA256(pass);
+      type = "hash";
+    }
+    else if (isNaN(parseInt(key))) {
       //Chave textual utiliza a cifra de Vigenère
-      cryptoPass = changePassVigenere(pass, key, alphabet);
-      type = 'vigenère';
+      cryptoPass = changePassVigenere(pass, key.toUpperCase(), alphabet).join("");
+      type = "vigenère";
     }
     else {
       // chave numérica utiliza cifra simples de substituição
       key = parseInt(key);
-      cryptoPass = changePassNumberKey(pass, key, alphabet);
-      type = 'substituição'
+      cryptoPass = changePassNumberKey(pass, key, alphabet).join("");
+      type = "substituição"
     }
     
-    return cryptoPass.join("");
+    return cryptoPass;
   }
 
   function changePassVigenere(pass, key, alphabet) {
@@ -72,6 +78,16 @@ app.post("/", function (req, res){
     }
     return cryptoPass;
   }
+
+  function encryptSHA256(pass) {
+    let hashKey = "Livraria S.I."
+
+    let hash = crypto.createHmac("sha256", hashKey)
+                     .update(pass)
+                     .digest("hex");
+    return hash;
+  }
+
   res.send(`Olá ${login}, sua senha é ${password}, sua senha criptografada é ${newPass}, você utilizou a cifra de ${type}`);
 });
 
