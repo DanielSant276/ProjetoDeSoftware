@@ -1,0 +1,29 @@
+Regras adotadas no front-end:
+  - Existe dois arquivos no diretório /public, chamado reset.css e padrao.css:
+    - O reset.css configura o css do site para resetar as configurações padrões dos estilos do html;
+    - O padrao.css irá possuir estilos que serão comuns em todo o site, alguns foram criados pelo Daniel e outros serão
+    criados por todos os que estiverem participando do front-end;
+  - Será em sua maioria utilizado classe para poder criar o css, salvo momentos muito específicos, é melhor utilizar ids
+  para interagir com funções e o nome direto da tag caso seja algo muito particular a aplicação.
+  - Utilização de padding e margin: 
+    - Padding a utilização é livre, mas é necessário que todas as boxes e "possivelmente" todos os botões tenham o mesmo
+    valor de padding;
+    - Margin a utilização já é fixada, para ficar mais orgânico e facilitar no debug do css, todas a espaçamento de uma
+    tag para outra será utilizada margin-bottom. Assim é facil saber o que está limitando cada parte. É possível que 
+    exista exceção, nesses caso fazer do que jeito que for mais comodo, deixar comentado e avisar aos outros 
+    responsáveis do front-end;
+  - Todas as cores do site ficarão disponíveis no padrao.css e sempre serão chamadas por lá, não é necessário colocar
+  nenhum cor no css das páginas.
+  - Tamanho das fontes precisa seguir um padrão e deve ser acertado para que haja consistencia em toda a aplicação. 
+  Também seria bom definí-las individualmente no padrao.css.
+  - Todas as tags p estarão setadas com a fonte padrão (ainda precisa setar) e com a cor padrão dos textos mais 
+  utilizados (branco ou preto).
+  - body, div e section estão ajustadas para funcionar no modo display: flex e flex-direction: column. Terá também no 
+  padrao.css uma classe específica para flex-direction: row, e outra para flex-direction: column caso seja necessário.
+  - Utilizar div e "a" para botões, é mais fácil de estilizar do que uma tag button, para essas div e "a", colocar o 
+  estilo link, para tirar a formatação de link e adicionar um ponteiro ao passar o mouse sobre.
+  - Todo texto centralizado é para utilizar a tag texto-centro.
+  - Alinhar no centro com a classe alinha-centro.
+  - Negrito e sublinhado possui tags de mesmo nome.
+  - Qualquer dúvida pode perguntar ao Daniel. Se estiver utilizando de mais um estilo específico ver a necessidade de 
+  criar um padrão para ele.

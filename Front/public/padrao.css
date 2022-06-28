@@ -1,0 +1,90 @@
+body, div, section {
+  display: flex;
+  flex-direction: column;
+}
+
+.linha {
+  flex-direction: row;
+}
+
+.coluna {
+  flex-direction: column;
+}
+
+/* .link-flex {
+  display: flex;
+  align-items: center;
+} */
+
+.link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  /*inserir aqui a fonte que será utilizada como padrão*/
+  /* font-family: 'DAYROM';  */
+
+  /*inserir aqui a cor padrão das fontes*/
+  /* color: #ffffff; */
+}
+
+.texto-centro {
+  text-align: center;
+}
+
+.alinha-centro {
+  justify-content: center;
+  align-items: center;
+}
+
+.espaco-entre {
+  justify-content: space-between;
+}
+
+/* 
+.invisible {
+  display: none;
+  position: absolute;
+} */
+
+.negrito {
+  font-weight: bold;
+}
+
+.sublinhado {
+  text-decoration: underline;
+}
+
+.space-5 {
+  margin-bottom: 5px;
+}
+
+.space-10 {
+  margin-bottom: 10px;
+}
+
+.space-20 {
+  margin-bottom: 20px;
+}
+
+.space-40 {
+  margin-bottom: 40px;
+}
+
+.space-60 {
+  margin-bottom: 60px;
+}
+
+.space-80 {
+  margin-bottom: 80px;
+}
+
+.space-100 {
+  margin-bottom: 100px;
+}
