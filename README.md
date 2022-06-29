@@ -1,10 +1,10 @@
 # Projeto de Software
 Trabalho de Projeto de Software - Locadora de Livros  
 Membros do Grupo 4:  
-  - Ana Clara Costa Gonçalvez
+  - Ana Clara Costa Gonçalves
   - Claudia Barreto de Oliveira
   - Daniel Sant' Anna Andrade
-  - Letícia Oliveira de Souza
+  - Letícia Oliveira de Sousa
   - Luan Gadioli Mendonça Berto
 
   
