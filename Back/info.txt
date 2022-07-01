@@ -20,3 +20,10 @@ Para acessar pelo nodemon é só escrever: nodemon start - informação pode ser
 Como o nodemon executa um script detro do powerShell, é necessário abrir o powerShell como administrador e executar:
 Set-ExecutionPolicy Remotesigned
 Assim é permitido utilizar scripts assinados digitalmente
+
+
+=======
+
+Sobre a parte de models, as partes comentadas ".sync" devem ser descomentadas caso as tabelas sumam do MySQL. Elas forçam que sejam criadas ou excluídas. Ou seja, se ela estiver criada e quando rodar o servidor estiver sem comentar, ela irá excluir a tabela e dar erro.
+
+Caso ela não exista, é só descomentar que irá criar novamente.

@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+//(servidor, usuário, senha)
 const sequelize = new Sequelize('teste', 'root', '123456', {
     host: 'localhost',
     dialect: 'mysql'
@@ -18,19 +19,25 @@ const Client = sequelize.define("cliente", {
     },
 
     clienteQtdLocada: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
     },
     clienteTelefone: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     clienteEndereco: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     clienteCPF: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
     },
     clienteNome: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     }
 })
 // Client.sync({force: true})
@@ -43,33 +50,12 @@ const Dependent = sequelize.define("dependente", {
     },
 
     depResponsavel: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
 })
 
 // Dependent.sync({force:true})
-
-//olhar essa tabela de clientdependent
-
-// const ClientDependent = sequelize.define("clienteDependente", {
-//     idCliente: {
-//         type: Sequelize.INTEGER,
-//         references: {
-//             model: Client,
-//             key: "idCliente",
-//             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-//         }
-//     },
-//     idDependente: {
-//         type: Sequelize.INTEGER,
-//         references: {
-//             model: Dependent,
-//             key: "idDependente",
-//             deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
-//         }
-//     }
-// })
-// ClientDependent.sync({force:true})
 
 const Rental = sequelize.define("locacao", {
     idLocacao: {
@@ -85,10 +71,12 @@ const Rental = sequelize.define("locacao", {
         allowNull: false
     },
     dataDevolucao: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
     },
     dataLocada: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
     },
     locacaoEstado: {
         type: Sequelize.ENUM("locado", "pendente", "atrasado")
@@ -104,7 +92,8 @@ const User = sequelize.define("usuario", {
         primaryKey: true
     },
     usuarioTipo: {
-        type: Sequelize.ENUM("gerente", "atendente")
+        type: Sequelize.ENUM("gerente", "atendente"),
+        allowNull: false
     },
     senha: {
         type: Sequelize.STRING,
@@ -172,3 +161,94 @@ const Tag = sequelize.define("tag", {
 })
 
 // Tag.sync({force:true})
+
+const ClientDependent = sequelize.define("clienteDependente", {
+    idCliente: {
+        type: Sequelize.INTEGER,
+        // allowNull: false,
+        references: {
+            model: Client,
+            key: "idCliente",
+            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    },
+    idDependente: {
+        type: Sequelize.INTEGER,
+        // allowNull: false,
+        references: {
+            model: Dependent,
+            key: "idDependente",
+            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    }
+})
+// ClientDependent.sync({force:true})
+
+const ClientRentals = sequelize.define("clienteLocacao", {
+    idCliente: {
+        type: Sequelize.INTEGER,
+        // allowNull: false,        
+        references: {
+            model: Client,
+            key: "idCliente",
+            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    },
+    idLocacao: {
+        type: Sequelize.INTEGER,
+        // allowNull: false,
+        references: {
+            model: Rental,
+            key: "idLocacao",
+            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    }
+})
+
+// ClientRentals.sync({force:true})
+
+const RentalProduct = sequelize.define("locacaoProduto", {
+    idLocacao: {
+        type: Sequelize.INTEGER,
+        // allowNull: false,
+        references: {
+            model: Rental,
+            key: "idLocacao",
+            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    },
+    idProduto: {
+        type: Sequelize.INTEGER,
+        // allowNull: false,
+        references: {
+            model: Product,
+            key: "idProduto",
+            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    }
+})
+
+// RentalProduct.sync({force:true})
+
+const ProductTag = sequelize.define("produtoTag", {
+    idProduto: {
+        type: Sequelize.INTEGER,
+        // allowNull: false,
+        references: {
+            model: Product,
+            key: "idProduto",
+            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    },
+    idTag: {
+        type: Sequelize.INTEGER,
+        // allowNull: false,
+        references: {
+            model: Tag,
+            key: "idTag",
+            deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        }
+    }
+})
+
+// ProductTag.sync({force:true})
