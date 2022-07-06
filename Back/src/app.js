@@ -3,6 +3,21 @@ const app = express();
 const bp = require("body-parser");
 const crypto = require("crypto");
 
+const Cliente = require("./models/Cliente.js");
+const Dependente = require("./models/Dependente.js");
+const ClienteDependente = require("./models/ClienteDependente.js");
+const Locacao = require("./models/Locacao.js");
+const ClienteLocacao = require("./models/ClienteLocacao.js");
+const Produto = require("./models/Produto.js");
+const LocacaoProduto = require("./models/LocacaoProduto.js");
+const Exemplar = require("./models/Exemplar.js");
+const ProdutoExemplar = require("./models/ProdutoExemplar.js");
+const Genero = require("./models/Genero.js");
+const ProdutoGenero = require("./models/ProdutoGenero.js");
+const Usuario = require("./models/Usuario.js");
+
+const models = [Cliente, Dependente, ClienteDependente, Locacao, ClienteLocacao, Produto, LocacaoProduto, Exemplar, ProdutoExemplar, Genero, ProdutoGenero, Usuario];
+
 app.use(bp.urlencoded({ extended: true })); 
 
 app.get("/", function (req, res){
@@ -90,6 +105,14 @@ app.post("/", function (req, res){
 
   res.send(`Olá ${login}, sua senha é ${password}, sua senha criptografada é ${newPass}, você utilizou a cifra de ${type}`);
 });
+
+//Somente uma requisição para criar as tabelas no banco de dados
+app.get("/criar", function (req, res){
+  for (i=0; i < models.length; i++) {
+    models[i].sync({force: true})
+  }
+  res.send("Terminado");
+})
 
 app.listen(3000, function() {
   console.log("Server iniciado!")

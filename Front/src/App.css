@@ -1,0 +1,71 @@
+<<<<<<< HEAD
+=======
+body{
+  background-color: rgb(0, 0, 0);
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.loginform{
+  width: 380px;
+  height: 380px;
+  border-radius: 20px; 
+  background-color: #2C2525;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  
+} 
+
+.conteudoForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 300px;
+  margin-top: -40px;
+}
+
+label{
+  color: rgb(255, 255, 255);
+  font-family:'Times New Roman', Times, serif;
+  font-size: 20px;
+
+}
+
+.submit{
+  width: 120px;
+  height: 30px;
+  border: none;
+  backdrop-filter: blur(4px);
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 25px;
+  align-self: flex-end;
+  margin-right: 25px;
+  
+}
+
+input{
+  border-radius: 25px;
+  width: 330px;
+  height: 22px;
+  background-color: #2C2525;
+  border: 1px dashed #FFFFFF;
+  display: block;
+  margin: 0 auto 0 auto;
+}
+
+/* .conteudoForm{
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  
+} */
+>>>>>>> 1daaa98e67c12db2c69ac57db601ad8e16f30a10
