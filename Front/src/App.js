@@ -1,34 +1,34 @@
-
-import { useState } from 'react';
 import './App.css';
+import linhasimg from "./img/linhas.svg"
+import olhoimg from "./img/olho.svg"
 
 function App() {
-
-  const [usuario, setUsuario] = useState();
-  const [senha, setSenha] = useState();
 
   return (
 
     <div className='principal'>
-      <div className="formulario space-10">
-        <form name="form" className="conteudoForm space-10" >
-            <div className="campo1">
-                <label className='texto1'>USUÁRIO</label>
-                <input type="name" value={usuario} onChange={(event) => setUsuario(event.target.value)}/>
-            </div>
-            <div className="campo2 ">
-                <label className='texto2'>SENHA</label>
-                <input type="password" value={senha} onChange={(event) => setSenha(event.target.value)} />
-            </div>
-        </form>   
-        <button className="submit" onClick={() => console.log(`usuario: ${usuario}  senha: ${senha}`)}>ENTRAR</button>  
+      <div className='container'>
+        <div className='box1'>
+          <div className='imgSenhaSegura'>
+            <img className='linhasImg' src={linhasimg} alt=""/>
+            <img className='olhoImg' src={olhoimg} alt=""/>
+          </div>
+          <div className='fraseAtencao' >
+            <h1>ATENÇÃO!</h1>
+          </div>
+        </div>
+        <div className='box2'>
+          <h1 className='titulo space-40'>UTILIZE SENHAS SEGURAS</h1>
+        </div>
+        <div className='box3'>
+            <p>* Sua senha deve possuir de 8 à 16 caracteres</p>
+            <p>*Sua senha deve incluir caractéres especiais </p>
+            <p>( “@”,” #”,”_”,”!” )</p>
+            <p>*Sua senha deve incluir letras MAIUSCÚLAS</p>
+            <p>*Sua senha deve incluir NÚMEROS (0 à 10)</p>
+        </div>
       </div>
-      <div className="rodape">
-        <h1>UFRRJ SOFTWARES  - 2022 </h1>
-      </div> 
     </div>
-      
-      
      
   );
 }

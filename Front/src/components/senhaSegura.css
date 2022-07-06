@@ -1,0 +1,77 @@
+body{
+    background-image: url("img/fundo.jpg");
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .container{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    width: 30vw;
+    height: 70vh;
+    background-color: #1A1919;
+    border-radius: 25px;
+  }
+  
+  .box1{
+    height: 40%;
+    flex-direction: row;
+  }
+  
+  .box2{
+    height: 20%;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  .box3{
+    height: 40%;
+    color: #A5A2A2;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  
+  .box3 p{
+    margin-bottom: 10px;
+  }
+  
+  .titulo{
+    color: #9500CA;
+    border-bottom: solid 5px #2C2C2C;
+    padding-bottom: 10px;
+    font-size: 20px;
+  }
+  
+  .fraseAtencao{
+    color: #D37015;
+    width: 50%;
+    font-size: 25px;
+    
+  }
+  
+  .fraseAtencao h1{
+    width: 55%;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-bottom: dashed 8px #373636;
+    padding-bottom: 10px;
+  }
+  
+  .imgSenhaSegura{
+    width: 50%;
+  }
+  
+  .olhoImg{
+    width: 180px;
+    z-index: 1;
+    position: relative;
+    bottom: 205px;
+    right: 70px;
+    
+  }
+  
+  
