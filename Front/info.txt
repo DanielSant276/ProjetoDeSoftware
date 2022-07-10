@@ -27,3 +27,9 @@ Regras adotadas no front-end:
   - Negrito e sublinhado possui tags de mesmo nome.
   - Qualquer dúvida pode perguntar ao Daniel. Se estiver utilizando de mais um estilo específico ver a necessidade de 
   criar um padrão para ele.
+
+
+- não utilizar tags no css;
+- sempre utilizar classe ao invés de id;
+- iniciar o nome da classe com o nome da página;
+- sempre que for fazer uma página, criar a pasta para ela e os arquivos e adicioná-la no router;

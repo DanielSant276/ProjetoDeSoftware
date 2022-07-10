@@ -3,18 +3,18 @@ import '../menu/menu.css'
 
 function Menu() {
   return (
-    <header>
-      <section id="header">
-        <div id="botoes-menu">
-          <ul>
-            <li class="botao-menu">
-              <span>Menu 1</span>
+    <header id="header">
+      <section className="header">
+        <div className="header-botoes-menu">
+          <ul className="header-lista">
+            <li className="header-botao-menu">
+              <span className="header-span">Menu 1</span>
             </li>
-            <li class="botao-menu">
-              <span>Menu 1</span>
+            <li className="header-botao-menu">
+              <span className="header-span">Menu 1</span>
             </li>
-            <li class="botao-menu">
-              <span>Menu 1</span>
+            <li className="header-botao-menu">
+              <span className="header-span">Menu 1</span>
             </li>
           </ul>
         </div>
@@ -23,4 +23,4 @@ function Menu() {
   )
 }
 
-export default Menu
+export default Menu;
