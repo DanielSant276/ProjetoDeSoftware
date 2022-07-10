@@ -10,13 +10,13 @@ function SenhaSegura() {
           <img className="senha-segura-linhas-img" src={linhasImg} alt="" />
           <img className="senha-segura-olho-img" src={olhoImg} alt="" />
           <div className="senha-segura-frase-atencao">
-            <h1 className="inter orange negrito">ATENÇÃO!</h1>
+            <h1 className="laranja negrito">ATENÇÃO!</h1>
           </div>
         </div>
         <div className="senha-segura-box2">
-          <h1 className="senha-segura-titulo purple inter negrito space-20">UTILIZE SENHAS SEGURAS</h1>
+          <h1 className="senha-segura-titulo roxo negrito space-20">UTILIZE SENHAS SEGURAS</h1>
         </div>
-        <p className="senha-segura-text texto-centro inter">
+        <p className="senha-segura-text texto-centro">
           &bull; Sua senha deve possuir de 8 à 16 caracteres<br />
           &bull; Sua senha deve incluir caractéres especiais ( “@”,” #”,”_”,”!” )<br />
           &bull; Sua senha deve incluir letras MAIUSCÚLAS<br />

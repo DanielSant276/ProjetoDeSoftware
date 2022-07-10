@@ -1,9 +1,8 @@
 .login-background-imagem {
   background-image: url("../../img/fundo.jpg");
-  background-size: contain;
-  /* background-repeat: no-repeat; */
-  /* height: 100vh;*/
-  /* width: auto;  */
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position:center, bottom;
 }
 
 .principal-bem-vindo {
