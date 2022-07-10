@@ -1,4 +1,4 @@
-.login-background-image {
+.login-background-imagem {
   background-image: url("../../img/fundo.jpg");
   background-size: contain;
   /* background-repeat: no-repeat; */
@@ -16,7 +16,6 @@
   width: 300px;
   padding: 40px 20px 30px 20px;
   border-radius: 20px;
-  background-color: #2c2525;
 }
 
 .login-campo {
@@ -39,7 +38,6 @@
   border-radius: 25px;
   width: auto;
   height: 35px;
-  background-color: #2C2525;
   border: 1px dashed #FFFFFF;
   color: #FFFFFF;
 }
@@ -57,7 +55,6 @@
 
 .login-esqueceu-senha {
   align-self: end;
-  color:#D37015;
 }
 
 .login-submit {
@@ -70,7 +67,7 @@
 }
 
 .login-rodape {
-  color: #fff;
+  color: #FFFFFF;
   position: absolute;
   bottom: 25px;
   opacity: 18%;

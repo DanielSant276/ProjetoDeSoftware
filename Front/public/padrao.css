@@ -3,7 +3,7 @@
 /* Fonte Inter */
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-body, div, section {
+header, body, footer, div, section {
   display: flex;
   flex-direction: column;
 }
@@ -94,7 +94,7 @@ p {
   margin-bottom: 100px;
 }
 
-.background-image {
+.background-imagem {
   background-image: url("../src/img/fundo.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -143,4 +143,16 @@ p {
   margin-left: 20px;
   font-weight: bold;
   font-size: 15px;
+}
+
+.orange {
+  color: #D37015;
+}
+
+.purple {
+  color: #9500CA;
+}
+
+.background-cor-padrao {
+  background-color: #2C2525
 }

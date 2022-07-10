@@ -6,18 +6,18 @@ function Login() {
   const [senha, setSenha] = useState();
 
   return (
-    <div className="principal login-background-image">
+    <div className="principal login-background-imagem">
       <p className="principal-bem-vindo space-5 inter negrito">Bem-vindo,</p>
-      <div className="login-formulario">
+      <div className="login-formulario background-cor-padrao">
         <form className="space-40" name="form">
           <div className="login-campo">
             <p className="login-label login-texto1 space-20 jso negrito">USUÁRIO</p>
-            <input className="login-input space-20" type="name" value={usuario} onChange={(event) => setUsuario(event.target.value)} />
+            <input className="login-input background-cor-padrao space-20" type="name" value={usuario} onChange={(event) => setUsuario(event.target.value)} />
           </div>
           <div className="login-campo">
             <p className="login-label login-texto2 space-20 jso negrito">SENHA</p>
-            <input className="login-input space-5" type="password" value={senha} onChange={(event) => setSenha(event.target.value)} />
-            <p className="login-esqueceu-senha inter negrito link">esqueceu sua senha?</p>
+            <input className="login-input background-cor-padrao space-5" type="password" value={senha} onChange={(event) => setSenha(event.target.value)} />
+            <p className="login-esqueceu-senha orange inter negrito link">esqueceu sua senha?</p>
           </div>
         </form>
         <button className="login-submit link jso negrito" onClick={() => console.log(`usuario: ${usuario}  senha: ${senha}`)}>ENTRAR</button>

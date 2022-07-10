@@ -9,11 +9,11 @@ export default function Rotas() {
     return (
         <Routes>
         {/* path=/qualquerCoisa element{funcaoRenderizar} */}
-            <Route path="/" exact element={<Login/>} />
-            <Route path="/menu" element={<Menu/>} />
-            <Route path="/senhaSegura" element={<SenhaSegura/>} />
-            <Route path="/cadastrarProduto" element={<CadastrarProduto/>} />
-            <Route path="/loginAna" element={<LoginAna/>} />
+            <Route path="/" exact element={<Login/>} /> {/* Reconfigurado */}
+            <Route path="/menu" element={<Menu/>} /> {/* Tem que arrumar, talvez trocar a imagem do cabeçalho */}
+            <Route path="/senhaSegura" element={<SenhaSegura/>} /> {/* Reconfigurado */}
+            <Route path="/cadastrarProduto" element={<CadastrarProduto/>} /> {/*  */}
+            <Route path="/loginAna" element={<LoginAna/>} /> {/*  */}
         </Routes>
     )
 }

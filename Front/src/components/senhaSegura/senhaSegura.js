@@ -1,32 +1,27 @@
 import "./senhaSegura.css";
-import linhasimg from "../../img/linhas.svg"
-import olhoimg from "../../img/olho.svg"
+import linhasImg from "../../img/linhas.svg"
+import olhoImg from "../../img/olho.png"
 
 function SenhaSegura() {
   return (
-    <div className="senha-segura-principal">
+    <div className="principal senha-segura-background-imagem">
       <div className="senha-segura-container">
-        <div className="senha-segura-box1">
-          <div className="senha-segura-imgSenhaSegura">
-            <img className="senha-segura-linhasImg" src={linhasimg} alt="" />
-            <img className="senha-segura-olhoImg" src={olhoimg} alt="" />
-          </div>
-          <div className="senha-segura-fraseAtencao" >
-            <h1>ATENÇÃO!</h1>
+        <div className="senha-segura-box1 linha">
+          <img className="senha-segura-linhas-img" src={linhasImg} alt="" />
+          <img className="senha-segura-olho-img" src={olhoImg} alt="" />
+          <div className="senha-segura-frase-atencao">
+            <h1 className="inter orange negrito">ATENÇÃO!</h1>
           </div>
         </div>
         <div className="senha-segura-box2">
-          <h1 className="senha-segura-titulo space-40">UTILIZE SENHAS SEGURAS</h1>
+          <h1 className="senha-segura-titulo purple inter negrito space-20">UTILIZE SENHAS SEGURAS</h1>
         </div>
-        <div className="senha-segura-box3">
-          <p>
-            * Sua senha deve possuir de 8 à 16 caracteres<br />
-            * Sua senha deve incluir caractéres especiais<br />
-            ( “@”,” #”,”_”,”!” )<br />
-            * Sua senha deve incluir letras MAIUSCÚLAS<br />
-            * Sua senha deve incluir NÚMEROS (0 à 10)
-          </p>
-        </div>
+        <p className="senha-segura-text texto-centro inter">
+          &bull; Sua senha deve possuir de 8 à 16 caracteres<br />
+          &bull; Sua senha deve incluir caractéres especiais ( “@”,” #”,”_”,”!” )<br />
+          &bull; Sua senha deve incluir letras MAIUSCÚLAS<br />
+          &bull; Sua senha deve incluir NÚMEROS (0 à 10)
+        </p>
       </div>
     </div>
   );
