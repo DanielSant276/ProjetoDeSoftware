@@ -1,14 +1,14 @@
 
 import { useState } from 'react';
-import './App.css';
+import '../login/login.css';
 
-function App() {
+function Login() {
 
   const [usuario, setUsuario] = useState();
   const [senha, setSenha] = useState();
 
   return (
-
+    <>
     <div className='principal'>
       <div className="formulario space-10">
         <form name="form" className="conteudoForm space-10" >
@@ -23,14 +23,13 @@ function App() {
         </form>   
         <button className="submit" onClick={() => console.log(`usuario: ${usuario}  senha: ${senha}`)}>ENTRAR</button>  
       </div>
-      <div className="rodape">
-        <h1>UFRRJ SOFTWARES  - 2022 </h1>
-      </div> 
     </div>
-      
-      
-     
+    <div className="rodape">
+          <h1> UFRRJ SOFTWARES  - 2022 </h1>
+    </div>
+    </>
+  
   );
 }
 
-export default App;
+export default Login;
