@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+=======
+body{
+  background-image: url("img/fundo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+>>>>>>> f5a09c187d8245a2b7524b92211cda3871f7fa20
