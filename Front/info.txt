@@ -28,10 +28,10 @@ Regras adotadas no front-end:
   - Qualquer dúvida pode perguntar ao Daniel. Se estiver utilizando de mais um estilo específico ver a necessidade de 
   criar um padrão para ele.
 
-  - Não utilizar tags no css.
+  - Não aplicar stilos em tags no css.
   - Sempre utilizar classe ao invés de id.
   - Iniciar o nome da classe com o nome da página.
   - Sempre que for fazer uma página, criar a pasta para ela e os arquivos e adicioná-la no router.
-  - Só utilizar porcentagem para valores muito algors, utilizar preferencialmente valores em pixel.
+  - Só utilizar porcentagem para valores grandes, utilizar preferencialmente valores em pixel.
   - Sempre arredondar números de valores em pixel.
   - Usar div ao invés de button, colocar classe link na div que for funcionar como botão.

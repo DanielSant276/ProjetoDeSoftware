@@ -10,7 +10,6 @@ import './loginAna.css';
 // }).required();
 
 function LoginAna() {
-  
   // const { register, handleSubmit, formState: { errors } } = useForm({
   //   resolver: yupResolver(schema)
   // }); 

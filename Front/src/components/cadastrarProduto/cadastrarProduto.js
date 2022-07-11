@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 import "./cadastrarProduto.css";
-import polygon from "../../img/Polygon.svg"
+import polygon from "../../img/Polygon.svg";
 
 function CadastrarProduto() {
   return (
@@ -102,7 +102,6 @@ function CadastrarProduto() {
                 <p>MULTAS</p>
               </div>
             </div>
-            <div></div>
           </div>
         </div>
       </div>

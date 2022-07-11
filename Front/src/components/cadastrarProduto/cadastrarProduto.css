@@ -131,7 +131,7 @@
 
 .cadastrar-produto-outros-titulo {
   height: 15%;
-  color: white;
+  color: #FFFFFF;
   justify-content: center;
   align-items: center;
 }
@@ -139,7 +139,7 @@
 .cadastrar-produto-outros-botoes {
   background-color: rgba(217, 217, 217, 0.08);
   height: 340px;
-  color: white;
+  color: #FFFFFF;
   border-radius: 25px;
   justify-content: space-between;
   align-items: center;
