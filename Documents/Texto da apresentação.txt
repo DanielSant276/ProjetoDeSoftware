@@ -1,0 +1,27 @@
+https://blog.boot.dev/cryptography/how-sha-2-works-step-by-step-sha-256/
+
+https://blog.boot.dev/cryptography/aes-256-cipher/
+
+https://stackoverflow.com/questions/69154099/sha-256-does-bit-append-still-required-if-input-is-already-n-x-512-bit
+
+https://infosecwriteups.com/breaking-down-sha-256-algorithm-2ce61d86f7a3
+
+https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines/example-values#aHashing
+
+https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf
+
+
+
+O que é uma função HASH?
+	Uma função HASH gera uma "digital" para uma string. Para cada valor de string, independentemente do seu tamanho, ela sermpe irá gerar um valor único, tanto apenas uma palavra de um livro como o livro por inteiro, irão gerar uma chave de 256 bits diferente.
+
+Os três propósitos principais de uma função HASH são:
+	|-- Embaralhar deterministicamente um dado.
+	|-- Aceitar um input de qualquer tamanho e sempre gerar um output de tamanho fixo.
+	|-- Não ser possível manipular o dado, o input não pode ser derivado do output.
+
+SHA-2
+	O SHA-2 é um algoritmo de como transformar um dado em hash. SHA-2 tem diferentes variantes, todas elas usam o mesmo algoritmo mas possuem diferentes contantes, por exemplo, a diferença entre SHA-256 e SHA-512 se refere ao número de bits do output, sendo 256 bits e 512 bits respectivamente.
+
+SHA-1
+	O SHA-2 é um sucessor do SHA-1. O SHA-1 não é mais utilizado hoje em dia pois já foi provado que é possível burlar sua criptografia. Assim, não é mais seguro utilizado. Já o SHA-256, até então não foi quebrado nenhuma vez, porém, com o avanço da tecnologia de computação quantica, pode ser que em um futuro próximo seja possível sua quebra.
