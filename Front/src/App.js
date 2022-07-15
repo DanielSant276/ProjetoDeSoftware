@@ -1,21 +1,13 @@
-import './App.css';
+import React from 'react'
+import Rotas from './routes';
+import "./App.css"
+import {BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   return (
-      <div class="formulario">
-        <form name="form" class="conteudoForm" >
-            <div>
-                <label>USUÁRIO</label>
-                <input type="name"/>
-            </div>
-            <div>
-                <label>SENHA</label>
-                <span  id="enderecoErro"></span>
-                <input type="password"/>
-            </div>
-        </form>   
-        <button class="submit" onclick="todasFunc()">Enviar</button>   
-    </div>
+    <Router >
+      <Rotas/>
+    </Router>
   );
 }
 

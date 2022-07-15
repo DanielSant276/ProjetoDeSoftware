@@ -1,9 +1,12 @@
-body, div, section {
+/* Fonte Julios Sans One */
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+/* Fonte Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+header, body, footer, div, section {
   display: flex;
   flex-direction: column;
 }
-
-
 
 .linha {
   flex-direction: row;
@@ -27,8 +30,8 @@ body, div, section {
   cursor: pointer;
 }
 
-p {
-  font-family: Arial, Helvetica, sans-serif;
+p, label, h1 {
+  font-family: 'Inter', sans-serif;
   /*inserir aqui a fonte que será utilizada como padrão*/
   /* font-family: 'DAYROM';  */
 
@@ -89,4 +92,57 @@ p {
 
 .space-100 {
   margin-bottom: 100px;
+}
+
+.background-imagem {
+  background-image: url("../src/img/fundo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.principal {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fonte Julio Sans One */
+.jso {
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.botao-form-cadastrar{
+  border-radius: 20px;
+  background-color: #D9D9D9;
+  background-color: rgba(217, 217, 217, 0.19);;
+  border: 1px dashed #D37015;
+  color: #FFFFFF;
+}
+
+.input-form-cadastrar{
+  height: 10%;
+  width: 88%;
+  border-radius: 25px;
+  margin-left: 10px;
+  border: solid 1px #000000;
+  background-color: #D9D9D9;
+}
+
+.label-form-cadastrar{
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.laranja {
+  color: #D37015;
+}
+
+.roxo {
+  color: #9500CA;
+}
+
+.background-cor-padrao {
+  background-color: #2C2525
 }

@@ -1,0 +1,56 @@
+.menu-background-imagem {
+  background-image: url("../../img/fundo.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position:center, bottom;
+}
+
+.menu-header {
+  height: 100vh;
+  color: #0000FF;
+}
+
+.menu-section {
+  height: 90vh;
+  width: 80%;
+  background-image: url('../../img/fundo-menu.png');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position:center, bottom;
+}
+
+.menu-botoes {
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 3.8%;
+}
+
+.menu-lista {
+  display: flex;
+  flex-direction: row;
+  margin-left: -15%;
+}
+
+.menu-botao:nth-child(even) {
+  margin: 0 10px;
+}
+
+.header-botao {
+  width: 25%;
+  height: 90px;
+  -webkit-transform: skew(-30deg);
+  -moz-transform: skew(-20deg);
+  -o-transform: skew(-20deg);
+  background: #222;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.menu-span {
+  -webkit-transform: skew(30deg);
+  -moz-transform: skew(20deg);
+  -o-transform: skew(20deg);
+}
