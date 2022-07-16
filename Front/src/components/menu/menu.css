@@ -1,5 +1,5 @@
 .menu-background-imagem {
-  background-image: url("../../img/fundo.png");
+  background-image: url("../../img/tela-menu.jpg");
   background-size:cover;
   background-repeat: no-repeat;
   background-position:center, bottom;
@@ -7,50 +7,91 @@
 
 .menu-header {
   height: 100vh;
-  color: #0000FF;
 }
 
 .menu-section {
-  height: 90vh;
-  width: 80%;
-  background-image: url('../../img/fundo-menu.png');
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position:center, bottom;
+  width: 100%;
+}
+
+.menu-section:after , .menu-section:before {
+  border-bottom: dashed 3px #FFA800;
+  margin-left: 69%;
+  position: absolute;
+  content: "";
+  width: 31%;
+  z-index: 0;
+}
+
+ /* Colocar a margem negativa para ficar dos lados e o meio vazado */
+.menu-section:before{
+  margin-left: -69%;
 }
 
 .menu-botoes {
   width: 40%;
   margin: 0 auto;
-  padding-top: 3.8%;
-}
-
-.menu-lista {
+  padding-top: 2%;
   display: flex;
-  flex-direction: row;
-  margin-left: -15%;
 }
 
-.menu-botao:nth-child(even) {
-  margin: 0 10px;
+
+.menu-botao-forma {
+  width: 85px;
+  padding: 55%;
+  background: #2B2927;
+  border: 1px solid #9500CA;
+  border-radius: 50%;
+  z-index: 1;
+  position: relative;
+  margin-left: 20%;
 }
 
-.header-botao {
-  width: 25%;
-  height: 90px;
-  -webkit-transform: skew(-30deg);
-  -moz-transform: skew(-20deg);
-  -o-transform: skew(-20deg);
-  background: #222;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.menu-pai:nth-child(even){
+  margin: 0 180px;
+}
+
+.menu-botao-texto {
+  font-size: 20px;
+}
+
+.menu-texto {
+  font-size: 32px;
   color: #fff;
+  margin-left: 300px;
 }
 
-.menu-span {
-  -webkit-transform: skew(30deg);
-  -moz-transform: skew(20deg);
-  -o-transform: skew(20deg);
+.menu-mais-acessados {
+  margin-left: 200px;
+  font-size: 24px;
+  color: #fff;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.menu-triangulo {
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.menu-funcionalidades {
+  padding: 1% 0;
+  width: 329px;
+  border-radius: 25px;
+  background-color:#9500CA;
+}
+
+.menu-buscar-livro {
+  margin-left: 25%;
+  box-shadow: 14px 15px rgba(149, 0, 202, 0.20);
+}
+
+.menu-cadastrar-funcionario {
+  margin-left: 35%;
+  box-shadow: 30px 15px rgba(149, 0, 202, 0.24);
+}
+
+.menu-quadro-multas {
+  margin-left: 45%;
+  box-shadow: 40px 15px rgba(149, 0, 202, 0.1);
 }
