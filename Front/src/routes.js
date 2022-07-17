@@ -5,6 +5,7 @@ import SenhaSegura from "./components/senhaSegura/senhaSegura";
 import CadastrarProduto from "./components/cadastrarProduto/cadastrarProduto";
 import LoginAna from "./components/loginAna";
 import MoldeTeste from "./components/molde/molde"
+import MoldeCadastro from "./components/moldeCadastro/MoldeCadastro";
 
 export default function Rotas() {
     return (
@@ -16,6 +17,7 @@ export default function Rotas() {
             <Route path="/cadastrarProduto" element={<CadastrarProduto />} /> {/*  */}
             <Route path="/loginAna" element={<LoginAna />} /> {/*  */}
             <Route path="/molde" element={<MoldeTeste />} />
+            <Route path="/moldeCadastro" element={<MoldeCadastro />} />
         </Routes>
     )
 }
