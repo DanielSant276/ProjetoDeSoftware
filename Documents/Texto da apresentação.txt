@@ -1,0 +1,47 @@
+https://blog.boot.dev/cryptography/how-sha-2-works-step-by-step-sha-256/
+
+https://blog.boot.dev/cryptography/aes-256-cipher/
+
+https://stackoverflow.com/questions/69154099/sha-256-does-bit-append-still-required-if-input-is-already-n-x-512-bit
+
+https://infosecwriteups.com/breaking-down-sha-256-algorithm-2ce61d86f7a3
+
+https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines/example-values#aHashing
+
+https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Standards-and-Guidelines/documents/examples/SHA256.pdf
+
+chargerziel276
+
+O que é uma função HASH?
+	Uma função HASH gera uma "digital" para uma string. Para cada valor de string, independentemente do seu tamanho, ela sermpe irá gerar um valor único, tanto apenas uma palavra de um livro como o livro por inteiro, irão gerar uma chave de 256 bits diferente.
+
+Os três propósitos principais de uma função HASH são:
+	|-- Embaralhar deterministicamente um dado.
+	|-- Aceitar um input de qualquer tamanho e sempre gerar um output de tamanho fixo.
+	|-- Não ser possível manipular o dado, o input não pode ser derivado do output.
+
+SHA-2
+	O SHA-2 é um algoritmo de como transformar um dado em hash. SHA-2 tem diferentes variantes, todas elas usam o mesmo algoritmo mas possuem diferentes contantes, por exemplo, a diferença entre SHA-256 e SHA-512 se refere ao número de bits do output, sendo 256 bits e 512 bits respectivamente.
+
+SHA-1
+	O SHA-2 é um sucessor do SHA-1. O SHA-1 não é mais utilizado hoje em dia pois já foi provado que é possível burlar sua criptografia. Assim, não é mais seguro utilizado. Já o SHA-256, até então não foi quebrado nenhuma vez, porém, com o avanço da tecnologia de computação quantica, pode ser que em um futuro próximo seja possível sua quebra.
+
+Esse tipo de técnica pode ser dividido em 8 etapas que serão detalhadas a baixo.
+	1 - Pré-processamento:
+		Nesse passo, o objetivo é gerar uma chave em binário que tenha um tamanho de (n * 512 - 64), esse n vai varir dependendo do tamanho da chave de entrada. Nessa apresentação o N sempre será 1 para evitar problemas de conversão.
+		A primeira parte se da convertendo todos os caracteres para seus valores em binario utilizando a tabela ASCII. É necessário que todos os valores possuam 8 bits, sendo assim, valores com menores que isso deverão adicionar a quantidade necessária de 0 a esquerda.
+		Após isso se adiciona um 1 no final da cadeia e verifica a quantidade total de zeros, que precisa seguir a ordem dita anteriormente (n * 512 - 64).
+		Por fim se adiciona no final da ordem, nos bits menos significativos, o valor do tamanho da entrada inicial em binário.
+
+	2 - Inicializar as constantes
+		Nesse ponto são definidos os valores hash de cada constante que será utilizado nos próximos passos.
+		A primeira parte é composta de 8 constantes que representa os primeiros 32 bits da multiplicação de 2^32 pela parte fracionária das raizes dos 8 primeiros números primos.
+
+	3 - Criar o cronograma da mensagem
+		Aqui a mensagem já pronta até o momento será re-organizada para formar grupos de 32 bits.
+
+continuar
+https://docs.google.com/document/d/1tNxzCGAy4XzZ7Jc0CWcxYPrAwRs4ypB875GWXu21x5E/edit
+
+slide
+https://www.canva.com/design/DAFGNIxGCMU/Z1_OFPH-mpAzjubxxdXrDA/edit?utm_source=shareButton&utm_medium=email&utm_campaign=designshare
