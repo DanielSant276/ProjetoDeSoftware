@@ -94,6 +94,7 @@ p, label, h1 {
   margin-bottom: 100px;
 }
 
+
 .background-imagem {
   background-image: url("../src/img/fundo.jpg");
   background-size: cover;
@@ -146,3 +147,21 @@ p, label, h1 {
 .background-cor-padrao {
   background-color: #2C2525
 }
+
+.margem-direita{
+  margin-right: 10px;
+}
+
+.menu-botao-principal{
+  height: 51px;
+  width: 415px;
+  border-radius: 20px;
+  background-color: #9500CA;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-box-sahedow{
+  box-shadow:  6px 12px rgba(185, 27, 242, 0.4);
+}
+
