@@ -36,7 +36,7 @@ app.post("/", function (req, res){
 
   //Chama a criptografia de valores
   function changePass (pass, key) {
-    const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"];
+    const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"/*,"0","1","2","3","4","5","6","7","8","9"*/];
 
     console.log(isNaN(parseInt(key)));
     //Verifica se a chave é numérica ou textual, se for um espaço utiliza SHA256
@@ -84,22 +84,24 @@ app.post("/", function (req, res){
 
     for (i = 0; i < pass.length; i++) {
       index = alphabet.indexOf(pass[i]);
-      if (index + key > alphabet.length) {
+      if (index + key >= alphabet.length) {
         cryptoPass[i] = alphabet[index + key - alphabet.length]; 
       }
       else {
         cryptoPass[i] = alphabet[index + key]; 
       }
+      console.log(cryptoPass[i])
     }
     return cryptoPass;
   }
 
   function encryptSHA256(pass) {
-    let hashKey = "Livraria S.I."
+    // let hashKey = "Livraria S.I."
 
-    let hash = crypto.createHmac("sha256", hashKey)
-                     .update(pass)
-                     .digest("hex");
+    const hash = crypto.createHash('sha256').update(pass).digest('hex');
+    // let hash = crypto.createHmac("sha256", hashKey)
+    //                  .update(pass)
+    //                  .digest("hex");
     return hash;
   }
 
