@@ -1,4 +1,4 @@
-let palavraOriginal = "d";
+let palavraOriginal = "hello world";
 palavra = palavraOriginal.split("");
 console.log(palavra)
 let binarioArr = [];
@@ -71,6 +71,7 @@ function adicionarTamanhoDaMensagem(binarioArr, tamanhoMensagem) {
   let tamanhoMensagemBinario = tamanhoMensagem.toString(2);
   // verifica quantos bits são
   let comprimento = tamanhoMensagemBinario.length;
+  console.log(comprimento)
 
   // adciona a quantidade de zeros necessária para colocar as casas que faltam para 64 bits
   for (i = 0; i < 64 - comprimento; i++) {
@@ -80,11 +81,12 @@ function adicionarTamanhoDaMensagem(binarioArr, tamanhoMensagem) {
 
   mensagemBinarioArr = []
   // separa em array do comprimento em 8 grupos
-  for (i = 0; i <= comprimento; i++) {
+  for (i = 0; i < 8; i++) {
     mensagemBinarioArr.push(tamanhoMensagemBinario.slice(8 * i, 8 * i + 8));
   }
   // apenas para manter na mesma variável
   tamanhoMensagemBinario = mensagemBinarioArr;
+  console.log(tamanhoMensagemBinario)
 
   // adiciona na array principal
   for (i = 0; i < mensagemBinarioArr.length; i++) {
@@ -125,6 +127,8 @@ const k = [
   "748f82ee", "78a5636f", "84c87814", "8cc70208", "90befffa", "a4506ceb", "bef9a3f7", "c67178f2",
 ]
 
+console.log(k)
+
 // Passo - 3.1: Reorganização da mensagem para formar 64 grupos de 32 bits
 function criarChunk(binarioArr) {
   let arr = binarioArr.join("");
@@ -160,6 +164,7 @@ function rotacaoDireita(mensagem, tamanho) {
   let bitsSeparados = mensagem.slice(mensagem.length - tamanho, mensagem.length);
   let novaCadeia = mensagem.slice(0, mensagem.length - tamanho);
   novaCadeia = bitsSeparados + novaCadeia;
+  // console.log("Rotação a direita: " + novaCadeia.padStart(32, "1"));
   return novaCadeia.padStart(32, "1");
 }
 
@@ -171,6 +176,7 @@ function shiftDireito(mensagem, tamanho) {
   }
   let novaCadeia = bitsInseridos + mensagem;
   novaCadeia = novaCadeia.slice(0, novaCadeia.length - tamanho);
+  // console.log("Shift a direita: " + novaCadeia.padStart(32, "1"));
   return novaCadeia.padStart(32, "1");
 }
 
@@ -187,12 +193,15 @@ function modificaValores(w) {
     // deu tanta dor de cabeça para chegar nisso aqui, basicamente, como é um valor muito grande, a intereção de XOR 
     // nessa parte quebra o valor dando um número negativo, porém, com BigInt a operação de XOR consegue ser 
     // realizada corretamente
-    s0 = (BigInt('0b' + rotacaoDireita(w[i - 15], 7)) ^ BigInt('0b' + rotacaoDireita(w[i - 15], 18)) ^ BigInt('0b' + shiftDireito(w[i - 15], 3)));
+    console.log(`w[${i - 15}]: ` + w[i - 15]);
+    s0 = (BigInt('0b' + rotacaoDireita(w[i - 15], 7)) ^ BigInt('0b' + shiftDireito(w[i - 15], 3)) ^ BigInt('0b' + rotacaoDireita(w[i - 15], 18)));
     s1 = (BigInt('0b' + rotacaoDireita(w[i - 2], 17)) ^ BigInt('0b' + rotacaoDireita(w[i - 2], 19)) ^ BigInt('0b' + shiftDireito(w[i - 2], 10)));
     // apos achar o valor de s0 e s1 é aplicada a fórmula W[i] = W[i-16] + s0 + W[i-7] e desse valor, se retira o modulo
     // de 2^32
     let tamanhoBit = 32;
     novoW[i] = (((BigInt('0b' + w[i - 16]) + s0 + BigInt('0b' + w[i - 7]) + s1) % BigInt(2 ** 32)).toString(2)).padStart(tamanhoBit, 0).slice(-tamanhoBit);
+    console.log(`novoW[${i}]: ` + novoW[i])
+    break
   }
   return novoW
 }
@@ -276,6 +285,16 @@ function compressao(w, constH, k) {
     b = a
     a = (temp1 + temp2).toString(2).padStart(tamanhoBit, 0).slice(-tamanhoBit)
   }
+
+  console.log("constante h: " + constH);
+  console.log("a: " + BigInt('0b' + a).toString(16))
+  console.log("b: " + BigInt('0b' + b).toString(16))
+  console.log("c: " + BigInt('0b' + c).toString(16))
+  console.log("d: " + BigInt('0b' + d).toString(16))
+  console.log("e: " + BigInt('0b' + e).toString(16))
+  console.log("f: " + BigInt('0b' + f).toString(16))
+  console.log("g: " + BigInt('0b' + g).toString(16))
+  console.log("h: " + BigInt('0b' + h).toString(16))
 
   return [a, b, c, d, e, f, g, h]
 }
