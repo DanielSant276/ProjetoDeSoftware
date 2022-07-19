@@ -62,6 +62,7 @@
 .menu-mais-acessados h1{
   margin-top: 14px;
   margin-left: 20px;
+  font-size: 18px;
 }
 
 .menu-botoes-principais{
@@ -75,9 +76,11 @@
 
 .menu-botao-principal-2{
   margin-left: 400px;
+  box-shadow: 30px 15px rgba(149, 0, 202, 0.24);
 }
 
 .menu-botao-principal-3{
   margin-left: 500px;
+  box-shadow: 40px 15px rgba(149, 0, 202, 0.1);
 }
 
