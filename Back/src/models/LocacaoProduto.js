@@ -1,13 +1,13 @@
 const db = require("./db.js");
-const Locacao = require("./Locacao.js");
-const Produto = require("./Produto.js");
+const locacao = require("./Locacao.js");
+const produto = require("./produto.js");
 
-const LocacaoProduto = db.sequelize.define('locacaoProduto', {
+const locacaoProdutoModel = db.sequelize.define('locacaoProduto', {
   idLocacao: {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
     references: {
-      model: Locacao,
+      model: locacao.locacaoModel,
       key: "idLocacao",
       deferrable: db.Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
@@ -16,7 +16,7 @@ const LocacaoProduto = db.sequelize.define('locacaoProduto', {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
     references: {
-      model: Produto,
+      model: produto.produtoModel,
       key: "idProduto",
       deferrable: db.Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
@@ -25,4 +25,15 @@ const LocacaoProduto = db.sequelize.define('locacaoProduto', {
 
 // LocacaoProduto.sync({force: true});
 
-module.exports = LocacaoProduto;
+// Não estou confiante desses dois, espero que não de problema
+// Mapeando LocacaoDependente e Locacao
+locacaoProdutoModel.belongsTo(locacao.locacaoModel, {through: "idLocacao" } );
+locacao.locacaoModel.hasMany(locacaoProdutoModel);
+
+// Mapeando LocacaoProduto e Produto
+locacaoProdutoModel.hasMany(produto.produtoModel);
+produto.produtoModel.belongsTo(locacaoProdutoModel, {through: "idProduto" });
+
+module.exports = {
+  locacaoProdutoModel
+};

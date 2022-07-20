@@ -1,6 +1,6 @@
 const db = require("./db.js");
 
-const Genero = db.sequelize.define('genero', {
+const generoModel = db.sequelize.define('genero', {
   idGenero: {
     type: db.Sequelize.INTEGER,
     autoIncrement: true,
@@ -16,4 +16,6 @@ const Genero = db.sequelize.define('genero', {
 
 // Genero.sync({force: true});
 
-module.exports = Genero;
+module.exports = {
+  generoModel
+};

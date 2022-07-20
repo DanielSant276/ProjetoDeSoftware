@@ -1,6 +1,43 @@
 const db = require("./db.js");
 
-const Usuario = db.sequelize.define('usuario', {
+class Usuario {
+  constructor(login, senha, tipo = "") {
+    this.login = login;
+    this.senha = senha;
+    this.tipo = tipo;
+  }
+
+  static async add(usuarioDados) {
+    return await usuarioModel.create({
+      login: usuarioDados.login,
+      senha: usuarioDados.senha,
+      tipo: usuarioDados.tipo,
+    });
+  }
+
+  static async getById(id) {
+    const usuarioById = await usuarioModel.findByPk(id);
+    return usuarioById;
+  }
+
+  static async getAll() {
+    const usuarios = await usuarioModel.findAll();
+    return usuarios;
+  }
+
+  static async confereLogin(login, senha) {
+    const loginVerificado = await usuarioModel.findOne({
+      where: {
+        login: login,
+        senha: senha
+      }
+    });
+
+    return loginVerificado;
+  }
+}
+
+const usuarioModel = db.sequelize.define('usuario', {
   idUsuario: {
     type: db.Sequelize.INTEGER,
     autoIncrement: true,
@@ -23,4 +60,7 @@ const Usuario = db.sequelize.define('usuario', {
 
 // Usuario.sync({force: true});
 
-module.exports = Usuario;
+module.exports = {
+  usuarioModel,
+  Usuario
+};

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bp = require("body-parser");
 const crypto = require("crypto");
+const SHA256 = require("../sha");
 
 const Cliente = require("./models/Cliente.js");
 const Dependente = require("./models/Dependente.js");
@@ -32,11 +33,11 @@ app.post("/", function (req, res){
   let password = req.body.pass;
   let key = req.body.key;
   
-  let newPass = changePass(password.toUpperCase(), key);
+  let newPass = changePass(password, key);
 
   //Chama a criptografia de valores
   function changePass (pass, key) {
-    const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"/*,"0","1","2","3","4","5","6","7","8","9"*/];
+    const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"/*,"0","1","2","3","4","5","6","7","8","9"*/];
 
     console.log(isNaN(parseInt(key)));
     //Verifica se a chave é numérica ou textual, se for um espaço utiliza SHA256
@@ -96,12 +97,14 @@ app.post("/", function (req, res){
   }
 
   function encryptSHA256(pass) {
-    // let hashKey = "Livraria S.I."
-
     const hash = crypto.createHash('sha256').update(pass).digest('hex');
+
+    // let hashKey = "Livraria S.I."
+    
     // let hash = crypto.createHmac("sha256", hashKey)
     //                  .update(pass)
     //                  .digest("hex");
+
     return hash;
   }
 

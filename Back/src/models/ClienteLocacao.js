@@ -1,13 +1,13 @@
 const db = require("./db.js");
-const Cliente = require("./Cliente.js");
-const Locacao = require("./Locacao.js");
+const cliente = require("./Cliente.js");
+const locacao = require("./locacao.js");
 
-const ClienteLocacao = db.sequelize.define('clienteLocacao', {
+const clienteLocacaoModel = db.sequelize.define('clienteLocacao', {
   idCliente: {
     type: db.Sequelize.INTEGER,
     // allowNull: false,        
     references: {
-      model: Cliente,
+      model: cliente,
       key: "idCliente",
       deferrable: db.Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
@@ -16,7 +16,7 @@ const ClienteLocacao = db.sequelize.define('clienteLocacao', {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
     references: {
-      model: Locacao,
+      model: locacao,
       key: "idLocacao",
       deferrable: db.Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
@@ -25,4 +25,15 @@ const ClienteLocacao = db.sequelize.define('clienteLocacao', {
 
 // ClienteLocacao.sync({force: true});
 
-module.exports = ClienteLocacao;
+// Não estou confiante desses dois, espero que não de problema
+// Mapeando ClienteDependente e Cliente
+clienteLocacaoModel.belongsTo(cliente.clienteModel, {through: "idCliente" } );
+cliente.clienteModel.hasMany(clienteLocacaoModel);
+
+// Mapeando ClienteLocacao e Locacao
+clienteLocacaoModel.hasMany(locacao.locacaoModel);
+locacao.locacaoModel.belongsTo(clienteLocacaoModel, {through: "idLocacao" });
+
+module.exports = {
+  clienteLocacaoModel
+};

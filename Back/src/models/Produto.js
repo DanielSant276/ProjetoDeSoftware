@@ -1,6 +1,6 @@
 const db = require("./db.js");
 
-const Produto = db.sequelize.define('produto', {
+const produtoModel = db.sequelize.define('produto', {
   idProduto: {
     type: db.Sequelize.INTEGER,
     autoIncrement: true,
@@ -42,4 +42,6 @@ const Produto = db.sequelize.define('produto', {
 
 // Produto.sync({force: true});
 
-module.exports = Produto;
+module.exports = {
+  produtoModel
+};

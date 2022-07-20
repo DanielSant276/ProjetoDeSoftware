@@ -1,6 +1,6 @@
 const db = require("./db.js");
 
-const Locacao = db.sequelize.define('locacao', {
+const locacaoModel = db.sequelize.define('locacao', {
   idLocacao: {
     type: db.Sequelize.INTEGER,
     autoIncrement: true,
@@ -28,4 +28,6 @@ const Locacao = db.sequelize.define('locacao', {
 
 // Locacao.sync({force: true});
 
-module.exports = Locacao;
+module.exports = {
+  locacaoModel
+};

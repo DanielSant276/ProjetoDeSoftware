@@ -1,13 +1,13 @@
 const db = require("./db.js");
-const Produto = require("./Produto.js");
-const Exemplar = require("./Exemplar.js");
+const produto = require("./Produto.js");
+const exemplar = require("./Exemplar.js");
 
-const ProdutoExemplar = db.sequelize.define('produtoExemplar', {
+const produtoExemplarModel = db.sequelize.define('produtoExemplar', {
   idProduto: {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
     references: {
-      model: Produto,
+      model: produto.produtoModel,
       key: "idProduto",
       deferrable: db.Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
@@ -16,7 +16,7 @@ const ProdutoExemplar = db.sequelize.define('produtoExemplar', {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
     references: {
-      model: Exemplar,
+      model: exemplar.exemplarModel,
       key: "idExemplar",
       deferrable: db.Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
@@ -25,4 +25,15 @@ const ProdutoExemplar = db.sequelize.define('produtoExemplar', {
 
 // ProdutoExemplar.sync({force: true});
 
-module.exports = ProdutoExemplar;
+// Não estou confiante desses dois, espero que não de problema
+// Mapeando ProdutoExemplar e Produto
+produtoExemplarModel.belongsTo(produto.produtoModel, {through: "idProduto" } );
+produto.produtoModel.hasMany(produtoExemplarModel);
+
+// Mapeando ProdutoExemplar e Exemplar
+produtoExemplarModel.hasMany(exemplar.exemplarModel);
+exemplar.exemplarModel.belongsTo(produtoExemplarModel, {through: "idExemplar" });
+
+module.exports = {
+  produtoExemplarModel
+};
