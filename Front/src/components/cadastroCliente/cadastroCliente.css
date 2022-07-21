@@ -1,0 +1,162 @@
+.cadastrar-cliente-background-imagem {
+    background-image: url("../../img/fundo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center, bottom;
+  }
+  
+  .cadastrar-cliente-container1 {
+    background-color: #312C2C;
+    width: 70%;
+    height: 85%;
+    border-radius: 20px;
+  }
+  
+  .cadastrar-cliente-conteudo-cabeçalho {
+    height: 9%;
+    flex-direction: row;
+  }
+  
+  .cadastrar-cliente-cabeçalho-esquerdo {
+    justify-content: center;
+    /* height: 100%; */
+    width: 50%;
+  }
+  
+  .cadastrar-cliente-cabeçalho-esquerdo h1 {
+    /* margin-top: 20px; */
+    /* position: relative; */
+    /* top: 15px; */
+    margin-left: 20px;
+    color: #FFFFFF;
+    font-size: 25px;
+  }
+  
+  .cadastrar-cliente-cabeçalho-direito {
+    width: 50%;
+    justify-content: end;
+    align-items: center;
+    margin-right: 25px;
+  }
+  
+  .cadastrar-cliente-cabeçalho-direito h1 {
+    color: #FFFFFF;
+    font-size: 18px;
+  }
+  
+  .cadastrar-cliente-seta {
+    width: 50px;
+    height: 40px;
+  }
+  
+  .cadastrar-cliente-container2 {
+    height: 88%;
+    background-color: #433F3F;
+    flex-direction: row;
+  }
+  
+  .cadastrar-cliente-cadastrar-cliente {
+    width: 80%;
+  }
+  
+  .cadastrar-cliente-botoes-form {
+    height: 85px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .cadastrar-cliente-menu-superior-botao {
+    width: 23%;
+    height: 40px;
+  }
+  
+  .cadastrar-cliente-menu-superior-botao-texto {
+    font-size: 14px;
+  }
+  
+  .cadastrar-cliente-form-cadastro {
+    background-color: #D9D9D9;
+    height: 450px;
+    border-radius: 25px;
+    margin-left: 20px;
+  }
+  
+  .cadastrar-cliente-form-titulo {
+    margin-left: 20px;
+    height: 40px;
+    justify-content: center;
+    border-bottom: 3px dashed rgba(0, 0, 0, 0.15);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .cadastrar-cliente-form-titulo h1 {
+    font-size: 20px;
+  }
+  
+  .cadastrar-cliente-formulario {
+    height: 100%;
+  }
+  
+  .cadastrar-cliente-form-apenas {
+    height: 85%;
+  }
+  
+  .cadastrar-cliente-input-esquerdo, .cadastrar-cliente-input-direito {
+    width: 45%;
+    height: 100%;
+    
+  }
+  .cadastrar-cliente-input-esquerdo{
+    justify-content: space-around;
+  }
+
+  .label-form-cadastrar{
+    margin-top: 20px;
+  }
+  
+  .cadastrar-cliente-cadastrar-botao {
+    align-self: flex-end;
+    margin-right: 40px;
+    background-color: #000000;
+    width: 100px;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cadastrar-cliente-cadastrar-botao-text {
+    color: #FFFFFF;
+    font-size: 14px;
+  }
+  
+  .cadastrar-cliente-outros-painel {
+    width: 18%;
+    margin-left: 30px;
+    margin-right: 10px;
+  }
+  
+  .cadastrar-cliente-outros-titulo {
+    height: 15%;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cadastrar-cliente-outros-botoes {
+    background-color: rgba(217, 217, 217, 0.08);
+    height: 340px;
+    color: #FFFFFF;
+    border-radius: 25px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cadastrar-cliente-outros-botao {
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+  }
+  
