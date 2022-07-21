@@ -48,15 +48,15 @@
   <form action="/" method="POST">
     <div class="row space-40 align-center">
       <p class="space-right-20">login:</p>
-      <input class="box" type="text" name="login">
+      <input class="box" type="text" name="login" onkeypress="checkChar(event)">
     </div>
     <div class="row space-40 align-center">
       <p class="space-right-20">senha:</p>
-      <input class="box" type="text" name="pass">
+      <input class="box" type="text" name="senha" onkeypress="checkChar(event)">
     </div>
     <div class="row align-center">
       <p class="space-right-20">Chave:</p>
-      <input class="box" type="text" name="key">
+      <input class="box" type="text" name="key" onkeypress="checkChar(event)">
     </div>
     <input type="submit" />
   </form>

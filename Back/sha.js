@@ -1,3 +1,5 @@
+// sha256ByDaniel("daniel");
+
 function sha256ByDaniel(word) {
   let palavraOriginal = word;
   palavra = palavraOriginal.split("");
@@ -24,7 +26,6 @@ function sha256ByDaniel(word) {
   console.log(binarioArr);
   //guarda esse valor para uso posterior
   let tamanhoDaMensagemOriginal = binarioArr.length * binarioArr[0].length
-  console.log(tamanhoDaMensagemOriginal)
 
   // Passo 1.2 - Inserir bits
   function insereBits(arr) {
@@ -128,13 +129,11 @@ function sha256ByDaniel(word) {
     "748f82ee", "78a5636f", "84c87814", "8cc70208", "90befffa", "a4506ceb", "bef9a3f7", "c67178f2",
   ]
 
-  console.log(k)
-
   // Passo - 3.1: Reorganização da mensagem para formar 64 grupos de 32 bits
   function criarChunk(binarioArr) {
     let arr = binarioArr.join("");
-    console.log(arr)
-    let arr32 = []
+    console.log(arr);
+    let arr32 = [];
     // reorganiza para cadeias de 32 bits
     for (i = 0; i < arr.length / 32; i++) {
       arr32.push(arr.slice(i * 32, (i * 32) + 32));
@@ -151,14 +150,14 @@ function sha256ByDaniel(word) {
       arr32.push(zeros);
     }
     // mensagem final e tamanho
-    console.log(arr32);
-    console.log(arr32.length);
     return arr32;
   }
-
+  
   // cadeia de chunk passa a ser referida como w
   let w = criarChunk(binarioArr)
-
+  console.log(w);
+  console.log(w.length);
+  
   // Passo - 3.2: Funções de rotação a direita e shift a direita
   function rotacaoDireita(mensagem, tamanho) {
     // tira os n bits do final e bota no início
@@ -194,14 +193,14 @@ function sha256ByDaniel(word) {
       // deu tanta dor de cabeça para chegar nisso aqui, basicamente, como é um valor muito grande, a intereção de XOR 
       // nessa parte quebra o valor dando um número negativo, porém, com BigInt a operação de XOR consegue ser 
       // realizada corretamente
-      console.log(`w[${i - 15}]: ` + w[i - 15]);
+      // console.log(`w[${i - 15}]: ` + w[i - 15]);
       s0 = (BigInt('0b' + rotacaoDireita(w[i - 15], 7)) ^ BigInt('0b' + shiftDireito(w[i - 15], 3)) ^ BigInt('0b' + rotacaoDireita(w[i - 15], 18)));
       s1 = (BigInt('0b' + rotacaoDireita(w[i - 2], 17)) ^ BigInt('0b' + rotacaoDireita(w[i - 2], 19)) ^ BigInt('0b' + shiftDireito(w[i - 2], 10)));
       // apos achar o valor de s0 e s1 é aplicada a fórmula W[i] = W[i-16] + s0 + W[i-7] e desse valor, se retira o modulo
       // de 2^32
       let tamanhoBit = 32;
       novoW[i] = (((BigInt('0b' + w[i - 16]) + s0 + BigInt('0b' + w[i - 7]) + s1) % BigInt(2 ** 32)).toString(2)).padStart(tamanhoBit, 0).slice(-tamanhoBit);
-      console.log(`novoW[${i}]: ` + novoW[i]);
+      // console.log(`novoW[${i}]: ` + novoW[i]);
     }
     return novoW
   }
@@ -287,40 +286,40 @@ function sha256ByDaniel(word) {
     }
 
     console.log("constante h: " + constH);
-    console.log("a: " + BigInt('0b' + a).toString(16))
-    console.log("b: " + BigInt('0b' + b).toString(16))
-    console.log("c: " + BigInt('0b' + c).toString(16))
-    console.log("d: " + BigInt('0b' + d).toString(16))
-    console.log("e: " + BigInt('0b' + e).toString(16))
-    console.log("f: " + BigInt('0b' + f).toString(16))
-    console.log("g: " + BigInt('0b' + g).toString(16))
-    console.log("h: " + BigInt('0b' + h).toString(16))
+    console.log("a: " + BigInt('0b' + a).toString(16));
+    console.log("b: " + BigInt('0b' + b).toString(16));
+    console.log("c: " + BigInt('0b' + c).toString(16));
+    console.log("d: " + BigInt('0b' + d).toString(16));
+    console.log("e: " + BigInt('0b' + e).toString(16));
+    console.log("f: " + BigInt('0b' + f).toString(16));
+    console.log("g: " + BigInt('0b' + g).toString(16));
+    console.log("h: " + BigInt('0b' + h).toString(16));
 
-    return [a, b, c, d, e, f, g, h]
+    return [a, b, c, d, e, f, g, h];
   }
 
   let newH = compressao(w, h, k);
-  console.log(newH)
+  console.log(newH);
 
   // Passo - 5: Modificar os valores finais somando a constante h inicial com os valores de h do último passo
   function somarH(h, newH) {
     let tamanhoBit = 32;
     for (i = 0; i < h.length; i++) {
-      h[i] = BigInt('0x' + h[i]) + BigInt('0b' + newH[i])
+      h[i] = BigInt('0x' + h[i]) + BigInt('0b' + newH[i]);
       h[i] = (h[i] % BigInt(2 ** 32)).toString(2).padStart(tamanhoBit, 0).slice(-tamanhoBit);
     }
     return h;
   }
 
   newH = somarH(h, newH);
-  console.log(h);
+  console.log(newH);
 
   // Passo - 6: Juntar todos os valores mas em hex
   function transformarHex(newH) {
-    let hash = []
+    let hash = [];
     let temp;
     for (i = 0; i < newH.length; i++) {
-      temp = BigInt('0b' + newH[i]).toString(16)
+      temp = BigInt('0b' + newH[i]).toString(16);
       hash.push(temp);
     }
     return hash.join("");
@@ -328,9 +327,11 @@ function sha256ByDaniel(word) {
 
   // Valor Final
   let hashFinal = transformarHex(newH);
-  console.log(hashFinal)
+  console.log(hashFinal);
 
-  return hashFinal
+  return hashFinal;
 }
 
-module.exports = { sha256ByDaniel }
+module.exports = { 
+  sha256ByDaniel 
+}

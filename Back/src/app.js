@@ -19,28 +19,36 @@ const Usuario = require("./models/Usuario.js");
 
 const models = [Cliente, Dependente, ClienteDependente, Locacao, ClienteLocacao, Produto, LocacaoProduto, Exemplar, ProdutoExemplar, Genero, ProdutoGenero, Usuario];
 
-app.use(bp.urlencoded({ extended: true })); 
+app.use(bp.urlencoded({ extended: true }));
 
-app.get("/", function (req, res){
-  console.log("metodo get");
+app.get("/", function (req, res) {
+  // console.log("metodo get");
   res.sendFile(__dirname + "/teste/index.html");
 });
 
-app.post("/", function (req, res){
+app.post("/", function (req, res) {
   console.log(req.body);
 
   let login = req.body.login;
-  let password = req.body.pass;
+  let password = req.body.senha;
   let key = req.body.key;
-  
+
+  let verificarVar = [login, password, key];
+  for (i = 0; i < verificarVar.length; i++) {
+    if (verificarVar[i].includes(">") || verificarVar[i].includes("<")) {
+      res.send("Você usou um caracter invalido")
+    }
+  }
+
   let newPass = changePass(password, key);
 
   //Chama a criptografia de valores
-  function changePass (pass, key) {
-    const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"/*,"0","1","2","3","4","5","6","7","8","9"*/];
+  function changePass(pass, key) {
+    const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"/*,"0","1","2","3","4","5","6","7","8","9"*/];
 
     console.log(isNaN(parseInt(key)));
     //Verifica se a chave é numérica ou textual, se for um espaço utiliza SHA256
+
     if (key == "") {
       // Se não informar uma chave utiliza a criptografia SHA256
       cryptoPass = encryptSHA256(pass);
@@ -57,7 +65,7 @@ app.post("/", function (req, res){
       cryptoPass = changePassNumberKey(pass, key, alphabet).join("");
       type = "substituição"
     }
-    
+
     return cryptoPass;
   }
 
@@ -70,10 +78,10 @@ app.post("/", function (req, res){
       indexKey = alphabet.indexOf(key[i % key.length]);
 
       if (indexPass + indexKey > alphabet.length) {
-        cryptoPass[i] = alphabet[indexPass + indexKey - alphabet.length]; 
+        cryptoPass[i] = alphabet[indexPass + indexKey - alphabet.length];
       }
       else {
-        cryptoPass[i] = alphabet[indexPass + indexKey]; 
+        cryptoPass[i] = alphabet[indexPass + indexKey];
       }
     }
     return cryptoPass;
@@ -86,10 +94,10 @@ app.post("/", function (req, res){
     for (i = 0; i < pass.length; i++) {
       index = alphabet.indexOf(pass[i]);
       if (index + key >= alphabet.length) {
-        cryptoPass[i] = alphabet[index + key - alphabet.length]; 
+        cryptoPass[i] = alphabet[index + key - alphabet.length];
       }
       else {
-        cryptoPass[i] = alphabet[index + key]; 
+        cryptoPass[i] = alphabet[index + key];
       }
       console.log(cryptoPass[i])
     }
@@ -97,13 +105,15 @@ app.post("/", function (req, res){
   }
 
   function encryptSHA256(pass) {
-    const hash = crypto.createHash('sha256').update(pass).digest('hex');
+    // const hash = crypto.createHash('sha256').update(pass).digest('hex');
 
     // let hashKey = "Livraria S.I."
-    
+
     // let hash = crypto.createHmac("sha256", hashKey)
     //                  .update(pass)
     //                  .digest("hex");
+
+    const hash = SHA256.sha256ByDaniel(pass);
 
     return hash;
   }
@@ -112,13 +122,13 @@ app.post("/", function (req, res){
 });
 
 //Somente uma requisição para criar as tabelas no banco de dados
-app.get("/criar", function (req, res){
-  for (i=0; i < models.length; i++) {
-    models[i].sync({force: true})
+app.get("/criar", function (req, res) {
+  for (i = 0; i < models.length; i++) {
+    models[i].sync({ force: true })
   }
   res.send("Terminado");
 })
 
-app.listen(3000, function() {
+app.listen(3000, function () {
   console.log("Server iniciado!")
 })
