@@ -4,7 +4,9 @@ import Menu from "./components/menu/menu";
 import SenhaSegura from "./components/senhaSegura/senhaSegura";
 import CadastrarProduto from "./components/cadastrarProduto/cadastrarProduto";
 import LoginAna from "./components/loginAna";
-import MoldeTeste from "./components/molde/molde"
+import MoldeTeste from "./components/molde/molde";
+import Multas from "./components/multas/multas";
+import MultasInfo from "./components/multasInfo/multasInfo";
 import MoldeCadastro from "./components/moldeCadastro/MoldeCadastro";
 import CadastrarCliente from "./components/cadastroCliente/cadastroCliente";
 
@@ -18,6 +20,8 @@ export default function Rotas() {
             <Route path="/cadastrarProduto" element={<CadastrarProduto />} /> {/*  */}
             <Route path="/loginAna" element={<LoginAna />} /> {/*  */}
             <Route path="/molde" element={<MoldeTeste />} />
+            <Route path="/multas" element={<Multas />} />
+            <Route path="/multasInfo" element={<MultasInfo />} />
             <Route path="/moldeCadastro" element={<MoldeCadastro />} />
             <Route path="/cadastroCliente" element={<CadastrarCliente/>} />
         </Routes>
