@@ -7,25 +7,27 @@ class Usuario {
     this.tipo = tipo;
   }
 
-  static async add(usuarioDados) {
-    return await usuarioModel.create({
+  async add(usuarioDados) {
+    let createUser = await usuarioModel.create({
       login: usuarioDados.login,
       senha: usuarioDados.senha,
-      tipo: usuarioDados.tipo,
+      usuarioTipo: usuarioDados.tipo,
     });
+
+    return createUser;
   }
 
-  static async getById(id) {
+  async getById(id) {
     const usuarioById = await usuarioModel.findByPk(id);
     return usuarioById;
   }
 
-  static async getAll() {
+  async getAll() {
     const usuarios = await usuarioModel.findAll();
     return usuarios;
   }
 
-  static async confereLogin(login, senha) {
+  async confereLogin(login, senha) {
     const loginVerificado = await usuarioModel.findOne({
       where: {
         login: login,
@@ -37,7 +39,7 @@ class Usuario {
   }
 }
 
-const usuarioModel = db.sequelize.define('usuario', {
+const usuarioModel = db.sequelize.define('usuarios', {
   idUsuario: {
     type: db.Sequelize.INTEGER,
     autoIncrement: true,
@@ -61,6 +63,6 @@ const usuarioModel = db.sequelize.define('usuario', {
 // Usuario.sync({force: true});
 
 module.exports = {
-  usuarioModel,
-  Usuario
+  usuarioClass: Usuario,
+  usuarioModel: usuarioModel,
 };

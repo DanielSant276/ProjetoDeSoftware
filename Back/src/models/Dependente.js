@@ -24,7 +24,7 @@ class Dependente {
 	}
 }
 
-const dependenteModel = db.sequelize.define('dependente', {
+const dependenteModel = db.sequelize.define('dependentes', {
   idDependente: {
     type: db.Sequelize.INTEGER,
     autoIncrement: true,
@@ -43,6 +43,6 @@ const dependenteModel = db.sequelize.define('dependente', {
 // Dependente.sync({force: true});
 
 module.exports = {
-  dependenteModel,
-  Dependente
+  dependenteClass: Dependente,
+  dependenteModel: dependenteModel,
 };

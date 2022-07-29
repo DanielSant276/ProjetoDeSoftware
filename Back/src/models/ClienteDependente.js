@@ -32,7 +32,7 @@ class ClienteDependente{
 	}
 }
 
-const clienteDependenteModel = db.sequelize.define("clienteDependente", {
+const clienteDependenteModel = db.sequelize.define("clienteDependentes", {
   idCliente: {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
@@ -55,17 +55,16 @@ const clienteDependenteModel = db.sequelize.define("clienteDependente", {
 
 // ClienteDependente.sync({force: true});
 
-// Não estou confiante desses dois, espero que não de problema
 // Mapeando ClienteDependente e Cliente
-clienteDependenteModel.hasOne(cliente.clienteModel, {through: "idCliente" } );
-cliente.clienteModel.hasMany(clienteDependenteModel);
+// clienteDependenteModel.hasOne(cliente.clienteModel, {through: "idCliente" } );
+// cliente.clienteModel.hasMany(clienteDependenteModel);
 
 // Mapeando Model e Dependente
-clienteDependenteModel.hasMany(dependente.dependenteModel);
-dependente.dependenteModel.belongsTo(clienteDependenteModel, {through: "idDependente" });
+// clienteDependenteModel.hasMany(dependente.dependenteModel);
+// dependente.dependenteModel.belongsTo(clienteDependenteModel, {through: "idDependente" });
 
 
 module.exports = {
-  clienteDependenteModel,
-  ClienteDependente
+  clienteDependenteClass: ClienteDependente,
+  clienteDependenteModel: clienteDependenteModel
 };

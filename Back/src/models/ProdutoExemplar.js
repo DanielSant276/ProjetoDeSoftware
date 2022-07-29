@@ -2,7 +2,7 @@ const db = require("./db.js");
 const produto = require("./Produto.js");
 const exemplar = require("./Exemplar.js");
 
-const produtoExemplarModel = db.sequelize.define('produtoExemplar', {
+const produtoExemplarModel = db.sequelize.define('produtoExemplares', {
   idProduto: {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
@@ -25,15 +25,15 @@ const produtoExemplarModel = db.sequelize.define('produtoExemplar', {
 
 // ProdutoExemplar.sync({force: true});
 
-// Não estou confiante desses dois, espero que não de problema
+// Estava dando problema na criação então resolvi comentar tudo
 // Mapeando ProdutoExemplar e Produto
-produtoExemplarModel.belongsTo(produto.produtoModel, {through: "idProduto" } );
-produto.produtoModel.hasMany(produtoExemplarModel);
+// produtoExemplarModel.belongsTo(produto.produtoModel, {through: "idProduto" } );
+// produto.produtoModel.hasMany(produtoExemplarModel);
 
 // Mapeando ProdutoExemplar e Exemplar
-produtoExemplarModel.hasMany(exemplar.exemplarModel);
-exemplar.exemplarModel.belongsTo(produtoExemplarModel, {through: "idExemplar" });
+// produtoExemplarModel.hasMany(exemplar.exemplarModel);
+// exemplar.exemplarModel.belongsTo(produtoExemplarModel, {through: "idExemplar" });
 
 module.exports = {
-  produtoExemplarModel
+  produtoExemplarModel: produtoExemplarModel
 };

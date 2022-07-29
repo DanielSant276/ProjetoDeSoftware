@@ -2,7 +2,7 @@ const db = require("./db.js");
 const produto = require("./Produto.js");
 const genero = require("./Genero.js");
 
-const produtoGeneroModel = db.sequelize.define('produtoGenero', {
+const produtoGeneroModel = db.sequelize.define('produtoGeneros', {
   idProduto: {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
@@ -25,15 +25,15 @@ const produtoGeneroModel = db.sequelize.define('produtoGenero', {
 
 // ProdutoGenero.sync({force: true});
 
-// Não estou confiante desses dois, espero que não de problema
+// Estava dando problema na criação então resolvi comentar tudo
 // Mapeando ProdutoGenero e Produto
-produtoGeneroModel.belongsTo(produto.produtoModel, {through: "idProduto" } );
-produto.produtoModel.hasMany(produtoGeneroModel);
+// produtoGeneroModel.belongsTo(produto.produtoModel, {through: "idProduto" } );
+// produto.produtoModel.hasMany(produtoGeneroModel);
 
 // Mapeando ProdutoGenero e Genero
-produtoGeneroModel.hasMany(genero.generoModel);
-genero.generoModel.belongsTo(produtoGeneroModel, {through: "idGenero" });
+// produtoGeneroModel.hasMany(genero.generoModel);
+// genero.generoModel.belongsTo(produtoGeneroModel, {through: "idGenero" });
 
 module.exports = {
-  produtoGeneroModel
+  produtoGeneroModel: produtoGeneroModel
 };

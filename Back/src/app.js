@@ -4,26 +4,26 @@ const bp = require("body-parser");
 const crypto = require("crypto");
 const SHA256 = require("../sha");
 
-const Cliente = require("./models/Cliente.js");
-const Dependente = require("./models/Dependente.js");
-const ClienteDependente = require("./models/ClienteDependente.js");
-const Locacao = require("./models/Locacao.js");
-const ClienteLocacao = require("./models/ClienteLocacao.js");
-const Produto = require("./models/Produto.js");
-const LocacaoProduto = require("./models/LocacaoProduto.js");
-const Exemplar = require("./models/Exemplar.js");
-const ProdutoExemplar = require("./models/ProdutoExemplar.js");
-const Genero = require("./models/Genero.js");
-const ProdutoGenero = require("./models/ProdutoGenero.js");
-const Usuario = require("./models/Usuario.js");
+const cliente = require("./models/cliente.js");
+const dependente = require("./models/dependente.js");
+const clienteDependente = require("./models/clienteDependente.js");
+const locacao = require("./models/locacao.js");
+const clienteLocacao = require("./models/clienteLocacao.js");
+const produto = require("./models/produto.js");
+const locacaoProduto = require("./models/locacaoProduto.js");
+const exemplar = require("./models/exemplar.js");
+const produtoExemplar = require("./models/produtoExemplar.js");
+const genero = require("./models/genero.js");
+const produtoGenero = require("./models/produtoGenero.js");
+const usuario = require("./models/usuario.js");
 
-const models = [Cliente, Dependente, ClienteDependente, Locacao, ClienteLocacao, Produto, LocacaoProduto, Exemplar, ProdutoExemplar, Genero, ProdutoGenero, Usuario];
+const models = [cliente.clienteModel, dependente.dependenteModel, clienteDependente.clienteDependenteModel, locacao.locacaoModel, clienteLocacao.clienteLocacaoModel, produto.produtoModel, locacaoProduto.locacaoProdutoModel, exemplar.exemplarModel, produtoExemplar.produtoExemplarModel, genero.generoModel, produtoGenero.produtoGeneroModel, usuario.usuarioModel];
 
 app.use(bp.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
   // console.log("metodo get");
-  res.sendFile(__dirname + "/teste/index.html");
+  res.sendFile(__dirname + "/teste/login.html");
 });
 
 app.post("/", function (req, res) {
@@ -127,6 +127,34 @@ app.get("/criar", function (req, res) {
     models[i].sync({ force: true })
   }
   res.send("Terminado");
+})
+
+app.get("/criarUsuario", function (req, res) {
+  res.sendFile(__dirname + "/teste/novaConta.html");
+})
+
+app.post("/criarUsuario", async function (req, res) {
+  console.log(req.body);
+  let usuarioDados = {
+    login: req.body.user.usuario,
+    senha: SHA256.sha256ByDaniel(req.body.user.senha),
+    tipo: req.body.user.tipo
+  }
+
+  let novoUsuario = new usuario.usuarioClass(usuarioDados.login, usuarioDados.senha, usuarioDados.tipo);
+
+  try {
+    await novoUsuario.add(usuarioDados);
+    res.json(user);
+  } catch (error) {
+    if (error.name === 'SequelizeUniqueConstraintError') {
+      res.status(403)
+      res.send({ status: 'error', message: "Usuário existe" });
+    } else {
+      res.status(500)
+      res.send({ status: 'error', message: "Algo deu errado" });
+    }
+  }
 })
 
 app.listen(3000, function () {

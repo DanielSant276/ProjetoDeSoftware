@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de backend - Criar conta</title>
+  <style>
+    div,
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .row {
+      flex-direction: row;
+    }
+
+    .column {
+      flex-direction: column;
+    }
+
+    .space-40 {
+      margin-bottom: 40px;
+    }
+
+    .space-right-20 {
+      margin-right: 20px;
+    }
+
+    .box {
+      width: 200px;
+      height: 20px;
+    }
+
+    .align-center {
+      align-items: center;
+    }
+
+    .enviar {
+      width: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Criar Conta</h1>
+  </br>
+  <!-- <form action="/novaConta" method="POST"> -->
+  <div class="row space-40 align-center">
+    <p class="space-right-20">usuario:</p>
+    <input class="box" type="text" name="usuario" value="daniel">
+  </div>
+  <div class="row space-40 align-center">
+    <p class="space-right-20">senha:</p>
+    <input class="box" type="text" name="senha" value="12">
+  </div>
+  <div class="row space-40 align-center">
+    <p class="space-right-20">tipo:</p>
+    <input class="box" type="text" name="tipo" value="gerente">
+  </div>
+  <!-- </form> -->
+  <button class="enviar" onclick="enviarParaBack()">Enviar</button>
+
+  <script>
+    window.onload = getSession;
+
+    function enviarParaBack() {
+      let user = {
+        usuario: document.getElementsByName("usuario")[0].value,
+        senha: document.getElementsByName("senha")[0].value,
+        tipo: document.getElementsByName("tipo")[0].value
+      }
+
+      if (user.usuario && user.senha && user.tipo) {
+        let ajax = new XMLHttpRequest();
+        let baseURL = "http://localhost:3000";
+
+        let userJson = JSON.stringify(user);
+
+        ajax.open("POST", baseURL + `/criarUsuario`);
+        ajax.setRequestHeader("Content-Type", "application/json");
+        console.log(userJson);
+        ajax.send(userJson);
+
+        ajax.onreadystatechange = function () {
+          if (ajax.readyState == 4) {
+            if (ajax.status == 200) {
+              var data = ajax.responseText;
+              let dataJson = JSON.parse(data);
+
+              sessionStorage.setItem("UserID", dataJson.id);
+
+              sessionStorage.setItem("Token", dataJson.token);
+
+              // window.location.href = "http://127.0.0.1:5500/front-end/src/templates/main.html"
+            }
+            else if (ajax.status == 400) {
+              alert("Senha Incorreta")
+            }
+            else if (ajax.status == 403) {
+              alert("Usuário já registrado")
+            }
+            else if (ajax.status == 404) {
+              alert("Nenhum usuario com essas credenciais")
+            }
+            else if (ajax.status == 500) {
+              alert("Erro no server. Tente mais tarde")
+            }
+          }
+        }
+      } else {
+        alert("E-mail e senha são campos obrigatórios.")
+      }
+    }
+  </script>
+</body>
+
+</html>

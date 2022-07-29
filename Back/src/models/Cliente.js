@@ -58,7 +58,7 @@ class Cliente {
   }
 }
 
-const clienteModel = db.sequelize.define('cliente', {
+const clienteModel = db.sequelize.define('clientes', {
   idCliente: {
     type: db.Sequelize.INTEGER,
     autoIncrement: true,
@@ -90,6 +90,6 @@ const clienteModel = db.sequelize.define('cliente', {
 // Client.sync({force: true})
 
 module.exports = {
-  Cliente,
-  clienteModel
+  clienteClass: Cliente,
+  clienteModel: clienteModel
 };

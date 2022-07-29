@@ -2,7 +2,7 @@ const db = require("./db.js");
 const locacao = require("./Locacao.js");
 const produto = require("./produto.js");
 
-const locacaoProdutoModel = db.sequelize.define('locacaoProduto', {
+const locacaoProdutoModel = db.sequelize.define('locacaoProdutos', {
   idLocacao: {
     type: db.Sequelize.INTEGER,
     // allowNull: false,
@@ -25,15 +25,15 @@ const locacaoProdutoModel = db.sequelize.define('locacaoProduto', {
 
 // LocacaoProduto.sync({force: true});
 
-// Não estou confiante desses dois, espero que não de problema
+// Estava dando problema na criação então resolvi comentar tudo
 // Mapeando LocacaoDependente e Locacao
-locacaoProdutoModel.belongsTo(locacao.locacaoModel, {through: "idLocacao" } );
-locacao.locacaoModel.hasMany(locacaoProdutoModel);
+// locacaoProdutoModel.belongsTo(locacao.locacaoModel, {through: "idLocacao" } );
+// locacao.locacaoModel.hasMany(locacaoProdutoModel);
 
 // Mapeando LocacaoProduto e Produto
-locacaoProdutoModel.hasMany(produto.produtoModel);
-produto.produtoModel.belongsTo(locacaoProdutoModel, {through: "idProduto" });
+// locacaoProdutoModel.hasMany(produto.produtoModel);
+// produto.produtoModel.belongsTo(locacaoProdutoModel, {through: "idProduto" });
 
 module.exports = {
-  locacaoProdutoModel
+  locacaoProdutoModel: locacaoProdutoModel
 };

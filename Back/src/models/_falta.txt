@@ -1,0 +1,21 @@
+- cliente
+  -- classe criada
+  -- add, getById, getAll, criaDependente
+  -- novaLocacao ----> ainda por fazer
+- clienteDependente
+- clienteLocacao
+- dependente
+  -- classe criada
+  -- add, getById, getAll
+- genero
+- locacao
+  -- classe criada
+  -- add, getById, getAll, 
+  -- getLocacaoByCliente ----> ainda por fazer
+- locacaoProduto
+- produto
+- produtoExemplar
+- produtoGenero
+- usuario
+  -- classe criada
+  -- add, getById, getAll, confereLogin
