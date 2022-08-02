@@ -1,0 +1,155 @@
+.editar-produto-background-imagem {
+    background-image: url("../../img/fundo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center, bottom;
+  }
+  
+  .editar-produto-container1 {
+    background-color: #312C2C;
+    width: 70%;
+    height: 85%;
+    border-radius: 20px;
+  }
+  
+  .editar-produto-conteudo-cabeçalho {
+    height: 9%;
+    flex-direction: row;
+  }
+  
+  .editar-produto-cabeçalho-esquerdo {
+    justify-content: center;
+    /* height: 100%; */
+    width: 50%;
+  }
+  
+  .editar-produto-cabeçalho-esquerdo h1 {
+    /* margin-top: 20px; */
+    /* position: relative; */
+    /* top: 15px; */
+    margin-left: 20px;
+    color: #FFFFFF;
+    font-size: 25px;
+  }
+  
+  .editar-produto-cabeçalho-direito {
+    width: 50%;
+    justify-content: end;
+    align-items: center;
+    margin-right: 25px;
+  }
+  
+  .editar-produto-cabeçalho-direito h1 {
+    color: #FFFFFF;
+    font-size: 18px;
+  }
+  
+  .editar-produto-seta {
+    width: 50px;
+    height: 40px;
+  }
+  
+  .editar-produto-container2 {
+    height: 88%;
+    background-color: #433F3F;
+    flex-direction: row;
+  }
+  
+  .editar-produto-editar-produto {
+    width: 80%;
+  }
+  
+  .editar-produto-botoes-form {
+    height: 85px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .editar-produto-menu-superior-botao {
+    width: 23%;
+    height: 40px;
+  }
+  
+  .editar-produto-menu-superior-botao-texto {
+    font-size: 14px;
+  }
+  
+  .editar-produto-form-cadastro {
+    background-color: #D9D9D9;
+    height: 450px;
+    border-radius: 25px;
+    margin-left: 20px;
+  }
+  
+  .editar-produto-form-titulo {
+    margin-left: 20px;
+    height: 40px;
+    justify-content: center;
+    border-bottom: 3px dashed rgba(0, 0, 0, 0.15);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .editar-produto-form-titulo h1 {
+    font-size: 20px;
+  }
+  
+  .editar-produto-formulario {
+    height: 100%;
+  }
+  
+  .editar-produto-form-apenas {
+    height: 85%;
+  }
+  
+  .editar-produto-input-esquerdo, .editar-produto-input-direito {
+    width: 45%;
+    height: 100%;
+    justify-content: space-around;
+  }
+  
+  .editar-produto-editar-botao {
+    align-self: flex-end;
+    margin-right: 40px;
+    background-color: #000000;
+    width: 100px;
+    border-radius: 20px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .editar-produto-editar-botao-text {
+    color: #FFFFFF;
+    font-size: 14px;
+  }
+  
+  .editar-produto-outros-painel {
+    width: 18%;
+    margin-left: 30px;
+    margin-right: 10px;
+  }
+  
+  .editar-produto-outros-titulo {
+    height: 15%;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .editar-produto-outros-botoes {
+    background-color: rgba(217, 217, 217, 0.08);
+    height: 340px;
+    color: #FFFFFF;
+    border-radius: 25px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .editar-produto-outros-botao {
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+  }
+  
