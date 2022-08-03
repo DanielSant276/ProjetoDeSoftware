@@ -96,18 +96,26 @@
 
 .multas-info-formulario h1 {
 margin-left: 20px;
-font-size: 20px;
+font-size: 17px;
+margin-top: 20px;
+margin-left: 50px;
 }
 
 .multas-info-form-apenas {
   height: 85%;
 }
 
-.multas-info-input {
-  width: 45%;
+.multas-info-linha1 .multas-info-linha2 .multas-info-linha3{
+  width: 30%;
   justify-content: space-around;
-  flex-wrap: wrap;
+  
 }
+
+.multas-info-linha1{
+  margin-left: 20px;
+}
+
+
   
 .multas-info-outros-painel {
   width: 18%;
@@ -138,4 +146,9 @@ font-size: 20px;
   justify-content: center;
   border-radius: 25px;
   border: dashed 1px #9500CA;
+}
+
+.dependente{
+  color: rgba(0, 0, 0, 0.38);;
+  margin-left: 40px;
 }

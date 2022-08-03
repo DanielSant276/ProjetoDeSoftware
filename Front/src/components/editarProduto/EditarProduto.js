@@ -43,13 +43,13 @@ function EditarProduto() {
                     <div className="editar-produto-form-apenas linha">
                         <div className="editar-produto-input-esquerdo">
                         <label className="label-form-editar" >ID</label>
-                        <input className="input-form-editar" type="text" />
+                        <input className="input-form-cadastrar" type="text" />
 
                         <label className="label-form-editar">TÍTULO</label>
-                        <input className="input-form-editar" type="text" />
+                        <input className="input-form-cadastrar" type="text" />
                         
                         <label className="label-form-editar">GÊNERO</label>
-                        <select id='genero-editar-produto'>
+                        <select id='genero-editar-produto' className='input-form-cadastrar'>
                             <option selected disabled value="">Selecione</option>
                             <option>Masculino</option>
                             <option>Feminino</option>
@@ -57,28 +57,29 @@ function EditarProduto() {
                         </select>
 
                         <label className="label-form-editar">EDIÇÃO</label>
-                        <input className="input-form-editar" type="text" />
+                        <input className="input-form-cadastrar" type="text" />
 
-                        <label className="label-form-editar">QUANTIDADE DE PÁGINAS</label>
-                        <input className="input-form-editar" type="number" />
-
-                        <label className="label-form-editar">LANÇAMENTO</label>
-                        <input className="input-form-editar" type="date" />
                         </div>
 
                         <div className="editar-produto-input-direito">
                         
                             <label className="label-form-editar">AUTOR</label>
-                            <input className="input-form-editar" type="text" ></input>
+                            <input className="input-form-cadastrar" type="text" ></input>
+
+                            <label className="label-form-editar">QUANTIDADE DE PÁGINAS</label>
+                            <input className="input-form-cadastrar" type="number" />
+
+                            <label className="label-form-editar">LANÇAMENTO</label>
+                            <input className="input-form-cadastrar" type="date" />
 
                             <label className="label-form-editar">DESCRIÇÃO</label>
-                            <textarea></textarea>
+                            <textarea className='text-area-editar'></textarea>
 
                         </div>
                     </div>
 
                     <div className="editar-produto-editar-botao link">
-                        <p className="editar-produto-editar-botao-text negrito">editar</p>
+                        <p className="editar-produto-editar-botao-text negrito">CONFIRMAR</p>
                     </div>
                     </div>
                 </div>

@@ -42,24 +42,29 @@ function MultasInfo() {
                   
                   <div className="multas-info-formulario">
                     <h1 className="negrito">LOCAÇÃO #101</h1>
-                      <div className="multas-info-form-apenas">        
-                          <div className="multas-info-input linha">
+                      <div className="multas-info-form-apenas linha">        
+                          <div className="multas-info-linha1 coluna">
                             <label className="label-form-cadastrar" >ALOCADO POR:</label>
-                            <input className="input-form-cadastrar" type="text" />
-
-                            <label className="label-form-cadastrar">ID PRODUTO:</label>
-                            <input className="input-form-cadastrar" type="text" />
-
-                            <label className="label-form-cadastrar">VALOR DA MULTA:</label>
                             <input className="input-form-cadastrar" type="text" />
 
                             <label className="label-form-cadastrar">ALUGADO POR:</label>
                             <input className="input-form-cadastrar" type="text" />
 
+                            <p className="dependente cinza negrito link">dependente *?*</p>
+
+                          </div> 
+                          <div className="multas-info-linha2 coluna">
+
+                            <label className="label-form-cadastrar">ID PRODUTO:</label>
+                            <input className="input-form-cadastrar" type="text" />
+                            
                             <label className="label-form-cadastrar">DATA DE LOCAÇÃO:</label>
                             <input className="input-form-cadastrar" type="text" />
-                            <p className="dependente cinza negrito link">dependente *?*</p>
-                          </div>    
+                          </div>   
+                          <div className="multas-info-linha2 coluna">
+                            <label className="label-form-cadastrar">VALOR DA MULTA:</label>
+                            <input className="input-form-cadastrar" type="text" />
+                          </div>
                       </div>
                   </div>
                 </div>

@@ -63,7 +63,7 @@ function CadastrarCliente() {
                 </div>
 
                 <div className="cadastrar-cliente-cadastrar-botao link">
-                    <p className="cadastrar-cliente-cadastrar-botao-text negrito">CADASTRAR</p>
+                    <p className="cadastrar-cliente-cadastrar-botao-text negrito">CONFIRMAR</p>
                 </div>
                 </div>
             </div>
