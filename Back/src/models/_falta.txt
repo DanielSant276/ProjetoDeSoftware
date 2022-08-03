@@ -18,4 +18,5 @@
 - produtoGenero
 - usuario
   -- classe criada
+  -- conferido a criação de conta
   -- add, getById, getAll, confereLogin

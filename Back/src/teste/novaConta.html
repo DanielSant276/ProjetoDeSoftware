@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teste de backend - Criar conta</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
   <style>
     div,
     body {
@@ -64,7 +66,7 @@
   <button class="enviar" onclick="enviarParaBack()">Enviar</button>
 
   <script>
-    window.onload = getSession;
+    // window.onload = getSession;
 
     function enviarParaBack() {
       let user = {
@@ -74,44 +76,26 @@
       }
 
       if (user.usuario && user.senha && user.tipo) {
-        let ajax = new XMLHttpRequest();
-        let baseURL = "http://localhost:3000";
-
-        let userJson = JSON.stringify(user);
-
-        ajax.open("POST", baseURL + `/criarUsuario`);
-        ajax.setRequestHeader("Content-Type", "application/json");
-        console.log(userJson);
-        ajax.send(userJson);
-
-        ajax.onreadystatechange = function () {
-          if (ajax.readyState == 4) {
-            if (ajax.status == 200) {
-              var data = ajax.responseText;
-              let dataJson = JSON.parse(data);
-
-              sessionStorage.setItem("UserID", dataJson.id);
-
-              sessionStorage.setItem("Token", dataJson.token);
-
-              // window.location.href = "http://127.0.0.1:5500/front-end/src/templates/main.html"
+        $.post("/criarUsuario",
+          {
+            user
+          },
+          function (data, status) {
+            if (data.status == "200") {
+              console.log(data.usuario);
+              alert(data.mensagem);
             }
-            else if (ajax.status == 400) {
-              alert("Senha Incorreta")
+            else if (data.status == "403") {
+              alert(data.mensagem);
             }
-            else if (ajax.status == 403) {
-              alert("Usuário já registrado")
-            }
-            else if (ajax.status == 404) {
-              alert("Nenhum usuario com essas credenciais")
-            }
-            else if (ajax.status == 500) {
-              alert("Erro no server. Tente mais tarde")
+            else if (data.status == "500") {
+              alert(data.mensagem);
             }
           }
-        }
-      } else {
-        alert("E-mail e senha são campos obrigatórios.")
+        );
+      }
+      else {
+        alert("E-mail, senha e tipos são campos obrigatórios.")
       }
     }
   </script>

@@ -28,10 +28,20 @@ class Usuario {
   }
 
   async confereLogin(login, senha) {
-    const loginVerificado = await usuarioModel.findOne({
+    const loginVerificado = await usuarioModel.findAll({
       where: {
         login: login,
         senha: senha
+      }
+    });
+
+    return loginVerificado;
+  }
+
+  async confereUsuario(login) {
+    const loginVerificado = await usuarioModel.findAll({
+      where: {
+        login: login,
       }
     });
 
