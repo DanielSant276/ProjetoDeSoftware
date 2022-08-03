@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
   <title>Teste de backend</title>
   <style>
     div,
@@ -45,21 +47,15 @@
   </br>
   </br>
   </br>
-  <form action="/" method="POST">
-    <div class="row space-40 align-center">
-      <p class="space-right-20">login:</p>
-      <input class="box" type="text" name="login" onkeypress="checkChar(event)">
-    </div>
-    <div class="row space-40 align-center">
-      <p class="space-right-20">senha:</p>
-      <input class="box" type="text" name="senha" onkeypress="checkChar(event)">
-    </div>
-    <div class="row align-center">
-      <p class="space-right-20">Chave:</p>
-      <input class="box" type="text" name="key" onkeypress="checkChar(event)">
-    </div>
-    <input type="submit" />
-  </form>
+  <div class="row space-40 align-center">
+    <p class="space-right-20">login:</p>
+    <input value="daniel" class="box" type="text" name="usuario" onkeypress="checkChar(event)">
+  </div>
+  <div class="row space-20 align-center">
+    <p class="space-right-20">senha:</p>
+    <input value="12" class="box" type="text" name="senha" onkeypress="checkChar(event)">
+  </div>
+  <button onClick="validaLogin()">Logar</button>
   <script>
     // onkeypress="checkChar(event)"
 
@@ -71,6 +67,31 @@
       if (char == proibicao[0] || char == proibicao[1]) {
         e.preventDefault();
       }
+    }
+
+    function validaLogin() {
+      let user = {
+        usuario: document.getElementsByName("usuario")[0].value,
+        senha: document.getElementsByName("senha")[0].value,
+      }
+
+      $.post("/login",
+        {
+          user
+        }, function (data, status) {
+          if (data.mensagem == "Usuário validado") {
+            console.log("Acesso permitido, redirecionando ...");
+          }
+          else if (data.mensagem == "Senha incorreta") {
+            console.log("Senha errada, tente novamente ...");
+          }
+          else if (data.mensagem == "Usuário não existe") {
+            console.log("Usuário não cadastrado ...");
+          }
+          else {
+            console.log("Ocorreu algum erro, contate o suporte ...");
+          }
+        })
     }
 
   </script>
