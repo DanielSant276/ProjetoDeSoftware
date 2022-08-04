@@ -30,12 +30,16 @@
 </head>
 
 <body>
-  <a class="space-40 link">Cadastro</a>
+  <a class="space-40 link" onclick="goToSignin()">Cadastro</a>
   <a class="space-40 link" onclick="goToLogin()">Login</a>
 
   <script>
     function goToLogin() {
-      window.location.href = "login"
+      window.location.href = "login";
+    }
+
+    function goToSignin() {
+      window.location.href = "criarUsuario";
     }
   </script>
 </body>

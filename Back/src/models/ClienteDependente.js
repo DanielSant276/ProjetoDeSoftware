@@ -9,16 +9,16 @@ class ClienteDependente{
     this.idDependente = idDependente;
   }
 
-  static async add() {
-		return await dependenteModel.create({
+  async add() {
+		return await clienteDependenteModel.create({
 			idCliente: this.idCliente,
 			idDependente: this.idDependente,
 		});
 	}
 
   // Quando tiver internet verificar como faz para fazer uma busca
-  static async getDependentesCliente(idCliente){
-		const clienteDependenteById = await dependenteModel.findAll({
+  async getDependentesCliente(idCliente){
+		const clienteDependenteById = await clienteDependenteModel.findAll({
       where: {
         idCliente: idCliente
       }
@@ -26,8 +26,8 @@ class ClienteDependente{
 		return clienteDependenteById;         
 	}
 
-  static async getAll(){
-		const ClienteDependenteRelacao = await dependenteModel.findAll();
+  async getAll(){
+		const ClienteDependenteRelacao = await clienteDependenteModel.findAll();
 		return ClienteDependenteRelacao;
 	}
 }

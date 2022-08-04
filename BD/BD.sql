@@ -1,5 +1,5 @@
 CREATE DATABASE livrariabd;
- 
+
 CREATE TABLE cliente (
   idCliente INT AUTO_INCREMENT,
   clienteQtdLocada INT NOT NULL,
@@ -13,6 +13,7 @@ CREATE TABLE cliente (
 CREATE TABLE dependente (
   idDependente INT AUTO_INCREMENT,
   depResponsavel VARCHAR(255) NOT NULL,
+  depNome VARCHAR(255) NOT NULL,
   PRIMARY KEY (idDependente) 
 );
 
