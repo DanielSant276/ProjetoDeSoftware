@@ -15,7 +15,7 @@ const bp = require("body-parser");
 // const produtoGenero = require("./models/produtoGenero.js");
 // const usuario = require("./models/usuario.js");
 
-// const models = [cliente.clienteModel, dependente.dependenteModel, clienteDependente.clienteDependenteModel, locacao.locacaoModel, clienteLocacao.clienteLocacaoModel, produto.produtoModel, locacaoProduto.locacaoProdutoModel, exemplar.exemplarModel, produtoExemplar.produtoExemplarModel, genero.generoModel, produtoGenero.produtoGeneroModel, usuario.usuarioModel];
+// const models = [clienteDependente.clienteDependenteModel];
 
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
@@ -23,13 +23,13 @@ app.use(bp.json());
 // Define a parte de router
 const usuario = require('./routes/usuario');
 const login = require('./routes/login');
-const cliente = require('./routes/cliente');
+const cliente = require('./routes/clientes');
 
 const routes = require('./routes/index');
 
 routes.use('/login', login);
 routes.use('/criarUsuario', usuario);
-routes.use('/cliente', cliente);
+routes.use('/clientes', cliente);
 
 app.use(routes);
 

@@ -23,10 +23,12 @@ usuario.route("/")
       await novoUsuario.add(usuarioDados);
       res.send({ status: '200', mensagem: "Usuário criado", usuario: usuarioDados });
     } catch (error) {
+      console.log(error);
       if (error.name === 'SequelizeUniqueConstraintError') {
         res.send({ status: '403', mensagem: "Usuário existe" });
       } else {
         res.send({ status: '500', mensagem: "Algo deu errado" });
+        console.log(error);
       }
     }
   })

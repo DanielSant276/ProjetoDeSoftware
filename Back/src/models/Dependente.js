@@ -6,22 +6,31 @@ class Dependente {
     this.responsavelNome = responsavelNome
   }
 
-  static async add(dependenteDados) {
+  async add(nome, responsavel) {
 		return await dependenteModel.create({
-			nome: dependenteDados.nome,
-			responsavelNome: dependenteDados.responsavelNome,
+			depNome: nome,
+			depResponsavel: responsavel
 		});
 	}
 
-  static async getById(id){
+  async getById(id){
 		const dependenteById = await dependenteModel.findByPk(id);
 		return dependenteById;         
 	}
 
-  static async getAll(){
+  async getAll(){
 		const dependentes = await dependenteModel.findAll();
 		return dependentes;
 	}
+
+  async getAllByResponsavel(responsavel) {
+    const dependentes = await dependenteModel.findAll({
+      where: {
+        depResponsavel: responsavel
+      }
+    }) 
+    return dependentes;
+  }
 }
 
 const dependenteModel = db.sequelize.define('dependentes', {
@@ -31,7 +40,7 @@ const dependenteModel = db.sequelize.define('dependentes', {
     primaryKey: true
   },
   depResponsavel: {
-    type: db.Sequelize.INTEGER,
+    type: db.Sequelize.STRING,
     allowNull: false
   },
   depNome: {

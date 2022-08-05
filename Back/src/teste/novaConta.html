@@ -82,20 +82,20 @@
           },
           function (data, status) {
             if (data.status == "200") {
-              console.log(data.usuario);
-              alert(data.mensagem);
+              console.log(data.mensagem);
+              window.location.href = "clientes";
             }
             else if (data.status == "403") {
-              alert(data.mensagem);
+              console.log(data.mensagem);
             }
             else if (data.status == "500") {
-              alert(data.mensagem);
+              console.log(data.mensagem);
             }
           }
         );
       }
       else {
-        alert("E-mail, senha e tipos são campos obrigatórios.")
+        console.log("E-mail, senha e tipos são campos obrigatórios.")
       }
     }
   </script>

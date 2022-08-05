@@ -81,6 +81,7 @@
         }, function (data, status) {
           if (data.mensagem == "Usuário validado") {
             console.log("Acesso permitido, redirecionando ...");
+            window.location.href = "clientes";
           }
           else if (data.mensagem == "Senha incorreta") {
             console.log("Senha errada, tente novamente ...");
