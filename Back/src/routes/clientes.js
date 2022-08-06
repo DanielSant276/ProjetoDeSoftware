@@ -4,6 +4,12 @@ const cliente = express.Router();
 
 const clienteCLass = require("../models/cliente.js");
 
+cliente.get("/relacoes", async function (req, res) {
+  let relacoes = await clienteCLass.clienteClass.BuscaTodasRelacoes();
+  
+  res.send({ data: relacoes });
+})
+
 cliente.route("/")
   .get(function (req, res) {
     res.sendFile(path.join(__dirname, "../", "/teste/clientes.html"));
@@ -22,7 +28,13 @@ cliente.route("/")
 
     try {
       novoCliente = await novoCliente.add(clienteDados);
-      res.send({ mensagem: "Recebido e retornado", data: novoCliente });
+
+      if (novoCliente != "Abortar") {
+        res.send({ mensagem: "Recebido e retornado", data: novoCliente });
+      }
+      else {
+        res.send({ status: '500', mensagem: "Algo deu errado" });
+      }
     }
     catch (error) {
       if (error.name === 'SequelizeUniqueConstraintError') {

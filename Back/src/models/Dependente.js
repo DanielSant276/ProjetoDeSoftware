@@ -3,33 +3,38 @@ const db = require("./db.js");
 class Dependente {
   constructor(nome, responsavelNome) {
     this.nome = nome,
-    this.responsavelNome = responsavelNome
+      this.responsavelNome = responsavelNome
   }
 
   async add(nome, responsavel) {
-		return await dependenteModel.create({
-			depNome: nome,
-			depResponsavel: responsavel
-		});
-	}
+    return await dependenteModel.create({
+      depNome: nome,
+      depResponsavel: responsavel
+    });
+  }
 
-  async getById(id){
-		const dependenteById = await dependenteModel.findByPk(id);
-		return dependenteById;         
-	}
+  async getById(id) {
+    const dependenteById = await dependenteModel.findByPk(id);
+    return dependenteById;
+  }
 
-  async getAll(){
-		const dependentes = await dependenteModel.findAll();
-		return dependentes;
-	}
+  async getAll() {
+    const dependentes = await dependenteModel.findAll();
+    return dependentes;
+  }
 
   async getAllByResponsavel(responsavel) {
-    const dependentes = await dependenteModel.findAll({
-      where: {
-        depResponsavel: responsavel
-      }
-    }) 
-    return dependentes;
+    try {
+      const dependentes = await dependenteModel.findAll({
+        where: {
+          depResponsavel: responsavel
+        }
+      })
+      return dependentes;
+    }
+    catch (error) {
+      console.log(error);
+    }
   }
 }
 

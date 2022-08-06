@@ -1,5 +1,20 @@
 const db = require("./db.js");
 
+class Genero {
+  static async add(nome) {
+    let createGenero = await generoModel.create({
+      nome: nome
+    });
+
+    return createGenero;
+  }
+
+  static async getAll() {
+    const generos = await generoModel.findAll();
+    return generos;
+  }
+}
+
 const generoModel = db.sequelize.define('generos', {
   idGenero: {
     type: db.Sequelize.INTEGER,
@@ -17,5 +32,6 @@ const generoModel = db.sequelize.define('generos', {
 // Genero.sync({force: true});
 
 module.exports = {
+  generoClass: Genero,
   generoModel: generoModel
 };

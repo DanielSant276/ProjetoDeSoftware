@@ -4,7 +4,7 @@ const { clienteDependenteClass } = require("./clienteDependente.js");
 // const clienteDependente = require("./clienteDependente.js");
 
 class Cliente {
-  constructor(nome, cpf, endereco, telefone, dependentes = "", qtdLocada = 0) {
+  constructor(nome, cpf, endereco, telefone, dependentes, qtdLocada = 0) {
     this.nome = nome;
     this.cpf = cpf;
     this.endereco = endereco;
@@ -24,14 +24,19 @@ class Cliente {
 
     criaCliente = await this.getOne(clienteDados.cpf);
 
-    let criaDependente = await this.criaDependente(clienteDados);
-
-    if (criaDependente != "Abortar") {
-      let relacao = await this.relacaoClienteDependente(criaCliente, criaDependente);
-
-      return relacao;
+    if (this.dependentes == undefined) {
+      return [criaCliente, 0]
     }
-    return false
+    else {
+      let criaDependente = await this.criaDependente(clienteDados);
+
+      if (criaDependente != "Abortar") {
+        await this.relacaoClienteDependente(criaCliente, criaDependente);
+
+        return [criaCliente, criaDependente];
+      }
+      return "Abortar"
+    }
   }
 
   async getById(id) {
@@ -39,7 +44,7 @@ class Cliente {
     return clienteFindId;
   }
 
-  async getAll() {
+  static async getAll() {
     const clientes = await clienteModel.findAll();
     return clientes;
   }
@@ -98,38 +103,54 @@ class Cliente {
         relacao.add();
       }
       catch (error) {
-        return error
+        console.log(error);
+        return "Abortar";
       }
     }
-    let clienteDependenteQuery = this.BuscaRelacao();
-
-    return clienteDependenteQuery
   }
 
   // Acha uma relação específica cadastrada no banco
-  async BuscaRelacao(cpf, cliente) {
-    // const cliente = await clienteModel.findAll({
-    //   where: {
-    //     clienteCPF: cpf
-    //   }
-    // })
+  async BuscaRelacao(cliente) {
+    const relacao = await db.sequelize.query(
+      `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
+              cliente.clienteQtdLocada, dependentes.depNome
+       FROM   teste.dependentes as dependentes, teste.clientes as cliente, teste.clientedependentes as relacao 
+       WHERE  relacao.idCliente = ${cliente} and cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
+    );
 
-    // passar para o model do dependente
-    const dependente = await clienteModel.findAll({
-      where: {
-        depResponsável: cliente.nome
-      }
-    })
+    return relacao;
+  }
+
+  // Busca todas as relações
+  static async BuscaTodasRelacoes() {
+    const relacoes = await this.getAll();
+
+    let relacoesArr = []
+
+    for (let i = 0; i < relacoes.length; i++) {
+      let relacao = await db.sequelize.query(
+        `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
+                cliente.clienteQtdLocada, dependentes.depNome
+         FROM   teste.dependentes as dependentes, teste.clientes as cliente, teste.clientedependentes as relacao 
+         WHERE  relacao.idCliente = ${relacoes[i].idCliente} and cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
+      )
+
+      relacoesArr.push([relacoes[i], relacao]);
+    }
+
+    return relacoesArr;
   }
 
   // Acha todas as relações cadastradas no banco
-  async BuscaTodasRelacoes() {
-    console.log("Acha todas as realações cadastradas no banco");
-  }
-
   async novaLocacao() {
-    console.log("cria uma nova locação");
-    return await true
+    const relacoes = await db.sequelize.query(
+      `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
+              cliente.clienteQtdLocada, dependentes.depNome
+       FROM   teste.dependentes as dependentes, teste.clientes as cliente, teste.clientedependentes as relacao 
+       WHERE  cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
+    );
+
+    return relacoes;
   }
 }
 

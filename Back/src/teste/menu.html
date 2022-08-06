@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <title>Menu</title>
+  <style>
+    div,
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .space-40 {
+      margin-bottom: 40px;
+    }
+
+    .link {
+      text-decoration: none;
+    }
+
+    .link:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="space-40 link" onclick="goToLivro()">Cadastrar Livro</a>
+  <a class="space-40 link" onclick="goToCliente()">Cadastrar Cliente</a>
+
+  <script>
+    function goToLivro() {
+      window.location.href = "livros";
+    }
+
+    function goToCliente() {
+      window.location.href = "clientes";
+    }
+  </script>
+</body>
+
+</html>

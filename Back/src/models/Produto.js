@@ -1,5 +1,9 @@
 const db = require("./db.js");
 
+class Produto {
+
+}
+
 const produtoModel = db.sequelize.define('produtos', {
   idProduto: {
     type: db.Sequelize.INTEGER,
@@ -43,5 +47,6 @@ const produtoModel = db.sequelize.define('produtos', {
 // Produto.sync({force: true});
 
 module.exports = {
+  produtoClass: Produto,
   produtoModel: produtoModel
 };

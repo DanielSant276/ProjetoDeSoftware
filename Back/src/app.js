@@ -21,15 +21,21 @@ app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 
 // Define a parte de router
-const usuario = require('./routes/usuario');
-const login = require('./routes/login');
-const cliente = require('./routes/clientes');
+const usuario = require("./routes/usuario");
+const login = require("./routes/login");
+const cliente = require("./routes/clientes");
+const livro = require("./routes/livro");
+// const genero = require("./routes/genero");
 
-const routes = require('./routes/index');
+const routes = require("./routes/index");
 
-routes.use('/login', login);
-routes.use('/criarUsuario', usuario);
-routes.use('/clientes', cliente);
+routes.use("/login", login);
+routes.use("/criarUsuario", usuario);
+routes.use("/clientes", cliente);
+routes.use("/livros", livro);
+// usado apenas para criar no banco de dados os gêneros, retirar depois
+// routes.use("/genero", genero);
+
 
 app.use(routes);
 

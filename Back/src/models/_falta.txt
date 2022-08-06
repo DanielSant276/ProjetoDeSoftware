@@ -1,22 +1,11 @@
-- cliente
-  -- classe criada
-  -- add, getById, getAll, criaDependente
-  -- novaLocacao ----> ainda por fazer
-- clienteDependente
 - clienteLocacao
-- dependente
-  -- classe criada
-  -- add, getById, getAll
-- genero
 - locacao
-  -- classe criada
-  -- add, getById, getAll, 
-  -- getLocacaoByCliente ----> ainda por fazer
 - locacaoProduto
 - produto
 - produtoExemplar
 - produtoGenero
 - usuario
-  -- classe criada
-  -- conferido a criação de conta
-  -- add, getById, getAll, confereLogin
+  -- trocar senha
+
+
+trocar depNome por depCPF na tabela de
