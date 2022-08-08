@@ -2,10 +2,29 @@ const db = require("./db.js");
 const produto = require("./Produto.js");
 const genero = require("./Genero.js");
 
+class ProdutoGenero {
+  static async add(livroId, generoId) {
+    for (let i = 0; i < 2; i++) {
+      let produtoGeneroRelacao = await produtoGeneroModel.create({
+        idProduto: livroId,
+        idGenero: generoId[i]
+      });
+    }
+  }
+
+  static async deletarProdutoGenero(produtoId) {
+    let deleteProdutoGenero = await produtoGeneroModel.destroy({
+      where: {
+        idProduto: produtoId
+      }
+    });
+  }
+}
+
 const produtoGeneroModel = db.sequelize.define('produtoGeneros', {
   idProduto: {
     type: db.Sequelize.INTEGER,
-    // allowNull: false,
+    allowNull: false,
     references: {
       model: produto.produtoModel,
       key: "idProduto",
@@ -14,7 +33,7 @@ const produtoGeneroModel = db.sequelize.define('produtoGeneros', {
   },
   idGenero: {
     type: db.Sequelize.INTEGER,
-    // allowNull: false,
+    allowNull: false,
     references: {
       model: genero.generoModel,
       key: "idGenero",
@@ -35,5 +54,6 @@ const produtoGeneroModel = db.sequelize.define('produtoGeneros', {
 // genero.generoModel.belongsTo(produtoGeneroModel, {through: "idGenero" });
 
 module.exports = {
+  produtoGeneroClass: ProdutoGenero,
   produtoGeneroModel: produtoGeneroModel
 };

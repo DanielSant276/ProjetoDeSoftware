@@ -2,10 +2,29 @@ const db = require("./db.js");
 const produto = require("./Produto.js");
 const exemplar = require("./Exemplar.js");
 
-const produtoExemplarModel = db.sequelize.define('produtoExemplares', {
+class ProdutoExemplar {
+  static async add(livroId, exemplarID) {
+    for (let i = 0; i < exemplarID.length; i++) {
+      let produtoExemplarRelacao = await produtoExemplarModel.create({
+        idProduto: livroId,
+        idExemplar: exemplarID[i]
+      });
+    }
+  }
+
+  static async deletarProdutoExemplar(produtoId) {
+    let deleteProdutoExemplar = await produtoExemplarModel.destroy({
+      where: {
+        idProduto: produtoId
+      }
+    });
+  }
+}
+
+const produtoExemplarModel = db.sequelize.define('produtoExemplars', {
   idProduto: {
     type: db.Sequelize.INTEGER,
-    // allowNull: false,
+    allowNull: false,
     references: {
       model: produto.produtoModel,
       key: "idProduto",
@@ -14,7 +33,7 @@ const produtoExemplarModel = db.sequelize.define('produtoExemplares', {
   },
   idExemplar: {
     type: db.Sequelize.INTEGER,
-    // allowNull: false,
+    allowNull: false,
     references: {
       model: exemplar.exemplarModel,
       key: "idExemplar",
@@ -35,5 +54,6 @@ const produtoExemplarModel = db.sequelize.define('produtoExemplares', {
 // exemplar.exemplarModel.belongsTo(produtoExemplarModel, {through: "idExemplar" });
 
 module.exports = {
+  produtoExemplarClass: ProdutoExemplar,
   produtoExemplarModel: produtoExemplarModel
 };

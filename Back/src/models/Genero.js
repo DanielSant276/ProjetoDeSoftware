@@ -13,6 +13,20 @@ class Genero {
     const generos = await generoModel.findAll();
     return generos;
   }
+
+  static async getGeneros(generos) {
+    let generosArr = []
+    for (let i = 0; i < 2; i++) {
+      let generoPesquisa = await generoModel.findAll({
+        where: {
+          nome: generos[i]
+        }
+      });
+      generosArr.push(generoPesquisa);
+    }
+
+    return generosArr;
+  }
 }
 
 const generoModel = db.sequelize.define('generos', {

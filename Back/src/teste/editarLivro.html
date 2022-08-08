@@ -57,7 +57,7 @@
           let buttonOne = document.createElement("button");
           buttonOne.appendChild(document.createTextNode("editar"));
           buttonOne.setAttribute("id", data[i][0].idProduto);
-          buttonOne.onclick = function () { abreEditar(this.id); };
+          buttonOne.onclick = function () { editarLivro(this.id); };
 
           linha.insertCell(10).appendChild(buttonOne);
 
@@ -143,147 +143,60 @@
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Título do Produto:</p>
-      <input value="Harry Potter e a Pedra Filosofal" class="box" type="text" name="titulo"
-        onkeypress="checkChar(event)">
+      <input class="box" type="text" name="titulo" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Nome do autor:</p>
-      <input value="J.K. Rowling" class="box" type="text" name="autor" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="autor" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Gênero 1:</p>
-      <input value="fantasia" class="box" type="text" name="genero" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="genero" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Gênero 2:</p>
-      <input value="juvenil" class="box" type="text" name="genero" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="genero" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Descrição:</p>
-      <input
-        value='Um bebê é deixado à porta da família Dursley, com uma carta que explica quem ele é e quais os mistérios que envolvem sua sobrevivência, após um duelo no qual seus pais morreram. Onze anos mais tarde, Harry Potter recebe o melhor presente de aniversário: descobre que é um bruxo e como tal deve ser educado. Conduzido por Rúbeo Hagrid, o doce e atrapalhado gigante ruivo, Harry inicia sua trajetória no cotidiano da magia. Na escola de bruxaria de Hogwarts, sob a direção do sábio professor Alvo Dumbledore, ele aprende a fazer poções, feitiços, a transformar coisas, e a "pilotar" uma vassoura. Enfrenta as dificuldades normais de um principiante e alguns obstáculos a mais lhe são impingidos por sua fama. Afinal, Harry Potter, mesmo sem saber, derrotou o mais terrível dos feiticeiros. Agora, para prosseguir vitorioso, precisa aprender a dominar a sabedoria contida em valores simples da vida como a amizade, a perseverança e o amor.'
-        class="box" type="text" name="descricao" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="descricao" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Ano de lançamento:</p>
-      <input value="2000" class="box" type="text" name="lancamento" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="lancamento" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Ediçao:</p>
-      <input value="1" class="box" type="text" name="edicao" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="edicao" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Quantidade de Páginas:</p>
-      <input value="260" class="box" type="text" name="paginas" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="paginas" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Numero de Exemplares:</p>
-      <input value="5" class="box" type="text" name="num-exemplares" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="num-exemplares" onkeypress="checkChar(event)">
     </div>
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Exemplar Código:</p>
-      <input value="HPPF" class="box" type="text" name="codigo-exemplares" onkeypress="checkChar(event)">
+      <input class="box" type="text" name="codigo-exemplares" onkeypress="checkChar(event)">
     </div>
 
-    <button id="cadastrar-livro" onclick="enviarParaBack()">Cadastrar livro</button>
-  </div>
-
-  <div class="box-direita">
-    <h1 class="space-40">Livros cadastrados</h1>
-    <table class="space-20">
-      <tr>
-        <td class="centralizado" colspan="10">Livros cadastrados</td>
-      </tr>
-      <tr>
-        <td class="centralizado">Id</td>
-        <td class="centralizado">Título</td>
-        <td class="centralizado">Autor</td>
-        <td class="centralizado">Gêneros</td>
-        <td class="centralizado">Descrição</td>
-        <td class="centralizado">Lançamento</td>
-        <td class="centralizado">Ediçao</td>
-        <td class="centralizado">Páginas</td>
-        <td class="centralizado">Exemplares</td>
-        <td class="centralizado">Códigos</td>
-      </tr>
-    </table>
+    <button onclick="enviarParaBack()">Edita livro</button>
   </div>
 
   <script>
-    function enviarParaBack() {
-      let produto = {
-        titulo: document.getElementsByName("titulo")[0].value,
-        autor: document.getElementsByName("autor")[0].value,
-        genero: [document.getElementsByName("genero")[0].value, document.getElementsByName("genero")[1].value],
-        descricao: document.getElementsByName("descricao")[0].value,
-        lancamento: document.getElementsByName("lancamento")[0].value,
-        edicao: document.getElementsByName("edicao")[0].value,
-        paginas: document.getElementsByName("paginas")[0].value,
-        numExemplares: document.getElementsByName("num-exemplares")[0].value,
-        exemplaresCod: exemplarCodigo(document.getElementsByName("num-exemplares")[0].value)
-      }
-
-      $.post("/livros",
-        {
-          produto
-        },
-        function (data, status) {
-          carregarTabela();
-        }
-      );
-    }
-
-    function exemplarCodigo(numExemplares) {
-      let codigo = document.getElementsByName("codigo-exemplares")[0].value;
-
-      let codArr = []
-      for (let i = 0; i < numExemplares; i++) {
-        let number = i + 1
-
-        if (number < 10) {
-          number = "0" + number;
-        }
-
-        codArr.push(codigo + number)
-      }
-
-      return codArr;
-    }
-
-    function deletarLivro(id) {
-      let produtoId = id;
-
-      $.ajax({
-        url: "/livros/" + produtoId,
-        method: "DELETE",
-        success: function (data, status) {
-          console.log(data);
-          // carregarTabela();
-        },
-        error: function (error) {
-          console.log(error);
-        }
-      });
-    }
-
-    function abreEditar(id) {
-      let trocaCadastrar = document.getElementById("cadastrar-livro");
-      trocaCadastrar.innerHTML = "Editar Livro";
-      trocaCadastrar.setAttribute("id", "editar-livro");
-      trocaCadastrar.setAttribute("onClick", "editarLivro()");
-    }
-
     function editarLivro() {
-      console.log("entrou aqui");
+
     }
 
   </script>

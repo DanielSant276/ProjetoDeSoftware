@@ -48,5 +48,5 @@ app.use(routes);
 // })
 
 app.listen(3000, function () {
-  console.log("Server iniciado!")
+  console.log("Server iniciado!");
 })

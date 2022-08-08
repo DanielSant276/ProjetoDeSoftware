@@ -1,11 +1,17 @@
 - clienteLocacao
+  -- falta tudo sobre isso
 - locacao
+  -- falta tudo sobre isso
 - locacaoProduto
+  -- falta tudo sobre isso
 - produto
-- produtoExemplar
-- produtoGenero
+  -- falta editar
 - usuario
-  -- trocar senha
+  -- falta trocar senha
 
 
-trocar depNome por depCPF na tabela de
+
+
+trocar depNome por depCPF na tabela de dependentes
+
+trocar no atributo lançamento o valor de data para string e apenas permitir colocar o ano na tabela de produto
