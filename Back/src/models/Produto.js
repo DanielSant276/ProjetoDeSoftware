@@ -16,10 +16,20 @@ class Produto {
     return criaProduto
   }
 
-  static async getOne(titulo) {
+  static async getOneByTitle(titulo) {
     const produto = await produtoModel.findAll({
       where: {
         tituloProduto: titulo
+      }
+    })
+
+    return produto;
+  }
+
+  static async getOneById(id) {
+    const produto = await produtoModel.findAll({
+      where: {
+        idProduto: id
       }
     })
 
@@ -33,10 +43,6 @@ class Produto {
 
   static async getRelacaoProdutoGenero(produtoId) {
     const relacao = await db.sequelize.query(
-      // `SELECT produtos.idProduto, produtos.tituloProduto, produtos.autor, generos.nome, produtos.descricao, produtos.lancamento,
-      //         produtos.edicao, produtos.qtdPaginas, produtos.numExemplares, produtos.qtdLocados
-      //  FROM   produtos, generos, produtogeneros as relacao
-      //  WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idGenero = generos.idGenero;`
       `SELECT generos.nome
        FROM   produtos, generos, produtogeneros as relacao
        WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idGenero = generos.idGenero;`
@@ -47,9 +53,9 @@ class Produto {
 
   static async getRelacaoProdutoExemplar(produtoId) {
     const relacao = await db.sequelize.query(
-      `SELECT exemplars.exemplarCodigo
-       FROM   produtos, exemplars, produtoexemplars as relacao
-       WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idExemplar = exemplars.idExemplar;`
+      `SELECT exemplares.exemplarCodigo
+       FROM   produtos, exemplares, produtoexemplares as relacao
+       WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idExemplar = exemplares.idExemplar;`
     );
 
     return relacao;
@@ -57,12 +63,29 @@ class Produto {
 
   static async getRelacaoExemplaresId(produtoId) {
     const relacao = await db.sequelize.query(
-      `SELECT exemplars.idExemplar
-        FROM   produtos, exemplars, produtoexemplars as relacao
-        WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idExemplar = exemplars.idExemplar;`
+      `SELECT exemplares.idExemplar
+        FROM   produtos, exemplares, produtoexemplares as relacao
+        WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idExemplar = exemplares.idExemplar;`
     );
 
     return relacao;
+  }
+
+  static async editarProduto(produtoDados) {
+    const modificaProduto = await produtoModel.update({
+      numExemplares: produtoDados.numExemplares,
+      lancamento: produtoDados.lancamento,
+      edicao: produtoDados.edicao,
+      qtdPaginas: produtoDados.paginas,
+      autor: produtoDados.autor,
+      descricao: produtoDados.descricao,
+      tituloProduto: produtoDados.titulo
+    },
+      {
+        where: {
+          idProduto: produtoDados.id
+        }
+      })
   }
 
   static async deletarProduto(produtoId) {

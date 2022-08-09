@@ -26,10 +26,53 @@ livro.route("/relacoes")
 
 livro.route("/:id")
   .get(async function (req, res) {
-    console.log(req.params);
+    let livroId = req.params.id
+
+    try {
+      let livro = await produtoClass.getOneById(livroId);
+
+      let genero = await produtoClass.getRelacaoProdutoGenero(livroId);
+
+      let exemplar = await produtoClass.getRelacaoProdutoExemplar(livroId);
+
+      res.send([livro, genero, exemplar]);
+    }
+    catch (error) {
+      console.log(error);
+    }
   })
   .put(async function (req, res) {
-    console.log(req.params);
+    // Cria o bloco de informações para ser alterado no banco de dados
+    let produtoDados = {
+      id: req.params.id,
+      numExemplares: req.body.numExemplares,
+      lancamento: req.body.lancamento,
+      edicao: req.body.edicao,
+      paginas: req.body.paginas,
+      autor: req.body.autor,
+      descricao: req.body.descricao,
+      titulo: req.body.titulo,
+      genero: req.body.generos
+    }
+
+    // Modifica os valores relacionados ao produto
+    try {
+      // let modificaProduto = await produtoClass.editarProduto(produtoDados);
+    }
+    catch (error) {
+      console.log(error);
+      console.log("falha ao modificar o produto");
+    }
+
+    try {
+      let getGeneros = await generoClass.getGeneros(produtoDados.genero);
+      let getGenerosRelacao = await produtoGeneroClass.getByProdutoID(produtoDados.id);
+      let modificaGeneroRelacao = await produtoGeneroClass.editarGeneroRelacao(getGeneros, getGenerosRelacao);
+    }
+    catch (error) {
+      console.log(error);
+      console.log("falha ao modificar o genero");
+    }
   })
   .delete(async function (req, res) {
     let produtoId = req.params.id
@@ -104,7 +147,7 @@ livro.route("/")
     // recebe as informações do produto recem cadastrado no banco de dados
     let getProduto;
     try {
-      getProduto = await produtoClass.getOne(produtoDados.titulo);
+      getProduto = await produtoClass.getOneByTitle(produtoDados.titulo);
     }
     catch (error) {
       console.log(error);
@@ -121,6 +164,7 @@ livro.route("/")
       console.log("pega generos");
     }
 
+    console.log(getProduto);
     // cadastra a relação entre produto e genero
     let produtoGeneroRelacao;
     try {

@@ -21,7 +21,7 @@ class ProdutoExemplar {
   }
 }
 
-const produtoExemplarModel = db.sequelize.define('produtoExemplars', {
+const produtoExemplarModel = db.sequelize.define('produtoExemplares', {
   idProduto: {
     type: db.Sequelize.INTEGER,
     allowNull: false,

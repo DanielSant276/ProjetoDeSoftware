@@ -12,6 +12,31 @@ class ProdutoGenero {
     }
   }
 
+  static async getByProdutoID(produtoId) {
+    let relacaoByProdutoID = await produtoGeneroModel.findAll({
+      where: {
+        idProduto: produtoId
+      }
+    })
+
+    relacaoByProdutoID = [relacaoByProdutoID[0].dataValues.id, relacaoByProdutoID[1].dataValues.id]
+
+    return relacaoByProdutoID;
+  }
+
+  static async editarGeneroRelacao(generoID, relacaoID) {
+    for (let i = 0; i < 2; i++) {
+      const modificaProduto = await produtoGeneroModel.update({
+        idGenero: generoID[i]
+      },
+        {
+          where: {
+            id: relacaoID[i]
+          }
+        })
+    }
+  }
+
   static async deletarProdutoGenero(produtoId) {
     let deleteProdutoGenero = await produtoGeneroModel.destroy({
       where: {

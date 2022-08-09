@@ -37,7 +37,7 @@ class Exemplar {
   }
 }
 
-const exemplarModel = db.sequelize.define('exemplars', {
+const exemplarModel = db.sequelize.define('exemplares', {
   idExemplar: {
     type: db.Sequelize.INTEGER,
     autoIncrement: true,

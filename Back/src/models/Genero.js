@@ -22,7 +22,7 @@ class Genero {
           nome: generos[i]
         }
       });
-      generosArr.push(generoPesquisa);
+      generosArr.push(generoPesquisa[0].dataValues.idGenero);
     }
 
     return generosArr;
