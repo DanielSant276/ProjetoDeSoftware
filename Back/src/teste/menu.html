@@ -30,17 +30,23 @@
 </head>
 
 <body>
-  <a class="space-40 link" onclick="goToLivro()">Cadastrar Livro</a>
   <a class="space-40 link" onclick="goToCliente()">Cadastrar Cliente</a>
+  <a class="space-40 link" onclick="goToLivro()">Cadastrar Livro</a>
+  <a class="space-40 link" onclick="goToListarLivros()">Listar livros</a>
 
   <script>
+    function goToCliente() {
+      window.location.href = "clientes";
+    }
+
     function goToLivro() {
       window.location.href = "livros";
     }
 
-    function goToCliente() {
-      window.location.href = "clientes";
-    }
+    function goToListarLivros() {
+      window.location.href = "listarLivros"
+    }    
+
   </script>
 </body>
 

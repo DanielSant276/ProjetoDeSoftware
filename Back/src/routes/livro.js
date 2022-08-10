@@ -168,7 +168,7 @@ livro.route("/")
     // cadastra a relação entre produto e genero
     let produtoGeneroRelacao;
     try {
-      produtoGeneroRelacao = await produtoGeneroClass.add(getProduto[0].dataValues.idProduto, [getGenero[0][0].dataValues.idGenero, getGenero[1][0].dataValues.idGenero]);
+      produtoGeneroRelacao = await produtoGeneroClass.add(getProduto[0].dataValues.idProduto, [getGenero[0], getGenero[1]]);
     }
     catch (error) {
       console.log(error);

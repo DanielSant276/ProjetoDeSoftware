@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script>
+    let todosOsLivros;
+    function carregarTabela() {
+      $.get("/livros/relacoes",
+        function (data, status) {
+          todosOsLivros = data.data;
+          console.log(data.data);
+          montaTodaTabela(data.data);
+        }
+      )
+
+      function montaTodaTabela(data) {
+        let tabela = document.getElementsByTagName("table")[0];
+
+        for (let i = 0; i < data.length; i++) {
+          let genero = []
+          // let codigo = []
+
+          for (let j = 0; j < data[i][1][0].length; j++) {
+            if (j > 0) {
+              genero.push(" " + data[i][1][0][j].nome);
+            }
+            else {
+              genero.push(data[i][1][0][j].nome);
+            }
+          }
+
+          // for (let j = 0; j < data[i][2][0].length; j++) {
+          //   if (j > 0) {
+          //     codigo.push(" " + data[i][2][0][j].exemplarCodigo);
+          //   }
+          //   else {
+          //     codigo.push(data[i][2][0][j].exemplarCodigo);
+          //   }
+          // }
+
+          let linha = tabela.insertRow()
+          let checkBox = document.createElement("input");
+          checkBox.setAttribute("id", `checkbox-${data[i][0].idProduto}`);
+          checkBox.setAttribute("type", "checkbox");
+          checkBox.onclick = function () { checkBoxMarcado(this.id); };
+          linha.insertCell(0).appendChild(checkBox);
+
+          if (data[i][0].numExemplares - data[i][0].qtdLocados == 0) {
+            document.getElementById(`checkbox-${data[i][0].idProduto}`).disabled = true;
+          }
+
+          linha.insertCell(1).appendChild(document.createTextNode(data[i][0].idProduto));
+          linha.insertCell(2).appendChild(document.createTextNode(data[i][0].tituloProduto));
+          linha.insertCell(3).appendChild(document.createTextNode(data[i][0].autor));
+          linha.insertCell(4).appendChild(document.createTextNode(genero));
+          linha.insertCell(5).appendChild(document.createTextNode(data[i][0].descricao.slice(0, 30) + "..."));
+          linha.insertCell(6).appendChild(document.createTextNode(data[i][0].lancamento));
+          linha.insertCell(7).appendChild(document.createTextNode(data[i][0].edicao));
+          linha.insertCell(8).appendChild(document.createTextNode(data[i][0].qtdPaginas));
+          linha.insertCell(9).appendChild(document.createTextNode(data[i][0].numExemplares - data[i][0].qtdLocados));
+          // linha.insertCell(9).appendChild(document.createTextNode(codigo));
+        }
+      }
+    }
+
+    carregarTabela();
+  </script>
+  <title>Cadastrar Livro</title>
+  <style>
+    * {
+      padding: 0;
+    }
+
+    div,
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .row {
+      flex-direction: row;
+    }
+
+    .column {
+      flex-direction: column;
+    }
+
+    .space-10 {
+      margin-bottom: 10px;
+    }
+
+    .space-20 {
+      margin-bottom: 20px;
+    }
+
+    .space-40 {
+      margin-bottom: 40px;
+    }
+
+    .space-right-20 {
+      margin-right: 20px;
+    }
+
+    .box {
+      width: 200px;
+      height: 20px;
+    }
+
+    .align-center {
+      align-items: center;
+    }
+
+    td {
+      border: 1px solid #000000;
+    }
+
+    .centralizado {
+      text-align: center;
+    }
+
+    /* .box-esquerda {
+      width: 30%;
+      margin-right: 5%;
+    }
+
+    .box-direita {
+      width: 65%;
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="box-direita">
+    <h1 class="space-40">Livros cadastrados</h1>
+    <table class="space-20">
+      <tr>
+        <td class="centralizado" colspan="10">Livros cadastrados</td>
+      </tr>
+      <tr>
+        <td class="centralizado">Selecionar</td>
+        <td class="centralizado">Id</td>
+        <td class="centralizado">Título</td>
+        <td class="centralizado">Autor</td>
+        <td class="centralizado">Gêneros</td>
+        <td class="centralizado">Descrição</td>
+        <td class="centralizado">Lançamento</td>
+        <td class="centralizado">Ediçao</td>
+        <td class="centralizado">Páginas</td>
+        <td class="centralizado">Disponíveis</td>
+        <!-- <td class="centralizado">Códigos</td> -->
+      </tr>
+    </table>
+    <button onclick="selecionarProdutos()">Selecionar</button>
+  </div>
+
+  <script>
+    let selecionados = []
+    function checkBoxMarcado(id) {
+      if (!selecionados.filter(item => item == id).length == 1) {
+        selecionados.push(id);
+      }
+      else {
+        console.log("entrou no else");
+        selecionados.filter(item => item != id);
+        selecionados = selecionados.filter(item => item != id);
+      }
+      console.log(selecionados);
+    }
+
+    function selecionarProdutos() {
+      let arrumarSelecao = []
+      for (let i = 0; i < selecionados.length; i++) {
+        arrumarSelecao.push(selecionados[i].slice(9));
+      }
+      console.log(arrumarSelecao);
+
+      let infosEscolhidas = [];
+      for (let i = 0; i < arrumarSelecao.length; i++) {
+        infosEscolhidas.push(todosOsLivros.filter(item => item[0].idProduto == arrumarSelecao[i]));
+      }
+
+      window.sessionStorage.setItem("infosEscolhidas", JSON.stringify(infosEscolhidas));
+      window.location.href = "locacao";
+    }
+  </script>
+</body>
+
+</html>
