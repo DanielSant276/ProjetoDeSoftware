@@ -1,29 +1,24 @@
 const db = require("./db.js");
 
 class Dependente {
-  constructor(nome, responsavelNome) {
-    this.nome = nome,
-      this.responsavelNome = responsavelNome
-  }
-
-  async add(nome, responsavel) {
+  static async add(nome, responsavel) {
     return await dependenteModel.create({
       depNome: nome,
       depResponsavel: responsavel
     });
   }
 
-  async getById(id) {
+  static async getById(id) {
     const dependenteById = await dependenteModel.findByPk(id);
     return dependenteById;
   }
 
-  async getAll() {
+  static async getAll() {
     const dependentes = await dependenteModel.findAll();
     return dependentes;
   }
 
-  async getAllByResponsavel(responsavel) {
+  static async getAllByResponsavel(responsavel) {
     try {
       const dependentes = await dependenteModel.findAll({
         where: {
@@ -44,7 +39,7 @@ const dependenteModel = db.sequelize.define('dependentes', {
     autoIncrement: true,
     primaryKey: true
   },
-  depResponsavel: {
+  depCPF: {
     type: db.Sequelize.STRING,
     allowNull: false
   },

@@ -6,16 +6,13 @@ const { clienteModel } = require("./models/cliente.js");
 const { dependenteModel } = require("./models/dependente.js");
 const { clienteDependenteModel } = require("./models/clienteDependente.js");
 const { locacaoModel } = require("./models/locacao.js");
-const { clienteLocacaoModel } = require("./models/clienteLocacao.js");
 const { produtoModel } = require("./models/produto.js");
 const { locacaoProdutoModel } = require("./models/locacaoProduto.js");
-const { exemplarModel } = require("./models/exemplar.js");
-const { produtoExemplarModel } = require("./models/produtoExemplar.js");
 const { generoModel } = require("./models/genero.js");
 const { produtoGeneroModel } = require("./models/produtoGenero.js");
 const { usuarioModel } = require("./models/usuario.js");
 
-const models = [produtoExemplarModel];
+const models = [locacaoModel, locacaoProdutoModel];
 
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());

@@ -5,8 +5,6 @@ const listarLivros = express.Router();
 const { generoClass } = require('../models/Genero');
 const { produtoClass } = require("../models/Produto");
 const { produtoGeneroClass } = require("../models/ProdutoGenero");
-const { exemplarClass } = require("../models/Exemplar");
-const { produtoExemplarClass } = require("../models/ProdutoExemplar");
 
 listarLivros.route("/livros")
   .get(async function (req, res) {
@@ -17,9 +15,7 @@ listarLivros.route("/livros")
     for (let i = 0; i < livros.length; i++) {
       let genero = await produtoClass.getRelacaoProdutoGenero(livros[i].dataValues.idProduto);
 
-      let exemplar = await produtoClass.getRelacaoProdutoExemplar(livros[i].dataValues.idProduto);
-
-      relacoes.push([livros[i].dataValues, genero, exemplar]);
+      relacoes.push([livros[i].dataValues, genero]);
     }
 
     res.send({ data: relacoes })

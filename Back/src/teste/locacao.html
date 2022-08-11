@@ -97,7 +97,12 @@
 
     <div class="row space-10 align-center">
       <p class="space-right-20">Locação Preço:</p>
-      <input class="box" type="text" name="preco">
+      <input disabled class="box" type="text" name="preco">
+    </div>
+    
+    <div class="row space-10 align-center">
+      <p class="space-right-20">Cliente ID:</p>
+      <input disabled value="4" class="box" type="text" name="cliente-id">
     </div>
 
     <button id="cadastrar-livro" onclick="enviarParaBack()">Locar</button>
@@ -144,7 +149,8 @@
       dataLocada = dataLocada.toLocaleDateString();
       document.getElementsByName("data-locada")[0].value = dataLocada;
 
-      const tempoPadrao = (infoProduto.length - 1) * 4;
+      // tempo fixo + tempo por livro adicional
+      const tempoPadrao = 5 + (infoProduto.length - 1) * 7;
       let dataDevolucao = tempo(dataLocada, tempoPadrao);
       document.getElementsByName("data-devolucao")[0].value = dataDevolucao;
     }
@@ -187,6 +193,41 @@
     }
 
     preencheForm();
+
+    function enviarParaBack() {
+      let dataLocada = document.getElementsByName("data-locada")[0].value;
+      dataLocada = dataLocada.slice(6) + "-" + dataLocada.slice(3, 5) + "-" + dataLocada.slice(0, 2);
+
+      let dataDevolucao = document.getElementsByName("data-devolucao")[0].value;
+      dataDevolucao = dataDevolucao.slice(6) + "-" + dataDevolucao.slice(3, 5) + "-" + dataDevolucao.slice(0, 2);
+
+      let produtoId = []
+
+      for (let i = 0; i < infoProduto.length; i++) {
+        produtoId.push(infoProduto[i][0][0].idProduto);
+      }
+
+      console.log(produtoId);
+
+      let locacao = {
+        locacaoMulta: 0,
+        locacaoPreco: document.getElementsByName("preco")[0].value.slice(3),
+        dataDevolucao: dataDevolucao,
+        dataLocada: dataLocada,
+        locacaoEstado: "locado",
+        clienteId: document.getElementsByName("cliente-id")[0].value,
+        produtoId: produtoId
+      }
+
+      $.post("/locacao",
+        {
+          locacao
+        },
+        function (data, status) {
+          console.log(data.data);
+        }
+      )
+    }
   </script>
 </body>
 

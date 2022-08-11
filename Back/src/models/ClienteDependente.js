@@ -4,12 +4,7 @@ const cliente = require("./cliente.js");
 const dependente = require("./dependente.js");
 
 class ClienteDependente{
-  constructor(idCliente, idDependente) {
-    this.idCliente = idCliente;
-    this.idDependente = idDependente;
-  }
-
-  async add() {
+  static async add() {
 		return await clienteDependenteModel.create({
 			idCliente: this.idCliente,
 			idDependente: this.idDependente,
@@ -17,7 +12,7 @@ class ClienteDependente{
 	}
 
   // Quando tiver internet verificar como faz para fazer uma busca
-  async getDependentesCliente(idCliente){
+  static async getDependentesCliente(idCliente){
 		const clienteDependenteById = await clienteDependenteModel.findAll({
       where: {
         idCliente: idCliente
@@ -26,7 +21,7 @@ class ClienteDependente{
 		return clienteDependenteById;         
 	}
 
-  async getAll(){
+  static async getAll(){
 		const ClienteDependenteRelacao = await clienteDependenteModel.findAll();
 		return ClienteDependenteRelacao;
 	}
@@ -35,7 +30,7 @@ class ClienteDependente{
 const clienteDependenteModel = db.sequelize.define("clienteDependentes", {
   idCliente: {
     type: db.Sequelize.INTEGER,
-    // allowNull: false,
+    allowNull: false,
     references: {
       model: cliente.clienteModel,
       key: "idCliente",
@@ -44,7 +39,7 @@ const clienteDependenteModel = db.sequelize.define("clienteDependentes", {
   },
   idDependente: {
     type: db.Sequelize.INTEGER,
-    // allowNull: false,
+    allowNull: false,
     references: {
       model: dependente.dependenteModel,
       key: "idDependente",

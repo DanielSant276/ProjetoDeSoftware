@@ -51,26 +51,6 @@ class Produto {
     return relacao;
   }
 
-  static async getRelacaoProdutoExemplar(produtoId) {
-    const relacao = await db.sequelize.query(
-      `SELECT exemplares.exemplarCodigo
-       FROM   produtos, exemplares, produtoexemplares as relacao
-       WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idExemplar = exemplares.idExemplar;`
-    );
-
-    return relacao;
-  }
-
-  static async getRelacaoExemplaresId(produtoId) {
-    const relacao = await db.sequelize.query(
-      `SELECT exemplares.idExemplar
-        FROM   produtos, exemplares, produtoexemplares as relacao
-        WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idExemplar = exemplares.idExemplar;`
-    );
-
-    return relacao;
-  }
-
   static async editarProduto(produtoDados) {
     const modificaProduto = await produtoModel.update({
       numExemplares: produtoDados.numExemplares,
@@ -103,20 +83,8 @@ const produtoModel = db.sequelize.define('produtos', {
     autoIncrement: true,
     primaryKey: true
   },
-  numExemplares: {
-    type: db.Sequelize.INTEGER,
-    allowNull: false
-  },
-  lancamento: {
-    type: db.Sequelize.STRING(4),
-    allowNull: false
-  },
-  edicao: {
-    type: db.Sequelize.INTEGER,
-    allowNull: false
-  },
-  qtdPaginas: {
-    type: db.Sequelize.INTEGER,
+  tituloProduto: {
+    type: db.Sequelize.STRING,
     allowNull: false
   },
   autor: {
@@ -127,8 +95,20 @@ const produtoModel = db.sequelize.define('produtos', {
     type: db.Sequelize.TEXT,
     allowNull: false
   },
-  tituloProduto: {
-    type: db.Sequelize.STRING,
+  lancamento: {
+    type: db.Sequelize.STRING(4),
+    allowNull: false
+  },
+  qtdPaginas: {
+    type: db.Sequelize.INTEGER,
+    allowNull: false
+  },
+  edicao: {
+    type: db.Sequelize.INTEGER,
+    allowNull: false
+  },
+  numExemplares: {
+    type: db.Sequelize.INTEGER,
     allowNull: false
   },
   qtdLocados: {

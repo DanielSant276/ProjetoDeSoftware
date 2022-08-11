@@ -4,16 +4,7 @@ const { clienteDependenteClass } = require("./clienteDependente.js");
 // const clienteDependente = require("./clienteDependente.js");
 
 class Cliente {
-  constructor(nome, cpf, endereco, telefone, dependentes, qtdLocada = 0) {
-    this.nome = nome;
-    this.cpf = cpf;
-    this.endereco = endereco;
-    this.telefone = telefone;
-    this.dependentes = dependentes;
-    this.qtdLocada = qtdLocada;
-  }
-
-  async add(clienteDados) {
+  static async add(clienteDados) {
     let criaCliente = await clienteModel.create({
       clienteNome: clienteDados.nome,
       clienteCPF: clienteDados.cpf,
@@ -39,7 +30,7 @@ class Cliente {
     }
   }
 
-  async getById(id) {
+  static async getById(id) {
     const clienteFindId = await clienteModel.findByPk(id);
     return clienteFindId;
   }
@@ -49,7 +40,7 @@ class Cliente {
     return clientes;
   }
 
-  async getOne(cpf) {
+  static async getOne(cpf) {
     const clientes = await clienteModel.findAll({
       where: {
         clienteCPF: cpf
@@ -59,7 +50,7 @@ class Cliente {
     return clientes
   }
 
-  async deleteOne(id, cpf) {
+  static async deleteOne(id, cpf) {
     const deleteCliente = await clienteModel.destroy({
       where: {
         idCliente: id,
@@ -71,7 +62,7 @@ class Cliente {
   }
 
   // Adiciona os dependentes do cliente no banco de dados
-  async criaDependente(clienteDados) {
+  static async criaDependente(clienteDados) {
     let novosDependentes = [];
     let novoDependente;
 
@@ -95,7 +86,7 @@ class Cliente {
   }
 
   // Adiciona a relação entre cliente e dependente no banco de dados
-  async relacaoClienteDependente(responsavel, dependente) {
+  static async relacaoClienteDependente(responsavel, dependente) {
     let relacao;
     for (let i = 0; i < dependente.length; i++) {
       try {
@@ -110,7 +101,7 @@ class Cliente {
   }
 
   // Acha uma relação específica cadastrada no banco
-  async BuscaRelacao(cliente) {
+  static async BuscaRelacao(cliente) {
     const relacao = await db.sequelize.query(
       `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
               cliente.clienteQtdLocada, dependentes.depNome
@@ -142,7 +133,7 @@ class Cliente {
   }
 
   // Acha todas as relações cadastradas no banco
-  async novaLocacao() {
+  static async novaLocacao() {
     const relacoes = await db.sequelize.query(
       `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
               cliente.clienteQtdLocada, dependentes.depNome
@@ -160,9 +151,14 @@ const clienteModel = db.sequelize.define('clientes', {
     autoIncrement: true,
     primaryKey: true
   },
-  clienteQtdLocada: {
-    type: db.Sequelize.INTEGER,
+  clienteNome: {
+    type: db.Sequelize.STRING,
     allowNull: false
+  },
+  clienteCPF: {
+    type: db.Sequelize.STRING,
+    allowNull: false,
+    unique: true
   },
   clienteTelefone: {
     type: db.Sequelize.STRING,
@@ -172,13 +168,8 @@ const clienteModel = db.sequelize.define('clientes', {
     type: db.Sequelize.STRING,
     allowNull: false
   },
-  clienteCPF: {
-    type: db.Sequelize.STRING,
-    allowNull: false,
-    unique: true
-  },
-  clienteNome: {
-    type: db.Sequelize.STRING,
+  clienteQtdLocada: {
+    type: db.Sequelize.INTEGER,
     allowNull: false
   }
 })

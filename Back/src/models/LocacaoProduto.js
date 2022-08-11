@@ -2,10 +2,19 @@ const db = require("./db.js");
 const locacao = require("./Locacao.js");
 const produto = require("./produto.js");
 
+class LocacaoProduto {
+  static async add(locaoId, produtoId) {
+    return await locacaoProdutoModel.create({
+      idLocacao: locaoId,
+      idProduto: produtoId
+    });
+  }
+}
+
 const locacaoProdutoModel = db.sequelize.define('locacaoProdutos', {
   idLocacao: {
     type: db.Sequelize.INTEGER,
-    // allowNull: false,
+    allowNull: false,
     references: {
       model: locacao.locacaoModel,
       key: "idLocacao",
@@ -14,7 +23,7 @@ const locacaoProdutoModel = db.sequelize.define('locacaoProdutos', {
   },
   idProduto: {
     type: db.Sequelize.INTEGER,
-    // allowNull: false,
+    allowNull: false,
     references: {
       model: produto.produtoModel,
       key: "idProduto",
@@ -35,5 +44,6 @@ const locacaoProdutoModel = db.sequelize.define('locacaoProdutos', {
 // produto.produtoModel.belongsTo(locacaoProdutoModel, {through: "idProduto" });
 
 module.exports = {
+  locacaoProdutoClass: LocacaoProduto,
   locacaoProdutoModel: locacaoProdutoModel
 };

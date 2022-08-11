@@ -5,8 +5,6 @@ const livro = express.Router();
 const { generoClass } = require('../models/Genero');
 const { produtoClass } = require("../models/Produto");
 const { produtoGeneroClass } = require("../models/ProdutoGenero");
-const { exemplarClass } = require("../models/Exemplar");
-const { produtoExemplarClass } = require("../models/ProdutoExemplar");
 
 livro.route("/relacoes")
   .get(async function (req, res) {
@@ -16,9 +14,7 @@ livro.route("/relacoes")
     for (let i = 0; i < livros.length; i++) {
       let genero = await produtoClass.getRelacaoProdutoGenero(livros[i].dataValues.idProduto);
 
-      let exemplar = await produtoClass.getRelacaoProdutoExemplar(livros[i].dataValues.idProduto);
-
-      relacoes.push([livros[i].dataValues, genero, exemplar]);
+      relacoes.push([livros[i].dataValues, genero]);
     }
 
     res.send({ data: relacoes })
@@ -33,9 +29,7 @@ livro.route("/:id")
 
       let genero = await produtoClass.getRelacaoProdutoGenero(livroId);
 
-      let exemplar = await produtoClass.getRelacaoProdutoExemplar(livroId);
-
-      res.send([livro, genero, exemplar]);
+      res.send([livro, genero]);
     }
     catch (error) {
       console.log(error);
@@ -86,23 +80,6 @@ livro.route("/:id")
       console.log("erro ao deletar relação entre produto e genero");
     }
 
-    // Deleta a relação entre produto e exemplar
-    try {
-      let deleteRelacaoProdutoGenero = await produtoExemplarClass.deletarProdutoExemplar(produtoId);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("erro ao deletar relação entre produto e exemplar");
-    }
-
-    // Deleta os exemplares
-    try {
-      let getExemplaresId = await produtoClass.getRelacaoExemplaresId(produtoId);
-      let deleteExemplares = await exemplarClass.deletarExemplares(getExemplaresId[0]);
-    }
-    catch (error) {
-      console.log("erro ao deletar os exemplares");
-    }
 
     // Deleta o produto
     try {
@@ -130,8 +107,7 @@ livro.route("/")
       lancamento: req.body.produto.lancamento,
       edicao: req.body.produto.edicao,
       paginas: req.body.produto.paginas,
-      numExemplares: req.body.produto.numExemplares,
-      codExemplares: req.body.produto.exemplaresCod
+      numExemplares: req.body.produto.numExemplares
     }
 
     let novoProduto;
@@ -175,44 +151,8 @@ livro.route("/")
       console.log("gera relação");
     }
 
-    // cadastra os exemplares
-    let novosExemplares;
-    try {
-      novosExemplares = await exemplarClass.add(produtoDados.codExemplares);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("cadastra exemplares");
-    }
-
-    // pesquisa os exemplares criados
-    let getExemplares;
-    try {
-      getExemplares = await exemplarClass.getExemplares(produtoDados.codExemplares);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("pesquisa exemplares");
-    }
-
-    // cadastra a relação entre produto e exemplar
-    let produtoExemplarRelacao;
-    let exemplarArr = []
-
-    for (let i = 0; i < getExemplares.length; i++) {
-      exemplarArr.push(getExemplares[i][0].dataValues.idExemplar);
-    }
-
-    try {
-      produtoExemplarRelacao = await produtoExemplarClass.add(getProduto[0].dataValues.idProduto, exemplarArr);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("gera relação de exemplar");
-    }
-
     // devolve as relações para o front
-    res.send([getProduto, getGenero, getExemplares]);
+    res.send([getProduto, getGenero]);
   })
 
 module.exports = livro;
