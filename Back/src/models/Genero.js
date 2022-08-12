@@ -15,17 +15,13 @@ class Genero {
   }
 
   static async getGeneros(generos) {
-    let generosArr = []
-    for (let i = 0; i < 2; i++) {
-      let generoPesquisa = await generoModel.findAll({
-        where: {
-          nome: generos[i]
-        }
-      });
-      generosArr.push(generoPesquisa[0].dataValues.idGenero);
-    }
+    let generoPesquisa = await generoModel.findAll({
+      where: {
+        nome: generos[i]
+      }
+    });
 
-    return generosArr;
+    return generoPesquisa;
   }
 }
 

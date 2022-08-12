@@ -1,0 +1,9 @@
+Login
+  -- criar a lógica para conferir a validação dos valores dos inputs
+Menu
+  -- consertar css da tela e componentes vazando para fora
+  -- consertar o local na qual está aparecendo os modais
+Cadastrar Funcionário
+  -- tela ainda por fazer
+Tela de alterar senha
+  -- tela ainda por fazer

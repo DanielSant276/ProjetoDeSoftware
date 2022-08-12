@@ -9,8 +9,6 @@
   height: 20vh;
   position: absolute;
   top: 0;
-  
-  
 }
 
 .menu-cabeçalho-esquerdo{
@@ -44,7 +42,6 @@
   width: 100vw;
   height: 10vh;
   margin-top: 100px;
-  
 }
 
 .menu-bem-vindo h1{
@@ -83,8 +80,6 @@
   margin-left: 500px;
   box-shadow: 40px 15px rgba(149, 0, 202, 0.1);
 }
-
-
 
 /* .ReactModal__Content--after-open {
   padding: 0 !important;

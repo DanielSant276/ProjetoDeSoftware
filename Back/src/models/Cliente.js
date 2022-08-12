@@ -1,6 +1,6 @@
 const db = require("./db.js");
 const dependente = require("./dependente.js");
-const { clienteDependenteClass } = require("./clienteDependente.js");
+// const { clienteDependenteClass } = require("./clienteDependente.js");
 // const clienteDependente = require("./clienteDependente.js");
 
 class Cliente {

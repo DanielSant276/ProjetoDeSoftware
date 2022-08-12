@@ -1,15 +1,11 @@
 const express = require('express');
-const path = require('path'); 
+const path = require('path');
 const usuario = express.Router();
 
 const SHA256 = require("../../sha");
-const usuarioClass = require("../models/usuario.js");
+const { usuarioClass } = require("../models/usuario.js");
 
 usuario.route("/")
-  .get(function (req, res) {
-    res.sendFile(path.join(__dirname, "../", "/teste/novaConta.html"));
-  })
-
   .post(async function (req, res) {
     let usuarioDados = {
       login: req.body.user.usuario,
@@ -17,10 +13,8 @@ usuario.route("/")
       tipo: req.body.user.tipo
     }
 
-    let novoUsuario = new usuarioClass.usuarioClass(usuarioDados.login, usuarioDados.senha, usuarioDados.tipo);
-
     try {
-      await novoUsuario.add(usuarioDados);
+      await usuarioClass.add(usuarioDados);
       res.send({ status: '200', mensagem: "Usuário criado", usuario: usuarioDados });
     } catch (error) {
       console.log(error);

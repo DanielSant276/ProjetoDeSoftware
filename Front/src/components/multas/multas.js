@@ -7,7 +7,7 @@ function Multas({isOpen, handleClick}) {
 
   return(
     <>
-    {isOpen && (
+    {true && (
       //<div className="multas-background-imagem principal">
         <div className="multas-container1" >
           <div className="multas-conteudo-cabeçalho">
