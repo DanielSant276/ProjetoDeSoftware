@@ -10,6 +10,7 @@ import MultasInfo from "./components/multasInfo/multasInfo";
 import MoldeCadastro from "./components/moldeCadastro/MoldeCadastro";
 import CadastrarCliente from "./components/cadastroCliente/cadastroCliente";
 import EditarProduto from "./components/editarProduto/EditarProduto";
+import ProcurarProduto from "./components/procurarProduto/procurarProduto";
 
 export default function Rotas() {
     return (
@@ -26,6 +27,7 @@ export default function Rotas() {
             <Route path="/moldeCadastro" element={<MoldeCadastro />} />
             <Route path="/cadastroCliente" element={<CadastrarCliente/>} />
             <Route path="/editarProduto" element={<EditarProduto/>} />
+            <Route path="/procurarProduto" element={<ProcurarProduto/>} />
         </Routes>
     )
 }
