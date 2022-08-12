@@ -4,12 +4,10 @@ const genero = require("./Genero.js");
 
 class ProdutoGenero {
   static async add(livroId, generoId) {
-    for (let i = 0; i < 2; i++) {
-      let produtoGeneroRelacao = await produtoGeneroModel.create({
-        idProduto: livroId,
-        idGenero: generoId[i]
-      });
-    }
+    let produtoGeneroRelacao = await produtoGeneroModel.create({
+      idProduto: livroId,
+      idGenero: generoId
+    });
   }
 
   static async getByProdutoID(produtoId) {

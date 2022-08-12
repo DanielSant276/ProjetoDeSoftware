@@ -6,6 +6,13 @@ const { generoClass } = require('../models/Genero');
 const { produtoClass } = require("../models/Produto");
 const { produtoGeneroClass } = require("../models/ProdutoGenero");
 
+livro.route("/generos")
+  .get(async function (req, res) {
+    let generos = await generoClass.getAll();
+
+    res.send({ data: generos });
+  })
+
 livro.route("/relacoes")
   .get(async function (req, res) {
     let livros = await produtoClass.getAll();
@@ -46,7 +53,7 @@ livro.route("/:id")
       autor: req.body.autor,
       descricao: req.body.descricao,
       titulo: req.body.titulo,
-      genero: req.body.generos
+      genero: parseInt(req.body.generos)
     }
 
     // Modifica os valores relacionados ao produto
@@ -93,10 +100,6 @@ livro.route("/:id")
   })
 
 livro.route("/")
-  .get(function (req, res) {
-    res.sendFile(path.join(__dirname, "../", "/teste/livros.html"));
-  })
-
   .post(async function (req, res) {
     // define as informações do produto
     let produtoDados = {
@@ -118,6 +121,7 @@ livro.route("/")
     catch (error) {
       console.log(error);
       console.log("cria produto");
+      res.send({ mensagem: "Ocorreu um erro ao criar o produto" })
     }
 
     // recebe as informações do produto recem cadastrado no banco de dados
@@ -128,31 +132,23 @@ livro.route("/")
     catch (error) {
       console.log(error);
       console.log("pega produto");
-    }
-
-    // recebe as informações do genero do produto
-    let getGenero;
-    try {
-      getGenero = await generoClass.getGeneros(produtoDados.genero);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("pega generos");
+      res.send({ mensagem: "Ocorreu um erro ao procurar o produto" })
     }
 
     console.log(getProduto);
     // cadastra a relação entre produto e genero
     let produtoGeneroRelacao;
     try {
-      produtoGeneroRelacao = await produtoGeneroClass.add(getProduto[0].dataValues.idProduto, [getGenero[0], getGenero[1]]);
+      produtoGeneroRelacao = await produtoGeneroClass.add(getProduto[0].dataValues.idProduto, produtoDados.genero);
     }
     catch (error) {
       console.log(error);
       console.log("gera relação");
+      res.send({ mensagem: "Ocorreu um erro ao gerar a relação entre gênero e produtos" })
     }
 
     // devolve as relações para o front
-    res.send([getProduto, getGenero]);
+    res.send({ mensagem: "Enviado com sucesso" });
   })
 
 module.exports = livro;
