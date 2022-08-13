@@ -127,8 +127,8 @@
   }
 
   .procurar-produto-botao {
-    width: 100px;
-    margin-left: 100px;
+    width: 30%;
+    margin-left: 50px;
   }
 
   .procurar-produto-botao-formatacao {
@@ -142,12 +142,14 @@
     margin-top:20px;
   }
   .procurar-produto-separar-editar {
-    margin-left: 10%;
-    margin-right: 25px;
+    margin-left: 8%;
+    margin-right: 10%;
+    width: 175px;
   }
 
   .procurar-produto-separar-status {
     margin-right:15%;
+    width: 175px;
   }
   
   .procurar-produto-outros-painel {
