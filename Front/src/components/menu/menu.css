@@ -2,6 +2,7 @@
   background-image: url("../../img/tela-menu.jpg");
   background-size:cover;
   background-repeat: no-repeat;
+  background-position: 0%;
 }
 
 .menu-cabeçalho{
@@ -20,7 +21,7 @@
 .menu-cabeçalho-direito{
   width: 35vw;
   border-bottom: dashed 3px #FFA800;
-  margin-right: 30px;
+  margin-right: 35px;
 }
 
 .menu-botoes{
