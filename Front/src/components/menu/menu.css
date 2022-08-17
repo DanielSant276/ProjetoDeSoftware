@@ -3,30 +3,31 @@
   background-size:cover;
   background-repeat: no-repeat;
   background-position: 0%;
+  width: 100vw;
+  height: 100vh;
 }
 
 .menu-cabeçalho{
-  width: 90vw;
+  /* width: 90vw; */
   height: 20vh;
-  position: absolute;
-  top: 0;
+  position: flex;
 }
 
 .menu-cabeçalho-esquerdo{
-  width: 35vw;
+  width: 30vw;
   border-bottom: dashed 3px #FFA800;
-  margin-left: 35px;
+  margin-left: 2.8%;
 }
 
 .menu-cabeçalho-direito{
-  width: 35vw;
+  width: 30vw;
   border-bottom: dashed 3px #FFA800;
-  margin-right: 35px;
+  margin-right: 2.8%;
 }
 
 .menu-botoes{
-  width: 30vw;
-  margin-top: 130px;
+  width: 40vw;
+  margin-top: 120px;
 }
 
 .menu-botao-painel{
@@ -42,24 +43,26 @@
 .menu-bem-vindo{
   width: 100vw;
   height: 10vh;
-  margin-top: 100px;
+  position: flex;
 }
 
 .menu-bem-vindo h1{
-  margin-left: 220px;
+  margin-left: 9%;
   color: white;
   font-size: 22px;
 }
 
 .menu-mais-acessados {
   color: white;
+  /* align-content:flex-end; */
   position: relative;
-  right: 480px;
+  align-items: center;
+  text-align: center;
+  padding-left: 5%;
 }
 
 .menu-mais-acessados h1{
-  margin-top: 14px;
-  margin-left: 20px;
+  margin-left: 1%;
   font-size: 18px;
 }
 
@@ -69,16 +72,16 @@
 }
 
 .menu-botao-principal-1{
-  margin-left: 300px;
+  margin-left: 0%;
 }
 
 .menu-botao-principal-2{
-  margin-left: 400px;
+  margin-left: 15%;
   box-shadow: 30px 15px rgba(149, 0, 202, 0.24);
 }
 
 .menu-botao-principal-3{
-  margin-left: 500px;
+  margin-left: 30%;
   box-shadow: 40px 15px rgba(149, 0, 202, 0.1);
 }
 
