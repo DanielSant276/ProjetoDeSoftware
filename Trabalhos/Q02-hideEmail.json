@@ -1,0 +1,36 @@
+{
+  "emailNormal": {
+    "email": [
+      "sbartzen0@sfgate.com", "mpaskin1@oakley.com", "tdoerling2@mayoclinic.com", "wginley3@example.com",
+      "sdemanche4@ifeng.com", "bhumerstone5@google.es", "abartholomieu6@friendfeed.com", "tmetterick7@ca.gov",
+      "gperon8@dagondesign.com", "gspohrmann9@howstuffworks.com", "pflega@bloomberg.com", "dkinforthb@wisc.edu",
+      "hbeltznerc@yale.edu", "dwycliffed@weebly.com", "thartleye@accuweather.com", "hmaidensf@ft.com",
+      "dmcgloing@github.com", "cspruceh@sitemeter.com", "gparradicei@feedburner.com", "egronouj@cisco.com",
+      "lmossomk@mapy.cz", "skrausel@prweb.com", "jdominichellim@rakuten.co.jp", "ebuyen@google.fr",
+      "closelo@google.com.au", "wezzyp@scientificamerican.com", "vcouronneq@gov.uk", "csissr@walmart.com",
+      "mmcquins@nbcnews.com", "erylandt@zdnet.com", "fpleasaunceu@wunderground.com", "kcutcheyv@booking.com",
+      "wgrealyw@google.fr", "omorenax@cnet.com", "gpladeny@yelp.com", "jjointz@flickr.com",
+      "ojinkins10@vk.com", "gpitchers11@csmonitor.com", "jbutterfint12@xing.com", "msamuels13@examiner.com",
+      "gmulryan14@cdc.gov", "teccleston15@cbsnews.com", "bgrigorushkin16@joomla.org", "lree17@cargocollective.com",
+      "mlavalde18@craigslist.org", "ddenslow19@mail.ru", "kburchnall1a@wikia.com", "rsilly1b@toplist.cz",
+      "biverson1c@discuz.net", "klelliott1d@wikispaces.com"
+    ]
+  },
+  "emailCensura": {
+    "email": [
+      "sba******@sfgate.com", "mpa*****@oakley.com", "tdo*******@mayoclinic.com", "wgi*****@example.com",
+      "sde*******@ifeng.com", "bhu*********@google.es", "aba***********@friendfeed.com", "tme********@ca.gov",
+      "gpe****@dagondesign.com", "gsp********@howstuffworks.com", "pfl***@bloomberg.com", "dki*******@wisc.edu",
+      "hbe*******@yale.edu", "dwy*******@weebly.com", "tha******@accuweather.com", "hma******@ft.com",
+      "dmc******@github.com", "csp*****@sitemeter.com", "gpa********@feedburner.com", "egr*****@cisco.com",
+      "lmo*****@mapy.cz", "skr*****@prweb.com", "jdo***********@rakuten.co.jp", "ebu***@google.fr",
+      "clo****@google.com.au", "wez***@scientificamerican.com", "vco*******@gov.uk", "csi***@walmart.com",
+      "mmc*****@nbcnews.com", "ery*****@zdnet.com", "fpl*********@wunderground.com", "kcu******@booking.com",
+      "wgr*****@google.fr", "omo*****@cnet.com", "gpl*****@yelp.com", "jjo****@flickr.com",
+      "oji*******@vk.com", "gpi********@csmonitor.com", "jbu**********@xing.com", "msa*******@examiner.com",
+      "gmu*******@cdc.gov", "tec*********@cbsnews.com", "bgr************@joomla.org", "lre***@cargocollective.com",
+      "mla*******@craigslist.org", "dde*******@mail.ru", "kbu*********@wikia.com", "rsi*****@toplist.cz",
+      "biv*******@discuz.net", "kle********@wikispaces.com"
+    ]
+  }
+}

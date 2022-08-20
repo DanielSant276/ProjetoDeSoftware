@@ -1,0 +1,20 @@
+{
+  "value": {
+    "numbers": [
+      8, 5469, 2530, 2044, 3040, 22774, 1088, 168, 69, 8, 5, 767, 66, 6628, 996, 75, 95, 523, 1823, 
+      598, 6444, 581, 741, 8863, 458, 188, 3, 73882, 45, 0, 223, 76, 4, 3, 5, 5, 6315, 331, 760, 
+      39, 7, 99, 8, 88260, 236, 773, 82, 3, 42825, 48
+    ]
+  },
+  "result": {
+    "res": [
+      "soma par", "soma par", "soma par", "soma par", "soma ímpar", "soma par", "soma ímpar", "soma ímpar",
+      "soma ímpar", "soma par", "soma ímpar", "soma par", "soma par", "soma par", "soma par", "soma par",
+      "soma par", "soma par", "soma par", "soma par", "soma par", "soma par", "soma par", "soma ímpar",
+      "soma ímpar", "soma ímpar", "soma ímpar", "soma par", "soma ímpar", "soma par", "soma ímpar", "soma ímpar",
+      "soma par", "soma ímpar", "soma ímpar", "soma ímpar", "soma ímpar", "soma ímpar", "soma ímpar", "soma par",
+      "soma ímpar", "soma par", "soma par", "soma par", "soma ímpar", "soma ímpar", "soma par", "soma ímpar",
+      "soma ímpar", "soma par"
+    ]
+  }
+}
