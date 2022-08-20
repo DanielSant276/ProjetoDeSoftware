@@ -1,0 +1,21 @@
+{
+    "fraseEntrada":{
+        "frase": [
+            "É possível que Maria não faça a prova.", "Hoje está nublado.", "Amanhã não poderei ir.", "Ontem estava ensolarado.", "O celular caiu.", "Está nevando.", "Até que enfim!", 
+            "Que comida boa.", "As matrículas começam hoje.", "Não gosto de comida apimentada.", "O documento foi enviado.", "Vá por lá!", "Não nos siga.","Aceita um café?", 
+            "O prazo terminou?", "Escreveu o discurso?", "Espero que dê tudo certo.", "Muita sorte na sua nova etapa.", "Levaram tudo", "Os alunos homenagearam o professor.", 
+            "Estamos felizes com os resultados.", "Faltam apenas alguns dias.", "Talvez eu vá.", "Não sei se será possível", "Que coisa terrível!", "Como assim?", "Que tragédia!", 
+            "Que horas são?", "Qual é o seu nome?", "Não foi definido o horario do término.", "Você assiste os jogos olímpicos?", "Iremos ao cinema.", "Que bom que veio.", 
+            "Olha que está ali!", "A festa acabou.", "Não deixe a porta aberta.", "Jogue isto no lixo.", "Que filme horrível!", "Esse livro é interessante.","A torta estava boa.", 
+            "As férias estão chegando!", "Amanhã acordarei cedo.", "João brincou no parque.", "O almoço será mais tarde.", "Tenho muito a fazer.", "Socorro!", "O quê?", 
+            "Chove muito nesse período.", "Está frio.", "Os dias estão mais longos."
+        ]
+    },
+    "fraseSaida": {
+        "frase": [
+            "possível", "Hoje", "não", "estava", "caiu", "nevando", "que", "boa", "hoje", "gosto", "enviado", "lá", "siga", "café", "prazo", "o", "certo", "etapa", "tudo", "alunos", 
+            "felizes", "dias", "Talvez", "possível", "terrível", "assim", "tragédia", "horas", "nome", "horário", "jogos", "cinema", "veio", "ali", "festa", "porta", "lixo", "filme", 
+            "interessante", "torta", "férias", "acordarei", "parque", "almoço", "fazer", "Socorro", "quê", "período", "frio", "longos"
+        ]
+    }
+}
