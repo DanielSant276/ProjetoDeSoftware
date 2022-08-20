@@ -1,0 +1,28 @@
+{
+  "entrada": {
+    "array": [
+      "41u8o95", "53g1v46", "33q7o89", "38q8g70", "55j7o22", "65p8q83", "56d0l81", "38j4l69", "35r0j35", "03h3w31",
+      "90s8w52", "80d4a70", "18x1x94", "82j0b98", "83v6m90", "04z7n59", "59j3y18", "88p3r19", "10k8m96", "37c8b95",
+      "02g2i65", "59o3e62", "08x8i65", "82z4f68", "63z0r06", "75i1n76", "92f0c25", "71v5c08", "59c7b75", "18k7v64",
+      "79z1o34", "98a2u40", "93e8z02", "19w0i95", "98q8q85", "95i3o53", "22r7i33", "80l8o64", "14h5e20", "16v6b80",
+      "19t7n29", "09a9h30", "10k3n37", "77m4a25", "76a9l72", "07p7s27", "29s4c16", "07a4l64", "83c6a09", "42g1i36"
+    ]
+  },
+  "saida": {
+    "array": [
+      { "freq": 1, "valor": "4" }, { "freq": 1, "valor": "5" }, { "freq": 2, "valor": "3" }, { "freq": 2, "valor": "8" },
+      { "freq": 2, "valor": "5" }, { "freq": 2, "valor": "8" }, { "freq": 1, "valor": "5" }, { "freq": 1, "valor": "3" },
+      { "freq": 2, "valor": "3" }, { "freq": 3, "valor": "3" }, { "freq": 1, "valor": "9" }, { "freq": 2, "valor": "0" },
+      { "freq": 2, "valor": "1" }, { "freq": 2, "valor": "8" }, { "freq": 1, "valor": "8" }, { "freq": 1, "valor": "0" },
+      { "freq": 1, "valor": "5" }, { "freq": 2, "valor": "8" }, { "freq": 1, "valor": "1" }, { "freq": 1, "valor": "3" },
+      { "freq": 2, "valor": "2" }, { "freq": 1, "valor": "5" }, { "freq": 2, "valor": "8" }, { "freq": 2, "valor": "8" },
+      { "freq": 2, "valor": "6" }, { "freq": 2, "valor": "7" }, { "freq": 2, "valor": "2" }, { "freq": 1, "valor": "7" },
+      { "freq": 2, "valor": "5" }, { "freq": 1, "valor": "1" }, { "freq": 1, "valor": "7" }, { "freq": 1, "valor": "9" },
+      { "freq": 1, "valor": "9" }, { "freq": 2, "valor": "9" }, { "freq": 3, "valor": "8" }, { "freq": 2, "valor": "5" },
+      { "freq": 2, "valor": "2" }, { "freq": 2, "valor": "8" }, { "freq": 1, "valor": "1" }, { "freq": 2, "valor": "6" },
+      { "freq": 2, "valor": "9" }, { "freq": 2, "valor": "0" }, { "freq": 2, "valor": "3" }, { "freq": 2, "valor": "7" },
+      { "freq": 2, "valor": "7" }, { "freq": 3, "valor": "7" }, { "freq": 1, "valor": "2" }, { "freq": 2, "valor": "4" },
+      { "freq": 1, "valor": "8" }, { "freq": 1, "valor": "4" }
+    ]
+  }
+}

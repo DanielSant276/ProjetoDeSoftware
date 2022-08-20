@@ -1,0 +1,41 @@
+{
+    "entrada": {
+      "array": [
+        "Innovative composite encoding", "Extended dedicated intranet", "Public-key grid-enabled neural-net", "Fully-configurable cohesive time-frame", "Face to face transitional flexibility", "Fundamental zero administration archive", 
+        "Profound radical methodology", "Virtual scalable hardware", "Stand-alone multi-state flexibility", 
+        "Face to face foreground application", "Assimilated didactic task-force", "Expanded 6th generation application", 
+        "Polarised needs-based open system", "Right-sized motivating benchmark", "Triple-buffered leading edge alliance", 
+        "Extended uniform customer loyalty", "Switchable fault-tolerant middleware", "Self-enabling directional throughput", 
+        "Profit-focused intangible installation", "Fully-configurable mobile application", "Object-based needs-based initiative", 
+        "Enhanced dynamic system engine", "Synergistic bifurcated info-mediaries", "Vision-oriented analyzing capability", 
+        "Exclusive multi-state adapter", "Extended dedicated pricing structure", "Cross-group uniform paradigm", 
+        "Stand-alone optimal initiative", "Inverse 4th generation encryption", "Cross-group intangible toolset", 
+        "Business-focused 5th generation open system", "Optional systemic Graphic Interface", "Organic 6th generation ability", 
+        "Quality-focused solution-oriented forecast", "Fully-configurable uniform local area network", "Persistent analyzing Graphic Interface", 
+        "Persevering systemic system engine", "Down-sized demand-driven process improvement", "Polarised reciprocal monitoring", 
+        "Enterprise-wide solution-oriented standardization", "Optional motivating standardization", "Intuitive discrete function", 
+        "Networked hybrid framework", "Versatile exuding hierarchy", "Multi-lateral web-enabled infrastructure", 
+        "Devolved attitude-oriented toolset", "Profound web-enabled support", "Public-key tertiary data-warehouse", 
+        "Down-sized contextually-based firmware", "Grass-roots context-sensitive access"
+      ],
+      "arrayN": [
+        1, 2, 3, 2, 1, 4, 2, 1, 2, 2, 1, 3, 3, 1, 2, 2, 4, 1, 1, 2,
+        1, 2, 3, 2, 1, 4, 2, 1, 2, 2, 1, 3, 3, 1, 2, 2, 4, 1, 1, 2,
+        1, 2, 3, 2, 1, 4, 2, 1, 2, 2 
+      ]
+    },
+    "saida": {
+      "array": ["Innovative", "Extended dedicated", "Public-key grid-enabled neural-net", "Fully-configurable cohesive", "Face",
+       "Fundamental zero administration archive", "Profound radical", "Virtual", "Stand-alone multi-state", "Face to", "Assimilated",
+        "Expanded 6th generation", "Polarised needs-based open", "Right-sized", "Triple-buffered leading", "Extended uniform", 
+        "Switchable fault-tolerant middleware", "Self-enabling", "Profit-focused", "Fully-configurable mobile", "Object-based", 
+        "Enhanced dynamic", "Synergistic bifurcated info-mediaries", "Vision-oriented analyzing", "Exclusive", "Extended dedicated pricing structure", 
+        "Cross-group uniform", "Stand-alone", "Inverse 4th", "Cross-group intangible", "Business-focused", "Optional systemic Graphic", 
+        "Organic 6th generation", "Quality-focused", "Fully-configurable uniform", "Persistent analyzing", "Persevering systemic system engine", 
+        "Down-sized", "Polarised", "Enterprise-wide solution-oriented", "Optional", "Intuitive discrete", "Networked hybrid framework", 
+        "Versatile exuding", "Multi-lateral", "Devolved attitude-oriented toolset", "Profound web-enabled", "Public-key", 
+        "Down-sized contextually-based", "Grass-roots context-sensitive"]
+  
+      
+    }
+  }
