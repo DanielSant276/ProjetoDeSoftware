@@ -106,7 +106,7 @@
     height: 100%;
     
   }
-  .cadastrar-cliente-input-esquerdo, .cadastrar-cliente-input-direito{
+  .cadastrar-cliente-input-esquerdo{
     justify-content: space-around;
   }
 
