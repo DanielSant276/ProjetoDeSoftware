@@ -2,6 +2,7 @@ import React from 'react'
 import "./EditarProduto.css";
 import polygon from '../../img/Polygon.svg'
 
+
 function EditarProduto() {
   return(
     <div className="editar-produto-background-imagem principal">
@@ -43,10 +44,10 @@ function EditarProduto() {
                     <div className="editar-produto-form-apenas linha">
                         <div className="editar-produto-input-esquerdo">
                         <label className="label-form-editar" >ID</label>
-                        <input className="input-form-cadastrar" type="text" />
+                        <input className="input-form-cadastrar" pattern="[0-9]+$" type="text" />
 
                         <label className="label-form-editar">TÍTULO</label>
-                        <input className="input-form-cadastrar" type="text" />
+                        <input className="input-form-cadastrar" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" type="text" />
                         
                         <label className="label-form-editar">GÊNERO</label>
                         <select id='genero-editar-produto' className='input-form-cadastrar'>

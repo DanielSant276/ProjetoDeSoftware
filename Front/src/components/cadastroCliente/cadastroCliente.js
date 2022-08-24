@@ -1,7 +1,38 @@
-import React from 'react'
 import "./cadastroCliente.css";
 import polygon from '../../img/Polygon.svg'
+import * as React from "react";
+import { useState } from "react";
+import styled from "styled-components";
+import { mask as masker, unMask } from "remask";
+
+
+const Input = styled.input`
+height: 10%;
+width: 88%;
+border-radius: 25px;
+margin-left: 10px;z
+border: solid 1px #000000;
+background-color: #D9D9D9;
+`;
+
+
+const InputMask = ({ mask, onChange, value, ...props }) => {
+    const handleChange = ev => {
+      const originalValue = unMask(ev.target.value);
+      // const maskedValue = masker(originalValue, mask);
+      onChange(originalValue);
+    };
+  
+    const handleValue = masker(value, mask);
+  
+    return <Input {...props} onChange={handleChange} value={handleValue} />;
+  };
+
+
 function CadastrarCliente() {
+    const [cpf, setCpf] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [dependentes, setDependentes] = useState("");
   return(
     <div className="cadastrar-cliente-background-imagem principal">
         <div className="cadastrar-cliente-container1" >
@@ -37,27 +68,25 @@ function CadastrarCliente() {
                 <div className="cadastrar-cliente-form-titulo">
                 <h1 className="negrito roxo">CADASTRAR cliente</h1>
                 </div>
-
                 <div className="cadastrar-cliente-formulario">
                 <div className="cadastrar-cliente-form-apenas linha">
                     <div className="cadastrar-cliente-input-esquerdo">
                     <label className="label-form-cadastrar" >NOME</label>
-                    <input className="input-form-cadastrar" type="text" />
+                    <input className="input-form-cadastrar" id="nome" type="text" />
 
                     <label className="label-form-cadastrar">CPF</label>
-                    <input className="input-form-cadastrar" type="text" />
+                    <InputMask className="input-form-cadastrar" name="cpf" type="text" onChange={setCpf} value={cpf} mask={["999.999.999-99"]}></InputMask>
 
                     <label className="label-form-cadastrar">ENDEREÇO</label>
                     <input className="input-form-cadastrar" type="text" />
 
                     <label className="label-form-cadastrar">TELEFONE</label>
-                    <input className="input-form-cadastrar" type="text" />
+                    <InputMask className="input-form-cadastrar" name="telefone" type="text" onChange={setTelefone} value={telefone} mask={["(99) 9 9999 9999"]}></InputMask>
                     </div>
 
                     <div className="cadastrar-cliente-input-direito">
                     <label className="label-form-cadastrar">DEPENDENTES</label>
-                    <input className="input-form-cadastrar" type="text" ></input>
-
+                    <InputMask className="input-form-cadastrar" name="dependentes" type="text" onChange={setDependentes} value={dependentes} mask={["999"]}></InputMask>
 
                     </div>
                 </div>
@@ -92,6 +121,7 @@ function CadastrarCliente() {
                 <div className="space-40 link">
                 <p>MULTAS</p>
                 </div>
+
             </div>
             </div>
         </div>
