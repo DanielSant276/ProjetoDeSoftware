@@ -1,0 +1,93 @@
+.alterar-senha-background-imagem {
+    background-image: url("../../img/fundo.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center, bottom;
+  }
+  
+  .alterar-senha {
+    font-size: 25px;
+    color: #FFFFFF;
+    align-self: flex-start;
+    padding-left: 36%;
+  }
+  
+  .alterar-senha-formulario {
+    width: 25%;
+    padding: 2%;
+    border-radius: 20px;
+    height: 65%;
+    align-items: flex-start;
+    background-color:rgba(44, 37, 37, 0.37);
+
+  }
+  
+  .alterar-senha-campo {
+    height: 50%;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  .alterar-senha-label {
+    color: #FFFFFF;
+    font-size: 20px;
+  }
+  
+  .alterar-senha-texto1 {
+    border-bottom: dashed 4px #D37015;
+    width: 20%;
+    padding-bottom: 2.5%;
+  }
+  
+  .alterar-senha-input {
+    border-radius: 25px;
+    width: 22vw;
+    height: 40%;
+    border: 1px dashed #FFFFFF;
+    color: #FFFFFF;
+    padding-left: 4%;
+  }
+  
+  .alterar-senha-input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+  }
+  
+  .alterar-senha-texto2 {
+    border-bottom: dashed 5px #400C58;
+    width: 45%;
+    padding-bottom: 2.5%;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .alterar-senha-texto3 {
+    border-bottom: dashed 5px #400C58;
+    width: 85%;
+    padding-bottom: 2.5%;
+  }
+
+  .alterar-senha-auxiliar{
+    width: 100%;
+    display: flex;
+
+  }
+  
+  .alterar-senha-submit {
+    width: 13vw;
+    height: 7vh;
+    color: #000000;
+    border-radius: 25px;
+    font-size: 20px;
+    padding: 1%;
+    align-self: flex-end;  
+  }
+  
+  .alterar-senha-rodape {
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 25px;
+    opacity: 18%;
+    text-align: center;
+    width: 100%;
+  }

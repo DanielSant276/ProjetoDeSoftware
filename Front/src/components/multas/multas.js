@@ -8,7 +8,7 @@ function Multas({isOpen, handleClick}) {
   return(
     <>
     {true && (
-      //<div className="multas-background-imagem principal">
+      <div className="multas-background-imagem principal">
         <div className="multas-container1" >
           <div className="multas-conteudo-cabeçalho">
             <div className="multas-cabeçalho-esquerdo">
@@ -94,7 +94,7 @@ function Multas({isOpen, handleClick}) {
             </div>
           </div>
         </div>
-      //</div>
+      </div>
     )}
     </>
   );
