@@ -33,14 +33,24 @@ function CadastrarCliente() {
   const [telefone, setTelefone] = useState("");
   const [dependentes, setDependentes] = useState("");
   const [nome, setNome] = useState("");
+  const [endereco, setEndereco] = useState("");
 
   // Troquei o sanitizar o nome para a regexr correta e no input modifiquei a forma de enviar
   // Detalhe importante o atributo correto é onChange e não onChangeText
   // Outro detalhe, é necessário o campo value no input também para funcionar
   const sanitizarNome = (event) => {
-    const resultado = event.replace(/[^a-z]/gi, '');
+
+    // \u00C0-\u00FF permite a inserção de caracteres com acento.
+                  //lê-se: permite a-z, letras acentuadas, apóstrofe e espaço em branco
+    const resultado = event.replace(/[^a-z\u00C0-\u00FF' ]/gi, '');
 
     setNome(resultado);
+  };
+
+  const sanitizarEndereco = (event) => {
+    const resultadoEndereco = event.replace(/[^a-z0-9\u00C0-\u00FF', ]/gi, '');
+
+    setEndereco(resultadoEndereco);
   };
 
   return (
@@ -91,14 +101,14 @@ function CadastrarCliente() {
                     <InputMask className="input-form-cadastrar" name="cpf" type="text" onChange={setCpf} value={cpf} mask={["999.999.999-99"]}></InputMask>
 
                     <label className="label-form-cadastrar">ENDEREÇO</label>
-                    <input className="input-form-cadastrar" type="text" />
+                    <input className="input-form-cadastrar" name="endereco" type="text" value={endereco} onChange={(event) => { sanitizarEndereco(event.target.value) }}  />
 
                     <label className="label-form-cadastrar">TELEFONE</label>
                     <InputMask className="input-form-cadastrar" name="telefone" type="text" onChange={setTelefone} value={telefone} mask={["(99) 9 9999 9999"]}></InputMask>
                   </div>
 
                   <div className="cadastrar-cliente-input-direito">
-                    <label className="label-form-cadastrar">DEPENDENTES</label>
+                    <label className="label-form-cadastrar space-10">DEPENDENTES</label>
                     <InputMask className="input-form-cadastrar" name="dependentes" type="text" onChange={setDependentes} value={dependentes} mask={["999"]}></InputMask>
 
                   </div>
