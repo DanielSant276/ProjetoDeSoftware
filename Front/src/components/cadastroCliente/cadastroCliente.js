@@ -10,7 +10,7 @@ const Input = styled.input`
 height: 10%;
 width: 88%;
 border-radius: 25px;
-margin-left: 10px;z
+margin-left: 10px;
 border: solid 1px #000000;
 background-color: #D9D9D9;
 `;
@@ -27,6 +27,21 @@ const InputMask = ({ mask, onChange, value, ...props }) => {
   
     return <Input {...props} onChange={handleChange} value={handleValue} />;
   };
+
+const InputNome = () => {
+    const [nome, setNome] = useState("");
+
+    const sanitizarNome = (event) => {
+      const resultado = event.target.value.replace(
+        /[`~!@#$%^&*()_|+\-=?;:'".<>\{\}\[\]\\\/]/gi,
+        ""
+      );
+  
+      setNome(resultado);
+    };
+}
+
+
 
 
 function CadastrarCliente() {
@@ -72,7 +87,10 @@ function CadastrarCliente() {
                 <div className="cadastrar-cliente-form-apenas linha">
                     <div className="cadastrar-cliente-input-esquerdo">
                     <label className="label-form-cadastrar" >NOME</label>
-                    <input className="input-form-cadastrar" id="nome" type="text" />
+
+                    {/* leticia mexendo aqui
+                     */}
+                    <input className="input-form-cadastrar" id="nome" name="nome" type="text" onChangeText={ (nome => {sanitizarNome(nome)} ) } />
 
                     <label className="label-form-cadastrar">CPF</label>
                     <InputMask className="input-form-cadastrar" name="cpf" type="text" onChange={setCpf} value={cpf} mask={["999.999.999-99"]}></InputMask>
