@@ -1,7 +1,5 @@
-const buscaPalavra = require('./Q01');
-const frase = require("./Q01.json");
-console.log(frase)
-
+const buscaPalavra = require('./Q01-encontraPalavra');
+const frase = require("./Q01-encontraPalavra.json");
 
 test('Verifica se tem valor nulo, não definido, vazio ou NaN', () => {
   for (let i = 0; i < frase.fraseEntrada.frase.length; i++) {

@@ -1,12 +1,9 @@
-const removeDuplicates = require("./Q07");
-const array = require("./Q07.json");
-console.log(array)
-
-
+const removeDuplicates = require("./Q07-juntaArrays");
+const array = require("./Q07-juntaArrays.json");
 
 test('verifca se junta arrays sem repetir os termos', () => {
     for (let i = 0; i < array.arrayEntrada.array.length; i++) {
-        expect(removeDuplicates(array.arrayEntrada.array[i][0], array.arrayEntrada.array[i][1]).toEqual(array.arraySaida.array[i]));
+        expect(removeDuplicates(array.arrayEntrada.array[i][0], array.arrayEntrada.array[i][1])).toEqual(array.arraySaida.array[i]);
     }
 });
 

@@ -9,7 +9,6 @@ function removeDuplicates(arr1, arr2) {
             }
         }
     }
-    console.log(arr);
     return arr;
 }
 
