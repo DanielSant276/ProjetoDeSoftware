@@ -1,3 +1,10 @@
+.senha-segura-background-imagem {
+  background-image: url("../../img/fundo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center, bottom;
+}
+
 .senha-segura-container {
   width: 440px;
   height: fit-content;

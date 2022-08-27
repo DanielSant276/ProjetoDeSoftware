@@ -1,0 +1,73 @@
+.cadastro-usuario-background-imagem {
+    background-image: url("../../img/fundo.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center, bottom;
+}
+
+.principal-cadastrar-usuario {
+    margin-right: 125px;
+    font-size: 25px;
+    color: #fff6a8;
+}
+
+.cadastro-usuario-formulario {
+    width: 300px;
+    height: 300px;
+    padding: 40px 20px 30px 20px;
+    border-radius: 20px;
+}
+
+.cadastro-usuario-label {
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.cadastro-usuario-campo {
+    justify-content: space-around;
+}
+  
+.cadastro-usuario-texto1 {
+    border-bottom: dashed 4px #D37015;
+    width: 90px;
+    padding-bottom: 10px;
+}
+
+.cadastro-usuario-input {
+    border-radius: 25px;
+    width: auto;
+    height: 35px;
+    border: 1px dashed #FFFFFF;
+    color: #FFFFFF;
+}
+
+.cadastro-usuario-submit {
+    width: 150px;
+    height: 35px;
+    color: #000000;
+    border-radius: 25px;
+    align-self: flex-end; /*precisa colocar o botão no lugar certo*/
+}
+
+.cadastro-usuario-input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+  
+.cadastro-usuario-texto2 {
+    border-bottom: dashed 5px #400C58;
+    width: 90px;
+    padding-bottom: 10px;
+}
+
+span {
+    color: #d37015;
+    margin-bottom: 10px;
+}
+  
+.cadastro-usuario-rodape {
+    color: #FFFFFF;
+    position: absolute;
+    bottom: 25px;
+    opacity: 18%;
+}

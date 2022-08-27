@@ -106,16 +106,18 @@ margin-left: 50px;
 }
 
 .multas-info-linha1 .multas-info-linha2 .multas-info-linha3{
-  width: 30%;
+  width: 100%;
   justify-content: space-around;
-  
+}
+
+.coluna{
+  width: 100%;
+  flex-direction: column;
 }
 
 .multas-info-linha1{
-  margin-left: 20px;
+  margin-left: 35px;
 }
-
-
   
 .multas-info-outros-painel {
   width: 18%;
@@ -130,6 +132,11 @@ margin-left: 50px;
   align-items: center;
 }
   
+.input-form-cadastrar {
+  height: 35px;
+  width: 250px;
+}
+
 .multas-info-outros-botoes {
   background-color: rgba(217, 217, 217, 0.08);
   height: 340px;

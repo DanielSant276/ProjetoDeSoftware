@@ -74,19 +74,19 @@ function CadastrarCliente() {
                 <p className="cadastrar-cliente-menu-superior-botao-texto negrito">LISTAR TUDO</p>
               </div>
               <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">PROCURAR cliente</p>
+                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">PROCURAR CLIENTE</p>
               </div>
               <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">EDITAR cliente</p>
+                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">EDITAR CLIENTE</p>
               </div>
               <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">CADASTRAR clienteS</p>
+                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">CADASTRAR CLIENTES</p>
               </div>
             </div>
 
             <div className="cadastrar-cliente-form-cadastro">
               <div className="cadastrar-cliente-form-titulo">
-                <h1 className="negrito roxo">CADASTRAR cliente</h1>
+                <h1 className="negrito roxo">CADASTRAR CLIENTE</h1>
               </div>
               <div className="cadastrar-cliente-formulario">
                 <div className="cadastrar-cliente-form-apenas linha">

@@ -10,6 +10,7 @@ import MoldeCadastro from "./components/moldeCadastro/MoldeCadastro";
 import CadastrarCliente from "./components/cadastroCliente/cadastroCliente";
 import EditarProduto from "./components/editarProduto/EditarProduto";
 import ProcurarProduto from "./components/procurarProduto/procurarProduto";
+import CadastrarUsuario from "./components/cadastrarUsuario/cadastrarUsuario";
 
 
 const link = "http://localhost:5000"
@@ -28,8 +29,8 @@ export default function Rotas() {
             <Route path="/moldeCadastro" element={<MoldeCadastro link={link} />} />
             <Route path="/cadastroCliente" element={<CadastrarCliente link={link} />} />
             <Route path="/editarProduto" element={<EditarProduto link={link} />} />
-            
             <Route path="/procurarProduto" element={<ProcurarProduto link={link}/>} /> {/*comentado pq n tava indo pro commit */}
+            <Route path="/cadastrarUsuario" element={<CadastrarUsuario link={link} />} />
         </Routes>
     )
 }
