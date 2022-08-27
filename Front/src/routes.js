@@ -30,8 +30,9 @@ export default function Rotas() {
             <Route path="/moldeCadastro" element={<MoldeCadastro link={link} />} />
             <Route path="/cadastroCliente" element={<CadastrarCliente link={link} />} />
             <Route path="/editarProduto" element={<EditarProduto link={link} />} />
-            
-            <Route path="/procurarProduto" element={<ProcurarProduto link={link}/>} /> {/*comentado pq n tava indo pro commit */}
+            <Route path="/alterarSenha" element={<AlterarSenha link={link}/>} />            
+            <Route path="/procurarProduto" element={<ProcurarProduto link={link}/>} />
+            <Route path="/cadastrarUsuario" element={<CadastrarUsuario link={link}/>} />
         </Routes>
     )
 }

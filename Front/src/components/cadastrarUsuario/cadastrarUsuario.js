@@ -51,8 +51,9 @@ function CadastrarUsuario({link}) {
         <input className="cadastro-usuario-input background-cor-padrao space-5" type="password" value={senha} onChange={onChangeSenha} { ... register("SENHA", { required: true })}/>
         {errors.SENHA && <span>PREENCHA O CAMPO</span>}
       </div>
-
-      <button className="cadastro-usuario-submit negrito link jso" onClick={() => CadastrarUsuario(usuario, senha, link, irParaCadastroCliente)}>CADASTRAR</button>
+      <div>
+        <button className="cadastro-usuario-submit negrito link jso" onClick={() => CadastrarUsuario(usuario, senha, link, irParaCadastroCliente)}>CADASTRAR</button>
+      </div>
     </form>
     
     <div className="cadastro-usuario-rodape">

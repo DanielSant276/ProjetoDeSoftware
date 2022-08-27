@@ -8,7 +8,6 @@ function AlterarSenha ({link}) {
     <div className="principal alterar-senha-background-imagem">
         <p className="alterar-senha space-5 negrito">Alterar senha</p>
         <div className="alterar-senha-formulario espaco-entre alinha-centro">
-            {/* <div name="form"> */}
                 <div className="alterar-senha-campo">
                     <p className="alterar-senha-label alterar-senha-texto1 jso negrito space-10">Login</p>
                     <input className="alterar-senha-input background-cor-padrao space-20"/>
@@ -24,7 +23,6 @@ function AlterarSenha ({link}) {
             </div>
             <div className="alterar-senha-auxiliar coluna">
                 <button className="alterar-senha-submit link jso negrito alinha-centro">ALTERAR SENHA</button>
-            {/* </div> */}
         </div>
 
     </div>
