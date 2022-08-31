@@ -11,7 +11,7 @@ export function receberGeneros(setGenerosOpcoes, link) {
 
       setGenerosOpcoes(nomes);
     }
-  )
+  );
 }
 
 export function criarLivro(produto, link) {

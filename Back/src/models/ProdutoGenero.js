@@ -3,11 +3,11 @@ const produto = require("./Produto.js");
 const genero = require("./Genero.js");
 
 class ProdutoGenero {
-  static async add(livroId, generoId) {
+  static async add(livroId, generoId, t) {
     let produtoGeneroRelacao = await produtoGeneroModel.create({
       idProduto: livroId,
       idGenero: generoId
-    });
+    }, { transaction: t });
   }
 
   static async getByProdutoID(produtoId) {

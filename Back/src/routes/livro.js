@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require("../models/db.js");
 const path = require('path');
 const livro = express.Router();
 
@@ -100,6 +101,10 @@ livro.route("/:id")
   })
 
 livro.route("/")
+  .get(async function (req, res) {
+    getProduto = await produtoClass.getAll();
+    res.send({ data: getProduto });
+  })
   .post(async function (req, res) {
     // define as informações do produto
     let produtoDados = {
@@ -116,39 +121,26 @@ livro.route("/")
     let novoProduto;
     // cria um novo produto
     try {
-      novoProduto = await produtoClass.add(produtoDados);
+      const result = await db.sequelize.transaction(async (t) => {
+        novoProduto = await produtoClass.add(produtoDados, t);
+
+        // recebe as informações do produto recem cadastrado no banco de dados
+        let getProduto;
+        getProduto = await produtoClass.getOneByTitle(produtoDados.titulo, t);
+
+        console.log(getProduto);
+        // cadastra a relação entre produto e genero
+        let produtoGeneroRelacao;
+        produtoGeneroRelacao = await produtoGeneroClass.add(getProduto[0].dataValues.idProduto, produtoDados.genero, t);
+
+        // devolve as relações para o front
+        res.send({ mensagem: "Enviado com sucesso" });
+      })
     }
     catch (error) {
+      res.send({ status: '500', mensagem: "Algo deu errado" });
       console.log(error);
-      console.log("cria produto");
-      res.send({ mensagem: "Ocorreu um erro ao criar o produto" })
     }
-
-    // recebe as informações do produto recem cadastrado no banco de dados
-    let getProduto;
-    try {
-      getProduto = await produtoClass.getOneByTitle(produtoDados.titulo);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("pega produto");
-      res.send({ mensagem: "Ocorreu um erro ao procurar o produto" })
-    }
-
-    console.log(getProduto);
-    // cadastra a relação entre produto e genero
-    let produtoGeneroRelacao;
-    try {
-      produtoGeneroRelacao = await produtoGeneroClass.add(getProduto[0].dataValues.idProduto, produtoDados.genero);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("gera relação");
-      res.send({ mensagem: "Ocorreu um erro ao gerar a relação entre gênero e produtos" })
-    }
-
-    // devolve as relações para o front
-    res.send({ mensagem: "Enviado com sucesso" });
   })
 
 module.exports = livro;

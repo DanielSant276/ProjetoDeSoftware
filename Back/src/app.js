@@ -48,7 +48,7 @@ routes.use("/genero", genero);
 
 app.use(routes);
 
-//Somente uma requisição para criar as tabelas no banco de dados
+// Somente uma requisição para criar as tabelas no banco de dados
 // app.get("/criar", function (req, res) {
 //   for (i = 0; i < models.length; i++) {
 //     models[i].sync({ force: true })

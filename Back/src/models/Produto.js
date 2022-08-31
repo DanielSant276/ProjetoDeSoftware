@@ -1,7 +1,9 @@
 const db = require("./db.js");
 
 class Produto {
-  static async add(produtoDados) {
+  static async add(produtoDados, t) {
+    // console.log(produtoDados);
+
     let criaProduto = await produtoModel.create({
       numExemplares: produtoDados.numExemplares,
       lancamento: produtoDados.lancamento,
@@ -11,16 +13,16 @@ class Produto {
       descricao: produtoDados.descricao,
       tituloProduto: produtoDados.titulo,
       qtdLocados: 0
-    });
+    }, { transaction: t });
 
     return criaProduto
   }
 
-  static async getOneByTitle(titulo) {
+  static async getOneByTitle(titulo, t) {
     const produto = await produtoModel.findAll({
       where: {
         tituloProduto: titulo
-      }
+      }, transaction: t
     })
 
     return produto;

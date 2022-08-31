@@ -1,12 +1,12 @@
 const db = require("./db.js");
 
 class Usuario {
-  static async add(usuarioDados) {
+  static async add(usuarioDados, t) {
     let createUser = await usuarioModel.create({
       login: usuarioDados.login,
       senha: usuarioDados.senha,
       usuarioTipo: usuarioDados.tipo,
-    });
+    }, { transaction: t });
 
     return createUser;
   }
