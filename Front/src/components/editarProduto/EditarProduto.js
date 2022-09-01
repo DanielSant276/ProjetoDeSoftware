@@ -101,10 +101,15 @@ function EditarProduto({ link }) {
                         <option value={valor}>{nome}</option>
                       )}
                     </select>
+                      <div className="linha">
+                        <label className="label-form-editar editar-produto-input-dividido" >EDIÇÃO</label>
+                        <label className="label-form-editar editar-produto-input-dividido">QUANTIDADE DE PÁGINAS</label>
+                      </div>
 
-                    <label className="label-form-editar" >EDIÇÃO</label>
-                    <input className="input-form-cadastrar" value={edicao} onChange={onChangeEdicao} type="text" />
-
+                      <div className="linha">
+                        <input className="input-form-dividido" value={edicao} onChange={onChangeEdicao} type="text" />
+                        <input className="input-form-dividido" value={paginas} onChange={onChangePaginas} type="number" />
+                      </div>
                   </div>
 
                   <div className="editar-produto-input-direito">
@@ -112,8 +117,8 @@ function EditarProduto({ link }) {
                     <label className="label-form-editar">AUTOR</label>
                     <input className="input-form-cadastrar" value={autor} onChange={onChangeAutor} type="text" ></input>
 
-                    <label className="label-form-editar">QUANTIDADE DE PÁGINAS</label>
-                    <input className="input-form-cadastrar" value={paginas} onChange={onChangePaginas} type="number" />
+                    <label className="label-form-editar">QUANTIDADE DE EXEMPLARES</label>
+                    <input className="input-form-cadastrar" type="number" /> 
 
                     {/* é apenas o ano */}
                     <label className="label-form-editar">LANÇAMENTO</label>

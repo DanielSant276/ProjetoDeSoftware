@@ -32,7 +32,7 @@ export default function Rotas() {
             <Route path="/cadastrarUsuario" element={<CadastrarUsuario link={link}/>} /> {/*feito a integração como back, verificar a sanitização de input*/}
 
             <Route path="/procurarProduto" element={<ProcurarProduto link={link}/>} /> { /*feito a integração como back, verificar a sanitização de input, essa tela ta meio esquisita, talvez tirar a parte de alocado/devolver e inserir a parte para deletar*/}
-            <Route path="/editarProduto" element={<EditarProduto link={link} />} /> {/*ta faltando número de edições exemplares no formulario*/}
+            <Route path="/editarProduto" element={<EditarProduto link={link} />} /> {/*não permitir números negativos nos inputs exemplares e quantidade de páginas*/}
             <Route path="/precificar" element={<Precificar link={link} />} /> {/*Essa tela irá virar tela de precificar locacao*/}
             {/* Falta tela de mostrar clientes: seguir tela em html mandada por discord, e colocar nome do dependente */}
             {/* Falta tela de selecionar livros: Selecionar, Id, Autor, Disponíveis */}
