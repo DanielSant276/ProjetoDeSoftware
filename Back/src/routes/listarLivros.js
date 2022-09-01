@@ -8,7 +8,7 @@ const { produtoGeneroClass } = require("../models/ProdutoGenero");
 
 listarLivros.route("/livros")
   .get(async function (req, res) {
-    sendFile
+    // sendFile;
     let livros = await produtoClass.getAll();
 
     let relacoes = []

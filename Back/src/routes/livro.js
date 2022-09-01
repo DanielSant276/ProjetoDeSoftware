@@ -35,9 +35,9 @@ livro.route("/:id")
     try {
       let livro = await produtoClass.getOneById(livroId);
 
-      let genero = await produtoClass.getRelacaoProdutoGenero(livroId);
-
-      res.send([livro, genero]);
+      let genero = await produtoClass.getRelacaoProdutoGeneroId(livroId);
+      
+      res.send({ data: [livro, genero[0]] });
     }
     catch (error) {
       console.log(error);
@@ -57,24 +57,25 @@ livro.route("/:id")
       genero: parseInt(req.body.generos)
     }
 
-    // Modifica os valores relacionados ao produto
-    try {
-      // let modificaProduto = await produtoClass.editarProduto(produtoDados);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("falha ao modificar o produto");
-    }
+    console.log(produtoDados);
+    // // Modifica os valores relacionados ao produto
+    // try {
+    //   // let modificaProduto = await produtoClass.editarProduto(produtoDados);
+    // }
+    // catch (error) {
+    //   console.log(error);
+    //   console.log("falha ao modificar o produto");
+    // }
 
-    try {
-      let getGeneros = await generoClass.getGeneros(produtoDados.genero);
-      let getGenerosRelacao = await produtoGeneroClass.getByProdutoID(produtoDados.id);
-      let modificaGeneroRelacao = await produtoGeneroClass.editarGeneroRelacao(getGeneros, getGenerosRelacao);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("falha ao modificar o genero");
-    }
+    // try {
+    //   let getGeneros = await generoClass.getGeneros(produtoDados.genero);
+    //   let getGenerosRelacao = await produtoGeneroClass.getByProdutoID(produtoDados.id);
+    //   let modificaGeneroRelacao = await produtoGeneroClass.editarGeneroRelacao(getGeneros, getGenerosRelacao);
+    // }
+    // catch (error) {
+    //   console.log(error);
+    //   console.log("falha ao modificar o genero");
+    // }
   })
   .delete(async function (req, res) {
     let produtoId = req.params.id

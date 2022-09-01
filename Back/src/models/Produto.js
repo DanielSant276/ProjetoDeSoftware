@@ -53,6 +53,16 @@ class Produto {
     return relacao;
   }
 
+  static async getRelacaoProdutoGeneroId(produtoId) {
+    const relacao = await db.sequelize.query(
+      `SELECT generos.idGenero
+       FROM   produtos, generos, produtogeneros as relacao
+       WHERE  produtos.idProduto = ${produtoId} and produtos.idProduto = relacao.idProduto and relacao.idGenero = generos.idGenero;`
+    );
+
+    return relacao;
+  }
+
   static async editarProduto(produtoDados) {
     const modificaProduto = await produtoModel.update({
       numExemplares: produtoDados.numExemplares,

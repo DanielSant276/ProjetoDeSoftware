@@ -32,7 +32,7 @@ const livro = require("./routes/livro");
 const listarLivros = require("./routes/listarLivros");
 const locacao = require("./routes/locacao");
 // usado apenas para criar no banco de dados os gêneros, retirar depois
-const genero = require("./routes/genero");
+// const genero = require("./routes/genero");
 
 const routes = require("./routes/index");
 
@@ -43,7 +43,7 @@ routes.use("/livros", livro);
 routes.use("/listarLivros", listarLivros);
 routes.use("/locacao", locacao);
 // usado apenas para criar no banco de dados os gêneros, retirar depois
-routes.use("/genero", genero);
+// routes.use("/genero", genero);
 
 
 app.use(routes);

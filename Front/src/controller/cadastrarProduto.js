@@ -2,14 +2,14 @@ import $ from 'jquery';
 
 export function receberGeneros(setGenerosOpcoes, link) {
   $.get(link + "/livros/generos",
-    function (data, status) {
+    async function (data, status) {
       let nomes = [];
 
       for (let i = 0; i < data.data.length; i++) {
         nomes.push(data.data[i].nome.charAt(0).toUpperCase() + data.data[i].nome.slice(1));
       }
 
-      setGenerosOpcoes(nomes);
+      await setGenerosOpcoes(nomes);
     }
   );
 }

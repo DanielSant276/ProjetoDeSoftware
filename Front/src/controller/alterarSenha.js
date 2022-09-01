@@ -3,19 +3,20 @@ import $ from 'jquery';
 export function trocarSenha(usuario, senhaAntiga, repetirSenha, link) {
   if (senhaAntiga == repetirSenha) {
     let novoLogin = {
+      idUsuario: 1,
       usuario: usuario,
-      senha: senha
+      senha: repetirSenha
     }
 
-    $.post(link + "/livros",
-      {
-        novoLogin
-      },
-      function (data, status) {
+    $.ajax({
+      url: link + "/criarUsuario",
+      method: "PUT",
+      data: novoLogin,
+      success: function (data, status) {
         console.log(data);
-        // Fazer chamada de callback para outra tela;
+        // carregarTabela();
       }
-    );
+    });
   }
   else {
     console.log("senhas não são iguais")

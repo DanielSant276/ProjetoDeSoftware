@@ -7,7 +7,6 @@ import { receberLivros } from "../../controller/procurarProduto";
 function ProcurarProduto({ link }) {
   useEffect(() => {
     receberLivros(setLivros, link);
-    setLoading(true);
   }, [])
 
   useEffect(() => {
@@ -65,36 +64,38 @@ function ProcurarProduto({ link }) {
               </div>
 
               {/* conteúdo da div: ID, título, status */}
-              {(loading) && livros.map((item) => 
-              // {
+              <div className="linha">
+                <h2 className="space-20 espaco-teste-1">ID</h2>
+                <h2 className="space-20 espaco-teste-2">TÍTULO</h2>
+                <div className="espaco-teste3"></div>
+                <div className="espaco-teste3"></div>
+              </div>
+
+              {livros.map((item) =>
                 (item.tituloProduto.toUpperCase().startsWith(busca.toUpperCase()) || busca == "") &&
-                  <div className="linha">
-                    <div className="procurar-produto-id linha negrito alinha-centro coluna">
-                      <h2 className="space-20">ID</h2>
-                      <p className="negrito">{item.idProduto}</p>
-                    </div>
-                    <div className="procurar-produto-titulo linha negrito alinha-centro coluna">
-                      <h2 className="space-20">TÍTULO</h2>
-                      <p className="roxo negrito">{item.tituloProduto}</p>
-                    </div>
-                    <div className="procurar-produto-status linha negrito alinha-centro coluna">
-                      {/* não acho que faz sentido essa parte aqui */}
+                <div className="linha">
+                  <div className="procurar-produto-id negrito alinha-centro coluna">
+                    <p className="negrito">{item.idProduto}</p>
+                  </div>
+                  <div className="procurar-produto-titulo linha negrito alinha-centro coluna">
+                    <p className="roxo negrito">{item.tituloProduto}</p>
+                  </div>
+                  {/* <div className="procurar-produto-status linha negrito alinha-centro coluna">
                       <h2 className="space-20">STATUS</h2>
                       <p className="negrito">ALOCADO</p>
-                    </div>
+                    </div> */}
 
-                    {/* front dos botões de editar e devolver, precisa formatar direito o botão e retirar o espaço no final
+                  {/* front dos botões de editar e devolver, precisa formatar direito o botão e retirar o espaço no final
                 dos botões */}
 
-                    <div className="procurar-produto-botao linha negrito alinha-centro coluna">
-                      <h2 className>&nbsp;</h2>
-                      <div className="linha texto-centro">
-                        <div className="procurar-produto-botao-formatacao procurar-produto-separar-editar link">EDITAR</div>
-                        <div className="procurar-produto-botao-formatacao procurar-produto-separar-status link">DEVOLVER {/*trocar para deletar*/}</div>
-                      </div>
+                  <div className="procurar-produto-botao linha negrito alinha-centro coluna">
+                    <h2 className>&nbsp;</h2>
+                    <div className="linha texto-centro">
+                      <div className="procurar-produto-botao-formatacao procurar-produto-separar-editar link">EDITAR</div>
+                      <div className="procurar-produto-botao-formatacao procurar-produto-separar-status link">DEVOLVER {/*trocar para deletar*/}</div>
                     </div>
                   </div>
-              // }
+                </div>
               )}
             </div>
           </div>

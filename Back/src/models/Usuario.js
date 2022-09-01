@@ -41,6 +41,18 @@ class Usuario {
 
     return loginVerificado;
   }
+
+  static async modificaSenha(dados, t) {
+    const mudalogin = await usuarioModel.update({
+      senha: dados.senha
+    },
+      {
+        where: {
+          idUsuario: dados.idUsuario
+        },
+        transaction: t
+      })
+  }
 }
 
 const usuarioModel = db.sequelize.define('usuarios', {

@@ -31,5 +31,25 @@ usuario.route("/")
       }
     }
   })
+  .put(async function (req, res) {
+    let login = {
+      idUsuario: 1, //Trocar essa parte aqui
+      usuario: req.body.usuario,
+      senha: SHA256.sha256ByDaniel(req.body.senha)
+    }
+
+    try {
+      const result = await db.sequelize.transaction(async (t) => {
+        await usuarioClass.modificaSenha(login, t);
+
+        res.send({ status: '200', mensagem: "Senha alterada" });
+
+      })
+    } catch (error) {
+      res.send({ status: '500', mensagem: "Algo deu errado" });
+      console.log(error);
+    }
+    console.log(login)
+  })
 
 module.exports = usuario;
