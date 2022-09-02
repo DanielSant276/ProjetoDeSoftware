@@ -4,11 +4,11 @@ const cliente = require("./cliente.js");
 const dependente = require("./dependente.js");
 
 class ClienteDependente{
-  static async add() {
+  static async add(clienteID, dependenteID, t) {
 		return await clienteDependenteModel.create({
-			idCliente: this.idCliente,
-			idDependente: this.idDependente,
-		});
+			idCliente: clienteID,
+			idDependente: dependenteID,
+		}, { transaction: t });
 	}
 
   // Quando tiver internet verificar como faz para fazer uma busca

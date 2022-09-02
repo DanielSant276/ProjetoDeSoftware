@@ -14,11 +14,12 @@ class Genero {
     return generos;
   }
 
-  static async getGeneros(generos) {
+  static async getGeneros(generos, t) {
     let generoPesquisa = await generoModel.findAll({
       where: {
-        nome: generos[i]
-      }
+        idGenero: generos
+      },
+      transaction: t
     });
 
     return generoPesquisa;

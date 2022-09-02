@@ -1,11 +1,11 @@
 const db = require("./db.js");
 
 class Dependente {
-  static async add(nome, responsavel) {
+  static async add(dados, t) {
     return await dependenteModel.create({
-      depNome: nome,
-      depResponsavel: responsavel
-    });
+      depNome: dados.dependente,
+      depCPF: dados.cpf
+    }, { transaction: t });
   }
 
   static async getById(id) {
@@ -18,18 +18,13 @@ class Dependente {
     return dependentes;
   }
 
-  static async getAllByResponsavel(responsavel) {
-    try {
-      const dependentes = await dependenteModel.findAll({
-        where: {
-          depResponsavel: responsavel
-        }
-      })
-      return dependentes;
-    }
-    catch (error) {
-      console.log(error);
-    }
+  static async getByResponsavelCPF(dados, t) {
+    const dependentes = await dependenteModel.findAll({
+      where: {
+        depCPF: dados.cpf
+      }, transaction: t
+    })
+    return dependentes;
   }
 }
 

@@ -35,13 +35,13 @@ function montarObj(data) {
 }
 
 export function editar(dados, link) {
-  console.log(dados);
-  // $.ajax({
-  //   url: link + "/livros/" + dados.id,
-  //   method: "PUT",
-  //   data: dados,
-  //   success: function (data, status) {
-  //     console.log(data);
-  //   }
-  // });
+  console.log("editar")
+  $.ajax({
+    url: link + "/livros/" + dados.id,
+    method: "PUT",
+    data: dados,
+    success: function (data, status) {
+      console.log(data);
+    }
+  });
 }

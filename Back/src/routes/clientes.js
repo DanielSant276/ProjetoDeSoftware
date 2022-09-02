@@ -1,44 +1,55 @@
 const express = require('express');
 const path = require('path');
 const cliente = express.Router();
+const db = require("../models/db.js");
 
-const clienteCLass = require("../models/cliente.js");
+const { clienteClass } = require("../models/cliente.js");
+const { clienteDependenteClass } = require("../models/clienteDependente.js");
+const { dependenteClass } = require("../models/dependente.js");
+
 
 cliente.get("/relacoes", async function (req, res) {
-  let relacoes = await clienteCLass.clienteClass.BuscaTodasRelacoes();
-  
+  let relacoes = await clienteClass.BuscaTodasRelacoes();
+
   res.send({ data: relacoes });
 })
 
 cliente.route("/")
-  .get(function (req, res) {
-    res.sendFile(path.join(__dirname, "../", "/teste/clientes.html"));
-  })
+  // .get(function (req, res) {
+  //   res.sendFile(path.join(__dirname, "../", "/teste/clientes.html"));
+  // })
 
   .post(async function (req, res) {
-    let clienteDados = {
-      nome: req.body.cliente.nome,
-      cpf: req.body.cliente.cpf,
-      endereco: req.body.cliente.endereco,
-      telefone: req.body.cliente.telefone,
-      dependentes: req.body.cliente.dependentes
-    }
+    let clienteDados = req.body.dados;
 
-    let novoCliente = new clienteCLass.clienteClass(clienteDados.nome, clienteDados.cpf, clienteDados.endereco, clienteDados.telefone, clienteDados.dependentes);
-
+    console.log(clienteDados)
     try {
-      novoCliente = await novoCliente.add(clienteDados);
+      const result = await db.sequelize.transaction(async (t) => {
+        // cria novo cliente
+        let novoCliente = await clienteClass.add(clienteDados, t);
 
-      if (novoCliente != "Abortar") {
-        res.send({ mensagem: "Recebido e retornado", data: novoCliente });
-      }
-      else {
-        res.send({ status: '500', mensagem: "Algo deu errado" });
-      }
+        if (clienteDados.dependente != "") {
+          // verificar id do novo cliente criado
+          let clienteID = await clienteClass.getOne(clienteDados.cpf, t);
+          clienteID = clienteID[0].dataValues.idCliente;
+
+          // cria o dependente
+          let criaDependente = await dependenteClass.add(clienteDados, t);
+
+          // verifica o id do dependente criado
+          let dependenteID = await dependenteClass.getByResponsavelCPF(clienteDados, t);
+          dependenteID = dependenteID[0].dataValues.idDependente;
+
+          // cria a relação entre cliente e dependente
+          let criaRelacao = await clienteDependenteClass.add(clienteID, dependenteID, t);
+        }
+      })
+
+      res.send({ mensagem: "Cliente criado" });
     }
     catch (error) {
       if (error.name === 'SequelizeUniqueConstraintError') {
-        res.send({ status: '403', mensagem: "Usuário existe" });
+        res.send({ status: '403', mensagem: "Cliente existe" });
       } else {
         console.log(error);
         res.send({ status: '500', mensagem: "Algo deu errado" });

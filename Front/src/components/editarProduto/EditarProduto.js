@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import "./EditarProduto.css";
 import polygon from '../../img/Polygon.svg'
-import { pegaInfo } from "../../controller/editarProduto.js";
+import { pegaInfo, editar } from "../../controller/editarProduto.js";
 import { receberGeneros } from "../../controller/cadastrarProduto"
 
 function EditarProduto({ link }) {
+  const location = useLocation();
+
   useEffect(() => {
     receberGeneros(setGeneroOpcoes, link);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const [loading, setLoading] = useState(false);
-
   useEffect(() => {
-    pegaInfo(link, 9, setInfo);
+    let produtoID = location.state;
+
+    pegaInfo(link, produtoID, setInfo);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [id, setId] = useState();
@@ -47,6 +52,24 @@ function EditarProduto({ link }) {
     setEdicao(data.edicao);
     setPaginas(data.paginas);
     setNumExemplares(data.numExemplares);
+  }
+
+  function montaObj() {
+    let dados = {
+      id: id,
+      titulo: titulo,
+      autor: autor,
+      generos: parseInt(genero) + 1,
+      descricao: descricao,
+      lancamento: lancamento,
+      edicao: edicao,
+      paginas: paginas,
+      numExemplares: numExemplares
+    }
+
+    console.log(dados.generos);
+
+    editar(dados, link)
   }
 
   return (
@@ -101,15 +124,15 @@ function EditarProduto({ link }) {
                         <option value={valor}>{nome}</option>
                       )}
                     </select>
-                      <div className="linha">
-                        <label className="label-form-editar editar-produto-input-dividido" >EDIÇÃO</label>
-                        <label className="label-form-editar editar-produto-input-dividido">QUANTIDADE DE PÁGINAS</label>
-                      </div>
+                    <div className="linha">
+                      <label className="label-form-editar editar-produto-input-dividido" >EDIÇÃO</label>
+                      <label className="label-form-editar editar-produto-input-dividido">QUANTIDADE DE PÁGINAS</label>
+                    </div>
 
-                      <div className="linha">
-                        <input className="input-form-dividido" value={edicao} onChange={onChangeEdicao} type="text" />
-                        <input className="input-form-dividido" value={paginas} onChange={onChangePaginas} type="number" />
-                      </div>
+                    <div className="linha">
+                      <input className="input-form-dividido" value={edicao} onChange={onChangeEdicao} type="text" />
+                      <input className="input-form-dividido" value={paginas} onChange={onChangePaginas} type="number" />
+                    </div>
                   </div>
 
                   <div className="editar-produto-input-direito">
@@ -118,7 +141,7 @@ function EditarProduto({ link }) {
                     <input className="input-form-cadastrar" value={autor} onChange={onChangeAutor} type="text" ></input>
 
                     <label className="label-form-editar">QUANTIDADE DE EXEMPLARES</label>
-                    <input className="input-form-cadastrar" type="number" /> 
+                    <input className="input-form-cadastrar" value={numExemplares} onChange={onChangeNumExemplares} type="number" />
 
                     {/* é apenas o ano */}
                     <label className="label-form-editar">LANÇAMENTO</label>
@@ -131,7 +154,7 @@ function EditarProduto({ link }) {
                 </div>
 
                 <div className="editar-produto-editar-botao link">
-                  <p className="editar-produto-editar-botao-text negrito">CONFIRMAR</p>
+                  <p className="editar-produto-editar-botao-text negrito" onClick={() => montaObj()}>CONFIRMAR</p>
                 </div>
               </div>
             </div>

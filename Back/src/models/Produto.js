@@ -63,7 +63,7 @@ class Produto {
     return relacao;
   }
 
-  static async editarProduto(produtoDados) {
+  static async editarProduto(produtoDados, t) {
     const modificaProduto = await produtoModel.update({
       numExemplares: produtoDados.numExemplares,
       lancamento: produtoDados.lancamento,
@@ -76,15 +76,15 @@ class Produto {
       {
         where: {
           idProduto: produtoDados.id
-        }
+        }, transaction: t
       })
   }
 
-  static async deletarProduto(produtoId) {
+  static async deletarProduto(produtoId, t) {
     const produto = await produtoModel.destroy({
       where: {
         idProduto: produtoId
-      }
+      }, transaction: t
     })
   }
 }

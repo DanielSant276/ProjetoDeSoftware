@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../menu/menu.css';
 import imagem from '../../img/Polygon.svg';
 import Modal from 'react-modal';
-import Multas from '../multas/multas';
+import Locacao from '../locacao/locacao';
 import { useNavigate } from 'react-router-dom';
 
 function Menu({ link }) {
@@ -102,16 +102,16 @@ function Menu({ link }) {
         handleClick={closeModal}
       >
         {(modal === 1) ?
-          <Multas
+          <Locacao
             isOpen={modalIsOpen}
             handleClick={closeModal}
           /> :
           ((modal === 2) ?
-            <Multas
+            <Locacao
               isOpen={modalIsOpen}
               handleClick={closeModal}
             /> :
-            <Multas
+            <Locacao
               isOpen={modalIsOpen}
               handleClick={closeModal}
             />

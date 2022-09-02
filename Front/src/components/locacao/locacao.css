@@ -1,0 +1,140 @@
+.locacao-background-imagem {
+  background-image: url("../../img/fundo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center, bottom;
+}
+
+.locacao-container1 {
+  background-color: #312C2C;
+  width: 70%;
+  height: 85%;
+  border-radius: 20px;
+}
+
+.locacao-conteudo-cabeçalho {
+  height: 9%;
+  flex-direction: row;
+}
+
+.locacao-cabeçalho-esquerdo {
+  justify-content: center;
+  width: 50%;
+}
+  
+.locacao-cabeçalho-esquerdo h1 {
+  margin-left: 20px;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+
+.locacao-cabeçalho-direito {
+  width: 50%;
+  justify-content: end;
+  align-items: center;
+  margin-right: 25px;
+}
+  
+.locacao-cabeçalho-direito h1 {
+  color: #FFFFFF;
+  font-size: 18px;
+}
+  
+.locacao-seta {
+  width: 50px;
+  height: 40px;
+}
+
+.locacao-container2 {
+  height: 88%;
+  background-color:#433F3F;
+  flex-direction: row;
+}
+
+.locacao-locacao {
+  width: 80%;
+}
+  
+.locacao-botoes-form {
+  height: 85px;
+  justify-content: space-around;
+  align-items: center;
+}
+  
+.locacao-menu-superior-botao {
+  width: 23%;
+  height: 40px;
+}
+  
+.locacao-menu-superior-botao-texto {
+  font-size: 14px;
+}
+  
+.locacao-form-cadastro {
+  background-color: #D9D9D9;
+  height: 620px;
+  border-radius: 25px;
+  margin-left: 20px;
+}
+  
+.locacao-form-titulo {
+  margin-left: 20px;
+  height: 40px;
+  justify-content: center;
+  border-bottom: 3px dashed rgba(0, 0, 0, 0.15);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+  
+.locacao-form-titulo h1 {
+  font-size: 20px;
+}
+  
+.locacao-formulario {
+  height: 100%;
+}
+  
+.locacao-form-apenas {
+  height: 85%;
+}
+
+.locacao-form-botao {
+  width: 23%;
+  height: 40px;
+  border: solid 1px black;
+  border-radius: 20px;
+  margin-top: 10%;
+}
+
+.locacao-form-botao-texto {
+  font-size: 16px;
+}
+  
+.locacao-outros-painel {
+  width: 18%;
+  margin-left: 30px;
+  margin-right: 10px;
+}
+  
+.locacao-outros-titulos {
+  height: 15%;
+  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+}
+  
+.locacao-outros-botoes {
+  background-color: rgba(217, 217, 217, 0.08);
+  height: 340px;
+  color: #FFFFFF;
+  border-radius: 25px;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+.locacao-outros-botao {
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+}

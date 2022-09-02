@@ -1,33 +1,16 @@
 const db = require("./db.js");
-const dependente = require("./dependente.js");
-// const { clienteDependenteClass } = require("./clienteDependente.js");
-// const clienteDependente = require("./clienteDependente.js");
 
 class Cliente {
-  static async add(clienteDados) {
+  static async add(clienteDados, t) {
     let criaCliente = await clienteModel.create({
       clienteNome: clienteDados.nome,
       clienteCPF: clienteDados.cpf,
       clienteEndereco: clienteDados.endereco,
       clienteTelefone: clienteDados.telefone,
       clienteQtdLocada: 0
-    });
+    }, { transaction: t });
 
-    criaCliente = await this.getOne(clienteDados.cpf);
-
-    if (this.dependentes == undefined) {
-      return [criaCliente, 0]
-    }
-    else {
-      let criaDependente = await this.criaDependente(clienteDados);
-
-      if (criaDependente != "Abortar") {
-        await this.relacaoClienteDependente(criaCliente, criaDependente);
-
-        return [criaCliente, criaDependente];
-      }
-      return "Abortar"
-    }
+    return criaCliente;
   }
 
   static async getById(id) {
@@ -40,11 +23,11 @@ class Cliente {
     return clientes;
   }
 
-  static async getOne(cpf) {
+  static async getOne(cpf, t) {
     const clientes = await clienteModel.findAll({
       where: {
         clienteCPF: cpf
-      }
+      }, transaction: t
     })
 
     return clientes
@@ -61,52 +44,13 @@ class Cliente {
     console.log("Deletado por problemas tecnicos");
   }
 
-  // Adiciona os dependentes do cliente no banco de dados
-  static async criaDependente(clienteDados) {
-    let novosDependentes = [];
-    let novoDependente;
-
-    for (let i = 0; i < this.dependentes.length; i++) {
-      try {
-        novoDependente = new dependente.dependenteClass(clienteDados.dependentes[i], clienteDados.nome);
-        await novoDependente.add(clienteDados.dependentes[i], clienteDados.nome);
-      }
-      catch (error) {
-        let achaCliente = await this.getOne(clienteDados.cpf);
-        this.deleteOne(achaCliente[0].dataValues.idCliente, achaCliente[0].dataValues.clienteCPF);
-
-        return "Abortar";
-      }
-      novosDependentes.push(novoDependente);
-    }
-
-    novosDependentes = await novoDependente.getAllByResponsavel(clienteDados.nome);
-
-    return novosDependentes;
-  }
-
-  // Adiciona a relação entre cliente e dependente no banco de dados
-  static async relacaoClienteDependente(responsavel, dependente) {
-    let relacao;
-    for (let i = 0; i < dependente.length; i++) {
-      try {
-        relacao = new clienteDependenteClass(responsavel[0].dataValues.idCliente, dependente[i].dataValues.idDependente);
-        relacao.add();
-      }
-      catch (error) {
-        console.log(error);
-        return "Abortar";
-      }
-    }
-  }
-
   // Acha uma relação específica cadastrada no banco
-  static async BuscaRelacao(cliente) {
+  static async BuscaRelacao(dados) {
     const relacao = await db.sequelize.query(
       `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
               cliente.clienteQtdLocada, dependentes.depNome
        FROM   teste.dependentes as dependentes, teste.clientes as cliente, teste.clientedependentes as relacao 
-       WHERE  relacao.idCliente = ${cliente} and cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
+       WHERE  relacao.idCliente = ${dados.id} and cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
     );
 
     return relacao;

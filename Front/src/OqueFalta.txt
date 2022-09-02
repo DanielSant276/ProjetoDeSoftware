@@ -5,5 +5,3 @@ Menu
   -- consertar o local na qual está aparecendo os modais
 Cadastrar Funcionário
   -- tela ainda por fazer
-Tela de alterar senha
-  -- tela ainda por fazer

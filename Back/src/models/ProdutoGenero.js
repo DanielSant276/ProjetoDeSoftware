@@ -10,36 +10,36 @@ class ProdutoGenero {
     }, { transaction: t });
   }
 
-  static async getByProdutoID(produtoId) {
+  static async getByProdutoID(produtoId, t) {
     let relacaoByProdutoID = await produtoGeneroModel.findAll({
       where: {
         idProduto: produtoId
-      }
+      },
+      transaction: t
     })
 
-    relacaoByProdutoID = [relacaoByProdutoID[0].dataValues.id, relacaoByProdutoID[1].dataValues.id]
+    relacaoByProdutoID = relacaoByProdutoID[0].dataValues.id
 
     return relacaoByProdutoID;
   }
 
-  static async editarGeneroRelacao(generoID, relacaoID) {
-    for (let i = 0; i < 2; i++) {
-      const modificaProduto = await produtoGeneroModel.update({
-        idGenero: generoID[i]
-      },
-        {
-          where: {
-            id: relacaoID[i]
-          }
-        })
-    }
+  static async editarGeneroRelacao(generoID, relacaoID, t) {
+    const modificaProduto = await produtoGeneroModel.update({
+      idGenero: generoID
+    },
+      {
+        where: {
+          id: relacaoID
+        },
+        transaction: t
+      })
   }
 
-  static async deletarProdutoGenero(produtoId) {
+  static async deletarProdutoGenero(produtoId, t) {
     let deleteProdutoGenero = await produtoGeneroModel.destroy({
       where: {
         idProduto: produtoId
-      }
+      }, transaction: t
     });
   }
 }

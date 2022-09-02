@@ -4,6 +4,7 @@ import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { mask as masker, unMask } from "remask";
+import { cadastrarCliente } from "../../controller/cadastrarCliente.js";
 
 
 const Input = styled.input`
@@ -14,7 +15,6 @@ margin-left: 10px;
 border: solid 1px #000000;
 background-color: #D9D9D9;
 `;
-
 
 const InputMask = ({ mask, onChange, value, ...props }) => {
   const handleChange = ev => {
@@ -28,10 +28,10 @@ const InputMask = ({ mask, onChange, value, ...props }) => {
   return <Input {...props} onChange={handleChange} value={handleValue} />;
 };
 
-function CadastrarCliente() {
+function CadastrarCliente({ link }) {
   const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [dependentes, setDependentes] = useState("");
+  const [dependente, setDependente] = useState("");
   const [nome, setNome] = useState("");
   const [endereco, setEndereco] = useState("");
 
@@ -39,9 +39,8 @@ function CadastrarCliente() {
   // Detalhe importante o atributo correto é onChange e não onChangeText
   // Outro detalhe, é necessário o campo value no input também para funcionar
   const sanitizarNome = (event) => {
-
     // \u00C0-\u00FF permite a inserção de caracteres com acento.
-                  //lê-se: permite a-z, letras acentuadas, apóstrofe e espaço em branco
+    //lê-se: permite a-z, letras acentuadas, apóstrofe e espaço em branco
     const resultado = event.replace(/[^a-z\u00C0-\u00FF' ]/gi, '');
 
     setNome(resultado);
@@ -52,6 +51,26 @@ function CadastrarCliente() {
 
     setEndereco(resultadoEndereco);
   };
+
+  const sanitizarNomeDependente = (event) => {
+    // \u00C0-\u00FF permite a inserção de caracteres com acento.
+    //lê-se: permite a-z, letras acentuadas, apóstrofe e espaço em branco
+    const resultado = event.replace(/[^a-z\u00C0-\u00FF' ]/gi, '');
+
+    setDependente(resultado);
+  };
+
+  function montaObj() {
+    let dados = {
+      nome: nome,
+      cpf: cpf,
+      telefone: telefone,
+      endereco: endereco,
+      dependente: dependente
+    }
+
+    return dados
+  }
 
   return (
     <div className="cadastrar-cliente-background-imagem principal">
@@ -92,30 +111,27 @@ function CadastrarCliente() {
                 <div className="cadastrar-cliente-form-apenas linha">
                   <div className="cadastrar-cliente-input-esquerdo">
                     <label className="label-form-cadastrar" >NOME</label>
-
-                    {/* leticia mexendo aqui
-                     */}
                     <input className="input-form-cadastrar" id="nome" name="nome" type="text" value={nome} onChange={(event) => { sanitizarNome(event.target.value) }} />
 
                     <label className="label-form-cadastrar">CPF</label>
                     <InputMask className="input-form-cadastrar" name="cpf" type="text" onChange={setCpf} value={cpf} mask={["999.999.999-99"]}></InputMask>
 
                     <label className="label-form-cadastrar">ENDEREÇO</label>
-                    <input className="input-form-cadastrar" name="endereco" type="text" value={endereco} onChange={(event) => { sanitizarEndereco(event.target.value) }}  />
+                    <input className="input-form-cadastrar" name="endereco" type="text" value={endereco} onChange={(event) => { sanitizarEndereco(event.target.value) }} />
 
                     <label className="label-form-cadastrar">TELEFONE</label>
                     <InputMask className="input-form-cadastrar" name="telefone" type="text" onChange={setTelefone} value={telefone} mask={["(99) 9 9999 9999"]}></InputMask>
                   </div>
 
                   <div className="cadastrar-cliente-input-direito">
-                    <label className="label-form-cadastrar space-10">DEPENDENTES</label>
-                    <InputMask className="input-form-cadastrar" name="dependentes" type="text" onChange={setDependentes} value={dependentes} mask={["999"]}></InputMask>
+                    <label className="label-form-cadastrar space-10">DEPENDENTE</label>
+                    <input className="input-form-cadastrar" name="dependentes" type="text" value={dependente} onChange={(event) => { sanitizarNomeDependente(event.target.value) }} />
 
                   </div>
                 </div>
 
                 <div className="cadastrar-cliente-cadastrar-botao link">
-                  <p className="cadastrar-cliente-cadastrar-botao-text negrito">CONFIRMAR</p>
+                  <p className="cadastrar-cliente-cadastrar-botao-text negrito" onClick={() => cadastrarCliente(montaObj(), link)}>CONFIRMAR</p>
                 </div>
               </div>
             </div>

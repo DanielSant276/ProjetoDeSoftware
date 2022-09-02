@@ -24,3 +24,17 @@ export function receberLivros(setLivros, link) {
       await setLivros(livros);
     })
 }
+
+export function deletarLivro(livroID, link) {
+  $.ajax({
+    url: link + "/livros/" + livroID,
+    method: "DELETE",
+    success: function (data, status) {
+      console.log(data);
+      window.location.reload();
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  });
+}

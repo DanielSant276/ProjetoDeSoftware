@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./procurarProduto.css";
 import polygon from "../../img/Polygon.svg";
 import lupa from "../../img/lupa.svg";
-import { receberLivros } from "../../controller/procurarProduto";
+import { deletarLivro, receberLivros } from "../../controller/procurarProduto";
 
 function ProcurarProduto({ link }) {
+  const navigate = useNavigate();
+
   useEffect(() => {
     receberLivros(setLivros, link);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  useEffect(() => {
-    console.log(busca);
-  })
-
   const [livros, setLivros] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [busca, setBusca] = useState("");
 
   const onChangeBusca = event => setBusca(event.target.value);
+
+  function paginaEditar(id) {
+    navigate("/editarProduto", { state: id })
+  }
 
   return (
     <div className="procurar-produto-background-imagem principal">
       <div className="procurar-produto-container1" >
         <div className="procurar-produto-conteudo-cabeçalho">
-          <div className="procurar-produto-cabeçalho-esquerdo" onClick={console.log(livros)}>
+          <div className="procurar-produto-cabeçalho-esquerdo">
             <h1 className="negrito">PAINEL gerente</h1>
           </div>
 
@@ -55,7 +58,7 @@ function ProcurarProduto({ link }) {
             {/* barra de busca, mostra o resultado da pesquisa */}
             <div className="procurar-produto-form-cadastro">
               <div className="procurar-produto-form-titulo linha space-10">
-                {(busca != "") &&
+                {(busca !== "") &&
                   <div className="linha">
                     <h1 className="negrito"> você buscou por: &nbsp;</h1>
                     <h1 className="roxo negrito">"{busca}"</h1>
@@ -72,7 +75,7 @@ function ProcurarProduto({ link }) {
               </div>
 
               {livros.map((item) =>
-                (item.tituloProduto.toUpperCase().startsWith(busca.toUpperCase()) || busca == "") &&
+                (item.tituloProduto.toUpperCase().startsWith(busca.toUpperCase()) || busca === "") &&
                 <div className="linha">
                   <div className="procurar-produto-id negrito alinha-centro coluna">
                     <p className="negrito">{item.idProduto}</p>
@@ -91,8 +94,8 @@ function ProcurarProduto({ link }) {
                   <div className="procurar-produto-botao linha negrito alinha-centro coluna">
                     <h2 className>&nbsp;</h2>
                     <div className="linha texto-centro">
-                      <div className="procurar-produto-botao-formatacao procurar-produto-separar-editar link">EDITAR</div>
-                      <div className="procurar-produto-botao-formatacao procurar-produto-separar-status link">DEVOLVER {/*trocar para deletar*/}</div>
+                      <div className="procurar-produto-botao-formatacao procurar-produto-separar-editar link" onClick={() => paginaEditar(item.idProduto)}>EDITAR</div>
+                      <div className="procurar-produto-botao-formatacao procurar-produto-separar-status link" onClick={() => deletarLivro(item.idProduto, link)}>DELETAR</div>
                     </div>
                   </div>
                 </div>

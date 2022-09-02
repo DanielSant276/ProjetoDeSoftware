@@ -6,6 +6,7 @@ import { receberGeneros, criarLivro } from "../../controller/cadastrarProduto"
 function CadastrarProduto({ link }) {
   useEffect(() => {
     receberGeneros(setGenerosOpcoes, link);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [tipo] = useState("Gerente");

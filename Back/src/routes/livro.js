@@ -36,7 +36,7 @@ livro.route("/:id")
       let livro = await produtoClass.getOneById(livroId);
 
       let genero = await produtoClass.getRelacaoProdutoGeneroId(livroId);
-      
+
       res.send({ data: [livro, genero[0]] });
     }
     catch (error) {
@@ -44,61 +44,40 @@ livro.route("/:id")
     }
   })
   .put(async function (req, res) {
-    // Cria o bloco de informações para ser alterado no banco de dados
-    let produtoDados = {
-      id: req.params.id,
-      numExemplares: req.body.numExemplares,
-      lancamento: req.body.lancamento,
-      edicao: req.body.edicao,
-      paginas: req.body.paginas,
-      autor: req.body.autor,
-      descricao: req.body.descricao,
-      titulo: req.body.titulo,
-      genero: parseInt(req.body.generos)
-    }
-
-    console.log(produtoDados);
-    // // Modifica os valores relacionados ao produto
-    // try {
-    //   // let modificaProduto = await produtoClass.editarProduto(produtoDados);
-    // }
-    // catch (error) {
-    //   console.log(error);
-    //   console.log("falha ao modificar o produto");
-    // }
-
-    // try {
-    //   let getGeneros = await generoClass.getGeneros(produtoDados.genero);
-    //   let getGenerosRelacao = await produtoGeneroClass.getByProdutoID(produtoDados.id);
-    //   let modificaGeneroRelacao = await produtoGeneroClass.editarGeneroRelacao(getGeneros, getGenerosRelacao);
-    // }
-    // catch (error) {
-    //   console.log(error);
-    //   console.log("falha ao modificar o genero");
-    // }
-  })
-  .delete(async function (req, res) {
-    let produtoId = req.params.id
-
-    // Deleta a relação entre produto e genero
+    let produtoDados = req.body;
+    // Modifica os valores relacionados ao produto
     try {
-      let deleteRelacaoProdutoGenero = await produtoGeneroClass.deletarProdutoGenero(produtoId);
+      const result = await db.sequelize.transaction(async (t) => {
+        let modificaProduto = await produtoClass.editarProduto(produtoDado, t);
+        let getGeneros = await generoClass.getGeneros(produtoDados.generos, t);
+        let getGenerosRelacao = await produtoGeneroClass.getByProdutoID(produtoDados.id, t);
+        let modificaGeneroRelacao = await produtoGeneroClass.editarGeneroRelacao(getGeneros[0].dataValues.idGenero, getGenerosRelacao, t);
+      })
+      res.send({ mensagem: "enviado" });
     }
     catch (error) {
       console.log(error);
-      console.log("erro ao deletar relação entre produto e genero");
+      res.send({ mensagem: "falha no envio" });
     }
+  })
+  .delete(async function (req, res) {
+    let produtoID = req.params.id
 
-
-    // Deleta o produto
+    // Deleta a relação entre produto e genero
     try {
-      let deleteProduto = await produtoClass.deletarProduto(produtoId);
+      const result = await db.sequelize.transaction(async (t) => {
+        // deleta a relação entre o produto e o genero
+        let deleteRelacaoProdutoGenero = await produtoGeneroClass.deletarProdutoGenero(produtoID, t);
+
+        // deleta o produto
+        let deleteProduto = await produtoClass.deletarProduto(produtoID, t);
+      })
+
+      res.send({ mensagem: "deletado" });
     } catch (error) {
       console.log(error);
-      console.log("erro ao deletar os produtos");
+      console.log("erro ao deletar o produto");
     }
-
-    res.send("deletado");
   })
 
 livro.route("/")
