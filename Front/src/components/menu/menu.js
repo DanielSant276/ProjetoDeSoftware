@@ -19,7 +19,7 @@ function Menu({ link }) {
   }
 
   function trocarSenha() {   // Configuração?
-    navigate("/trocarSenha")
+    navigate("/alterarSenha")
   }
 
   function irParaCadastro() {   //Cadastro? De quem?
