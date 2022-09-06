@@ -10,48 +10,61 @@ function Menu({ link }) {
 
   const [usuario] = useState("Nome do Gerente");
 
-  const [modal, setModal] = useState(0);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modal, setModal] = useState(0);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
 
-  function irParaConsultas() {
-    navigate("/criarUsuario")
+  function irParaConsultas() {   //Painel?
+    navigate("/cadastroCliente")
   }
 
-  function trocarSenha() {
+  function trocarSenha() {   // Configuração?
     navigate("/trocarSenha")
   }
 
-  function irParaCadastro() {
-    navigate("/criarUsuario")
+  function irParaCadastro() {   //Cadastro? De quem?
+    navigate("/cadastrarUsuario")
   }
 
-  const styleModal = {
-    content: {
-      width: '80%',
-      margin: '0 auto',
-      background: 'transparent',
-      border: '0',
-    },
-    overlay: {
-      background: 'rgba(0, 0, 0, 0.9)',
-      padding: 0,
-    },
-  };
-
-  const openModal = () => {
-    setModalIsOpen(true);
+  function irParaBuscarLivros() {
+    navigate("/procurarProduto")
   }
 
-  // ver o pq isso está aberto
-  const afterOpenModal = () => {
-
+  function irParaMultas() {
+    navigate("/precificar")
   }
 
-  const closeModal = () => {
-    setModal(0);
-    setModalIsOpen(false);
+  function irParaCadastrarFunc() {
+    navigate("/cadastrarUsuario")
   }
+
+
+  // const styleModal = {
+  //   content: {
+  //     width: '80%',
+  //     margin: '0 auto',
+  //     background: 'transparent',
+  //     border: '0',
+  //   },
+  //   overlay: {
+  //     background: 'rgba(0, 0, 0, 0.9)',
+  //     padding: 0,
+  //   },
+  // };
+
+  // const openModal = () => {
+  //   setModalIsOpen(true);
+  // }
+
+  // // ver o pq isso está aberto
+  // const afterOpenModal = () => {
+
+  // }
+
+  // const closeModal = () => {
+  //   setModal(0);
+  //   setModalIsOpen(false);
+  // }
 
   return (
     <div className='menu-background-imagem'>
@@ -83,18 +96,18 @@ function Menu({ link }) {
       <div className='menu-botoes-principais espaco-entre alinha-centro'>
         {/* implementar um switch entre os modais, por enquanto, abre o mesmo;
             achar o erro de css que faz a página ficar desconfigurada e sem os tamanhos certos */}
-        <div className='menu-botao-principal-1 alinha-centro menu-botao-principal menu-box-sahedow negrito space-20' onClick={() => { openModal(); setModal(1) }}>
+        <div className='menu-botao-principal-1 alinha-centro menu-botao-principal menu-box-sahedow negrito space-20' onClick={() => irParaBuscarLivros()}>
           <p>BUSCAR LIVRO</p>
         </div>
-        <div className='menu-botao-principal-2 alinha-centro menu-botao-principal menu-box-sahedow negrito space-20' onClick={() => { openModal(); setModal(2) }}>
+        <div className='menu-botao-principal-2 alinha-centro menu-botao-principal menu-box-sahedow negrito space-20' onClick={() => irParaCadastrarFunc() }>
           <p>CADASTRAR FUNCIONÁRIO</p>
         </div>
-        <div className='menu-botao-principal-3 alinha-centro menu-botao-principal menu-box-sahedow negrito' onClick={() => { openModal(); setModal(3) }}>
+        <div className='menu-botao-principal-3 alinha-centro menu-botao-principal menu-box-sahedow negrito' onClick={() => irParaMultas() }>
           <p>QUADRO DE MULTAS</p>
         </div>
 
       </div>
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
@@ -117,7 +130,7 @@ function Menu({ link }) {
             />
           )
         }
-      </Modal>
+      </Modal> */}
     </div>
   )
 }
