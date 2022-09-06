@@ -1,9 +1,16 @@
 import React from 'react'
 import "./locacao.css";
 import polygon from "../../img/Polygon.svg";
+import { useNavigate } from 'react-router-dom';
 
-function Locacao({isOpen, handleClick}) {
-  console.log(isOpen);
+function Locacao({}) {
+  const navigate = useNavigate();
+
+  function irParaMenu() {
+    navigate("/menu")
+  }
+
+  // console.log(isOpen);
 
   return(
     <>
@@ -16,7 +23,7 @@ function Locacao({isOpen, handleClick}) {
             </div>
 
               <div className="locacao-cabeçalho-direito linha link">
-                <div className="linha alinha-centro link" onClick={handleClick}>
+                <div className="linha alinha-centro link" onClick={() => irParaMenu()}>
                   <h1 className="negrito">RETORNAR</h1>
                   <img className="locacao-seta" src={polygon} alt="" />
                 </div>

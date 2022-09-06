@@ -5,6 +5,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import { mask as masker, unMask } from "remask";
 import { cadastrarCliente } from "../../controller/cadastrarCliente.js";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const Input = styled.input`
@@ -22,11 +24,13 @@ const InputMask = ({ mask, onChange, value, ...props }) => {
     // const maskedValue = masker(originalValue, mask);
     onChange(originalValue);
   };
-
+  
   const handleValue = masker(value, mask);
-
+  
   return <Input {...props} onChange={handleChange} value={handleValue} />;
 };
+
+
 
 function CadastrarCliente({ link }) {
   const [cpf, setCpf] = useState("");
@@ -34,7 +38,8 @@ function CadastrarCliente({ link }) {
   const [dependente, setDependente] = useState("");
   const [nome, setNome] = useState("");
   const [endereco, setEndereco] = useState("");
-
+  const navigate = useNavigate();
+  
   // Troquei o sanitizar o nome para a regexr correta e no input modifiquei a forma de enviar
   // Detalhe importante o atributo correto é onChange e não onChangeText
   // Outro detalhe, é necessário o campo value no input também para funcionar
@@ -42,24 +47,28 @@ function CadastrarCliente({ link }) {
     // \u00C0-\u00FF permite a inserção de caracteres com acento.
     //lê-se: permite a-z, letras acentuadas, apóstrofe e espaço em branco
     const resultado = event.replace(/[^a-z\u00C0-\u00FF' ]/gi, '');
-
+    
     setNome(resultado);
   };
-
+  
   const sanitizarEndereco = (event) => {
     const resultadoEndereco = event.replace(/[^a-z0-9\u00C0-\u00FF', ]/gi, '');
-
+    
     setEndereco(resultadoEndereco);
   };
-
+  
   const sanitizarNomeDependente = (event) => {
     // \u00C0-\u00FF permite a inserção de caracteres com acento.
     //lê-se: permite a-z, letras acentuadas, apóstrofe e espaço em branco
     const resultado = event.replace(/[^a-z\u00C0-\u00FF' ]/gi, '');
-
+    
     setDependente(resultado);
   };
-
+  // adicionei aqui para funcionar, mas não sei se será um problema. verificar depois com o daniel
+  function irParaMenu() {
+    navigate("/menu")
+  }
+  
   function montaObj() {
     let dados = {
       nome: nome,
@@ -68,10 +77,10 @@ function CadastrarCliente({ link }) {
       endereco: endereco,
       dependente: dependente
     }
-
+    
     return dados
   }
-
+  
   return (
     <div className="cadastrar-cliente-background-imagem principal">
       <div className="cadastrar-cliente-container1" >
@@ -82,7 +91,7 @@ function CadastrarCliente({ link }) {
 
           <div className="cadastrar-cliente-cabeçalho-direito linha link">
             <h1 className="negrito">RETORNAR</h1>
-            <img className="cadastrar-cliente-seta" src={polygon} alt="" />
+            <img className="cadastrar-cliente-seta" src={polygon} alt="" onClick={() => irParaMenu()}/>
           </div>
         </div>
 

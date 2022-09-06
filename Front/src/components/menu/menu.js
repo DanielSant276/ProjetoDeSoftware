@@ -39,33 +39,6 @@ function Menu({ link }) {
   }
 
 
-  // const styleModal = {
-  //   content: {
-  //     width: '80%',
-  //     margin: '0 auto',
-  //     background: 'transparent',
-  //     border: '0',
-  //   },
-  //   overlay: {
-  //     background: 'rgba(0, 0, 0, 0.9)',
-  //     padding: 0,
-  //   },
-  // };
-
-  // const openModal = () => {
-  //   setModalIsOpen(true);
-  // }
-
-  // // ver o pq isso está aberto
-  // const afterOpenModal = () => {
-
-  // }
-
-  // const closeModal = () => {
-  //   setModal(0);
-  //   setModalIsOpen(false);
-  // }
-
   return (
     <div className='menu-background-imagem'>
       <div className='menu-cabeçalho linha space-40'>

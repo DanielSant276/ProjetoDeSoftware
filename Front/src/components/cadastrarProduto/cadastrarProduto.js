@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./cadastrarProduto.css";
 import polygon from "../../img/Polygon.svg";
 import { receberGeneros, criarLivro } from "../../controller/cadastrarProduto"
+import { useNavigate } from "react-router-dom";
 
 function CadastrarProduto({ link }) {
   useEffect(() => {
@@ -9,6 +10,7 @@ function CadastrarProduto({ link }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const navigate = useNavigate();
   const [tipo] = useState("Gerente");
 
   const [titulo, setTitulo] = useState();
@@ -45,6 +47,9 @@ function CadastrarProduto({ link }) {
   function verificarInputs () {
     criarLivro(produto, link)
   }
+  function irParaMenu(){
+    navigate("/menu")
+  }
 
   return (
     <div className="cadastrar-produto-background-imagem principal">
@@ -56,7 +61,7 @@ function CadastrarProduto({ link }) {
 
           <div className="cadastrar-produto-cabeçalho-direito linha link">
             <h1 className="negrito">RETORNAR</h1>
-            <img className="cadastrar-produto-seta" src={polygon} alt="" />
+            <img className="cadastrar-produto-seta" src={polygon} alt="" onClick={() => irParaMenu()}/>
           </div>
         </div>
 

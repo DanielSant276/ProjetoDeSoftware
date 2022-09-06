@@ -4,9 +4,11 @@ import "./EditarProduto.css";
 import polygon from '../../img/Polygon.svg'
 import { pegaInfo, editar } from "../../controller/editarProduto.js";
 import { receberGeneros } from "../../controller/cadastrarProduto"
+import { useNavigate } from 'react-router-dom';
 
 function EditarProduto({ link }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     receberGeneros(setGeneroOpcoes, link);
@@ -71,6 +73,10 @@ function EditarProduto({ link }) {
 
     editar(dados, link)
   }
+  
+  function irParaMenu() {
+    navigate("/menu")
+  }
 
   return (
     <div className="editar-produto-background-imagem principal">
@@ -82,7 +88,7 @@ function EditarProduto({ link }) {
 
           <div className="editar-produto-cabeçalho-direito linha link">
             <h1 className="negrito">RETORNAR</h1>
-            <img className="editar-produto-seta" src={polygon} alt="" />
+            <img className="editar-produto-seta" src={polygon} alt="" onClick={() => irParaMenu()}/>
           </div>
         </div>
 

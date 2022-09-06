@@ -21,6 +21,9 @@ function ProcurarProduto({ link }) {
   function paginaEditar(id) {
     navigate("/editarProduto", { state: id })
   }
+  function irParaMenu(){
+    navigate("/menu")
+  }
 
   return (
     <div className="procurar-produto-background-imagem principal">
@@ -32,7 +35,7 @@ function ProcurarProduto({ link }) {
 
           <div className="procurar-produto-cabeçalho-direito linha link">
             <h1 className="negrito">RETORNAR</h1>
-            <img className="procurar-produto-seta" src={polygon} alt="" />
+            <img className="procurar-produto-seta" src={polygon} alt="" onClick={() => irParaMenu()} />
           </div>
         </div>
 
