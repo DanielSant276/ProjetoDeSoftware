@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../menu/menu.css';
 import imagem from '../../img/Polygon.svg';
-import Modal from 'react-modal';
 import Locacao from '../locacao/locacao';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,16 +13,16 @@ function Menu({ link }) {
   // const [modalIsOpen, setModalIsOpen] = useState(false);
 
 
-  function irParaConsultas() {   //Painel?
-    navigate("/cadastroCliente")
+  function irParaConsultas() {   //Painel de lista de livros
+    navigate("/procurarProduto")
   }
-
-  function trocarSenha() {   // Configuração?
-    navigate("/alterarSenha")
-  }
-
-  function irParaCadastro() {   //Cadastro? De quem?
+  
+  function irParaCadastrarUsuario() {   // Configuração de criar novos atendentes
     navigate("/cadastrarUsuario")
+  }
+  
+  function irParaCadastro() {   //Cadastro = De novos clientes
+    navigate("/cadastroCliente")
   }
 
   function irParaBuscarLivros() {
@@ -48,7 +47,7 @@ function Menu({ link }) {
           <div className='menu-botao-painel margem-direita  alinha-centro negrito' onClick={() => irParaConsultas()}>
             <p>PAINEL</p>
           </div>
-          <div className='menu-botao-painel margem-direita alinha-centro negrito' onClick={() => trocarSenha()}>
+          <div className='menu-botao-painel margem-direita alinha-centro negrito' onClick={() => irParaCadastrarUsuario()}>
             <p>CONFIGURAÇÃO</p>
           </div>
           <div className='menu-botao-painel negrito alinha-centro' onClick={() => irParaCadastro()}>
@@ -80,30 +79,6 @@ function Menu({ link }) {
         </div>
 
       </div>
-      {/* <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={styleModal}
-        handleClick={closeModal}
-      >
-        {(modal === 1) ?
-          <Locacao
-            isOpen={modalIsOpen}
-            handleClick={closeModal}
-          /> :
-          ((modal === 2) ?
-            <Locacao
-              isOpen={modalIsOpen}
-              handleClick={closeModal}
-            /> :
-            <Locacao
-              isOpen={modalIsOpen}
-              handleClick={closeModal}
-            />
-          )
-        }
-      </Modal> */}
     </div>
   )
 }

@@ -21,7 +21,7 @@ export default function Rotas() {
     <Routes>
       {/* path=/qualquerCoisa element{funcaoRenderizar} */}
       <Route path="/" exact element={<Login link={link} />} /> {/* verificar a sanitização de input */}
-      <Route path="/menu" element={<Menu link={link} />} /> {/* Tem que verificar a parte de mais acessados e os links do topo */}
+      <Route path="/menu" element={<Menu link={link} />} /> {/* Feito, pedir para o daniel conferir depois */}
       <Route path="/cadastrarProduto" element={<CadastrarProduto link={link} />} /> {/* verificar a sanitização de input  */}
       <Route path="/cadastroCliente" element={<CadastrarCliente link={link} />} /> {/* verificar a sanitização do nome do dependente */}
       <Route path="/alterarSenha" element={<AlterarSenha link={link} />} /> {/* verificar a sanitização de input */}
