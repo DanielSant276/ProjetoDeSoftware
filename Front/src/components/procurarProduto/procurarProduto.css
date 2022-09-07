@@ -110,6 +110,10 @@
     padding-top: 2%;
   }
   
+  .procurar-produto-rolagem {
+    overflow-y: scroll;
+  }
+  
   .procurar-produto-form-titulo h1 {
     font-size: 20px;
   }

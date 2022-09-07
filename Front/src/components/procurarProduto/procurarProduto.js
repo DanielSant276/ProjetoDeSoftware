@@ -6,16 +6,16 @@ import lupa from "../../img/lupa.svg";
 import { deletarLivro, receberLivros } from "../../controller/procurarProduto";
 
 function ProcurarProduto({ link }) {
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
     receberLivros(setLivros, link);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+  
   const [livros, setLivros] = useState([]);
   const [busca, setBusca] = useState("");
-
+  
+  const navigate = useNavigate();
   const onChangeBusca = event => setBusca(event.target.value);
 
   function paginaEditar(id) {
@@ -59,7 +59,7 @@ function ProcurarProduto({ link }) {
             </div>
 
             {/* barra de busca, mostra o resultado da pesquisa */}
-            <div className="procurar-produto-form-cadastro">
+            <div className="procurar-produto-form-cadastro procurar-produto-rolagem">
               <div className="procurar-produto-form-titulo linha space-10">
                 {(busca !== "") &&
                   <div className="linha">
