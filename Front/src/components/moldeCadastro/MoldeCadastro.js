@@ -1,8 +1,16 @@
 import React from 'react'
 import "./MoldeCadastro.css";
 import polygon from '../../img/Polygon.svg'
+import { useNavigate } from 'react-router-dom';
 
 function MoldeCadastro() {
+  const navigate = useNavigate();
+
+  function irParaMenu() {
+    navigate("/menu")
+  }
+
+
   return(
     <div className="cadastrar-produto-background-imagem principal">
     <div className="cadastrar-produto-container1" >
@@ -13,7 +21,7 @@ function MoldeCadastro() {
 
         <div className="cadastrar-produto-cabeçalho-direito linha link">
           <h1 className="negrito">RETORNAR</h1>
-          <img className="cadastrar-produto-seta" src={polygon} alt="" />
+          <img className="cadastrar-produto-seta" src={polygon} alt="" onClick={() => irParaMenu()} />
         </div>
       </div>
 
