@@ -48,41 +48,18 @@ function MoldeCadastro() {
             </div>
 
             <div className="cadastrar-produto-formulario">
-              <div className="cadastrar-produto-form-apenas linha">
-                <div className="cadastrar-produto-input-esquerdo">
-                  {/* <label className="label-form-cadastrar" >TÍTULO</label>
-                  <input className="input-form-cadastrar" type="text" />
+              <div className="cadastrar-produto-form-apenas linha"> {/* < */}
+                {/* <div className="cadastrar-produto-input-esquerdo">
+                </div> */}
 
-                  <label className="label-form-cadastrar">GÊNERO</label>
-                  <input className="input-form-cadastrar" type="text" />
-
-                  <label className="label-form-cadastrar">EDIÇÃO</label>
-                  <input className="input-form-cadastrar" type="text" />
-
-                  <label className="label-form-cadastrar">NÚMERO DE EXEMPLARES</label>
-                  <input className="input-form-cadastrar" type="text" /> */}
-                </div>
-
-                <div className="cadastrar-produto-input-direito">
-                  {/* <label className="label-form-cadastrar">QUANTIDADE DE PÁGINAS</label>
-                  <input className="input-form-cadastrar" type="text" ></input>
-
-                  <label className="label-form-cadastrar">AUTOR</label>
-                  <input className="input-form-cadastrar" type="text" ></input>
-
-                  <label className="label-form-cadastrar">DESCRIÇÃO</label>
-                  <input className="input-form-cadastrar" type="text" ></input>
-
-                  <label className="label-form-cadastrar">LANÇAMENTO</label>
-                  <input className="input-form-cadastrar" type="text" ></input> */}
-
-                </div>
+                {/* <div className="cadastrar-produto-input-direito">
+                </div> */}
               </div>
 
               <div className="cadastrar-produto-cadastrar-botao link">
                 <p className="cadastrar-produto-cadastrar-botao-text negrito">CADASTRAR</p>
               </div>
-            </div>
+            </div> {/* essa div aqui é a < pra ser apagada */}
           </div>
         </div>
 

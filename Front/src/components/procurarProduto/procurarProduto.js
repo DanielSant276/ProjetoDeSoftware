@@ -69,14 +69,29 @@ function ProcurarProduto({ link }) {
                 }
               </div>
 
+              <div className="procurar-produto-label linha negrito space-20">
+                <label className="procurar-produto-id">ID</label>
+                <label className="procurar-produto-titulo roxo">TÍTULO</label>
+                <label className="procurar-produto-botao"></label>
+                <label className="procurar-produto-botao"></label>
+              </div>
+
+              <div className="procurar-produto-label linha negrito space-20">
+                <label className="procurar-produto-id">1</label>
+                <label className="procurar-produto-titulo roxo">testeteste</label>
+                <input className="procurar-produto-botao procurar-produto-botao-formatacao" type="submit" value="EDITAR"/>
+                <input className="procurar-produto-botao procurar-produto-botao-formatacao" type="submit" value="DELETAR"/>               
+              </div>
+
               {/* conteúdo da div: ID, título, status */}
-              <div className="linha">
+              
+              {/* <div className="linha">
                 <h2 className="space-20 espaco-teste-1">ID</h2>
                 <h2 className="space-20 espaco-teste-2">TÍTULO</h2>
                 <div className="espaco-teste3"></div>
                 <div className="espaco-teste3"></div>
-              </div>
-
+              </div> */}
+{/* 
               {livros.map((item) =>
                 (item.tituloProduto.toUpperCase().startsWith(busca.toUpperCase()) || busca === "") &&
                 <div className="linha">
@@ -85,7 +100,7 @@ function ProcurarProduto({ link }) {
                   </div>
                   <div className="procurar-produto-titulo linha negrito alinha-centro coluna">
                     <p className="roxo negrito">{item.tituloProduto}</p>
-                  </div>
+                  </div> */}
                   {/* <div className="procurar-produto-status linha negrito alinha-centro coluna">
                       <h2 className="space-20">STATUS</h2>
                       <p className="negrito">ALOCADO</p>
@@ -94,7 +109,7 @@ function ProcurarProduto({ link }) {
                   {/* front dos botões de editar e devolver, precisa formatar direito o botão e retirar o espaço no final
                 dos botões */}
 
-                  <div className="procurar-produto-botao linha negrito alinha-centro coluna">
+                  {/* <div className="procurar-produto-botao linha negrito alinha-centro coluna">
                     <h2 className>&nbsp;</h2>
                     <div className="linha texto-centro">
                       <div className="procurar-produto-botao-formatacao procurar-produto-separar-editar link" onClick={() => paginaEditar(item.idProduto)}>EDITAR</div>
@@ -102,7 +117,7 @@ function ProcurarProduto({ link }) {
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 

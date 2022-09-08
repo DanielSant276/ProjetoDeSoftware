@@ -29,9 +29,10 @@ export default function Rotas() {
       <Route path="/cadastrarUsuario" element={<CadastrarUsuario link={link} />} /> {/* verificar a sanitização de input */}
       <Route path="/editarProduto" element={<EditarProduto link={link} />} /> {/* não permitir números negativos nos inputs exemplares e quantidade de páginas */}
       <Route path="/selecionarLivros" element={<SelecionarLivro link={link} />} /> {/* Feito, pedir para o daniel conferir depois */}
+      <Route path="/procurarProduto" element={<ProcurarProduto link={link} />} /> { /* feito, verificar a sanitização de input */}
       
 
-      <Route path="/procurarProduto" element={<ProcurarProduto link={link} />} /> { /* verificar a sanitização de input, essa tela ta meio esquisita */}
+
       {/* Falta tela de mostrar clientes: seguir tela em html mandada por discord, e colocar nome do dependente */}
       <Route path="/locacao" element={<Locacao link={link} />} /> { /*  */}
       <Route path="/precificar" element={<Precificar link={link} />} /> {/* Essa tela irá virar tela de precificar locacao */}
