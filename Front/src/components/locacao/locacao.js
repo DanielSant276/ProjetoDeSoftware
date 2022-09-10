@@ -42,14 +42,12 @@ function Locacao({}) {
                   <div className="locacao-menu-superior-botao botao-form-cadastrar alinha-centro">
                     <p className="locacao-menu-superior-botao-texto negrito">CADASTRAR CLIENTE</p>
                   </div>
-                  <div className="locacao-menu-superior-botao botao-form-cadastrar alinha-centro">
-                    <p className="locacao-menu-superior-botao-texto negrito">XXXXXXXXXX</p>
-                  </div>
+                  
                 </div>
 
                 <div className="locacao-form-cadastro">
                 <div className="locacao-form-titulo">
-                  <h1 className="negrito laranja">QUADRO DE MULTAS</h1>
+                  <h1 className="negrito roxo">LOCAÇÃO</h1>
                 </div>
 
                 
@@ -57,16 +55,13 @@ function Locacao({}) {
                   <div className="locacao-form-apenas">
                     <div className="locacao-botoes-form linha">
                       <div className="locacao-form alinha-centro">
-                        <p className="locacao-form-botao-texto negrito">LOCAÇÃO</p>
+                        <p className="locacao-form-botao-texto negrito">ID LOCAÇÃO</p>
                       </div>
                       <div className="locacao-form alinha-centro">
-                        <p className="locacao-form-esquerdo-texto"><i>alocado por</i></p>
+                        <p className="locacao-form-esquerdo-texto negrito">TÍTULO</p>
                       </div>
-                      <div className="locacao-form-botao alinha-centro">
-                        <p className="locacao-form-botao-texto negrito">INFORMAÇÕES</p>
-                      </div>
-                      <div className="locacao-form-botao alinha-centro">
-                        <p className="locacao-form-botao-texto negrito">ALTERAR STATUS</p>
+                      <div className="locacao-form alinha-centro">
+                        <p className="locacao-form-botao-texto negrito">STATUS</p>
                       </div>
                     </div>
                   </div>

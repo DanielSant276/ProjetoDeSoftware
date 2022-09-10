@@ -1,0 +1,141 @@
+.mostrar-clientes-background-imagem {
+    background-image: url("../../img/fundo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center, bottom;
+}
+  
+.mostrar-clientes-container1 {
+    background-color: #312C2C;
+    width: 70%;
+    height: 85%;
+    border-radius: 20px;
+}
+  
+.mostrar-clientes-conteudo-cabeçalho {
+    height: 9%;
+    flex-direction: row;
+}
+  
+.mostrar-clientes-cabeçalho-esquerdo {
+    justify-content: center;
+    width: 50%;
+}
+    
+.mostrar-clientes-cabeçalho-esquerdo h1 {
+    margin-left: 20px;
+    color: #FFFFFF;
+    font-size: 25px;
+}
+  
+.mostrar-clientes-cabeçalho-direito {
+    width: 50%;
+    justify-content: end;
+    align-items: center;
+    margin-right: 25px;
+}
+    
+.mostrar-clientes-cabeçalho-direito h1 {
+    color: #FFFFFF;
+    font-size: 18px;
+}
+    
+.mostrar-clientes-seta {
+    width: 50px;
+    height: 40px;
+}
+  
+.mostrar-clientes-container2 {
+    height: 88%;
+    background-color:#433F3F;
+    flex-direction: row;
+}
+  
+.mostrar-clientes-mostrar-clientes {
+    width: 80%;
+}
+    
+.mostrar-clientes-botoes-form {
+    height: 85px;
+    justify-content: space-around;
+    align-items: center;
+}
+    
+.mostrar-clientes-menu-superior-botao {
+    width: 23%;
+    height: 40px;
+}
+    
+.mostrar-clientes-menu-superior-botao-texto {
+    font-size: 14px;
+}
+    
+.mostrar-clientes-form-cadastro {
+    background-color: #D9D9D9;
+    height: 620px;
+    border-radius: 25px;
+    margin-left: 20px;
+}
+    
+.mostrar-clientes-form-titulo {
+    margin-left: 20px;
+    height: 40px;
+    justify-content: center;
+    border-bottom: 3px dashed rgba(0, 0, 0, 0.15);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+    
+.mostrar-clientes-form-titulo h1 {
+    font-size: 20px;
+}
+    
+.mostrar-clientes-formulario {
+    height: 100%;
+}
+    
+.mostrar-clientes-form-apenas {
+    height: 85%;
+}
+  
+.mostrar-clientes-form-botao {
+    width: 23%;
+    height: 40px;
+    border: solid 1px black;
+    border-radius: 20px;
+    margin-top: 10%;
+}
+  
+.mostrar-clientes-form-botao-texto {
+    font-size: 16px;
+}
+    
+.mostrar-clientes-outros-painel {
+    width: 18%;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+    
+.mostrar-clientes-outros-titulos {
+    height: 15%;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+}
+    
+.mostrar-clientes-outros-botoes {
+    background-color: rgba(217, 217, 217, 0.08);
+    height: 340px;
+    color: #FFFFFF;
+    border-radius: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+    
+.mostrar-clientes-outros-botao {
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+}
+  

@@ -10,6 +10,8 @@ import ProcurarProduto from "./components/procurarProduto/procurarProduto";
 import CadastrarUsuario from "./components/cadastrarUsuario/cadastrarUsuario";
 import AlterarSenha from "./components/alterarSenha/alterarSenha";
 import SelecionarLivro from "./components/selecionarLivros/selecionarLivros";
+import MostrarClientes from "./components/mostrarClientes/mostrarClientes";
+import PrecificarLocacao from "./components/precificarLocacao/precificarLocacao";
 // import SenhaSegura from "./components/senhaSegura/senhaSegura";
 // import MoldeTeste from "./components/molde/molde";
 // import MoldeCadastro from "./components/moldeCadastro/MoldeCadastro";
@@ -30,8 +32,8 @@ export default function Rotas() {
       <Route path="/editarProduto" element={<EditarProduto link={link} />} /> {/* não permitir números negativos nos inputs exemplares e quantidade de páginas */}
       <Route path="/selecionarLivros" element={<SelecionarLivro link={link} />} /> {/* Feito, pedir para o daniel conferir depois */}
       <Route path="/procurarProduto" element={<ProcurarProduto link={link} />} /> { /* feito, verificar a sanitização de input */}
-      
-
+      <Route path="/mostrarClientes" element={<MostrarClientes link={link} />} /> { /**/}
+      <Route path="/precificarLocacao" element={<PrecificarLocacao link={link} />} /> { /**/}
 
       {/* Falta tela de mostrar clientes: seguir tela em html mandada por discord, e colocar nome do dependente */}
       <Route path="/locacao" element={<Locacao link={link} />} /> { /*  */}
