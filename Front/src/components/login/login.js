@@ -23,11 +23,11 @@ function Login({ link }) {
         <div className="space-40" name="form">
           <div className="login-campo">
             <p className="login-label login-texto1 space-20 jso negrito">USUÁRIO</p>
-            <input className="login-input background-cor-padrao space-20" type="name" value={usuario} onChange={onChangeUsuario} />
+            <input className="login-input background-cor-padrao space-20" type="name"  onChange={onChangeUsuario} />
           </div>
           <div className="login-campo">
             <p className="login-label login-texto2 space-20 jso negrito">SENHA</p>
-            <input className="login-input background-cor-padrao space-5" type="password" value={senha} onChange={onChangeSenha} />
+            <input className="login-input background-cor-padrao space-5" type="password" onChange={onChangeSenha} />
             <p className="login-esqueceu-senha laranja negrito link">esqueceu sua senha?</p>
           </div>
         </div>
