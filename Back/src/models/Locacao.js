@@ -1,7 +1,7 @@
 const db = require("./db.js");
 
 class Locacao {
-  static async add(locacaoDados) {
+  static async add(locacaoDados, t) {
     return await locacaoModel.create({
       idCliente: locacaoDados.clienteId,
       locacaoPreço: locacaoDados.locacaoPreco,
@@ -9,7 +9,7 @@ class Locacao {
       dataDevolucao: locacaoDados.dataDevolucao,
       locacaoEstado: locacaoDados.locacaoEstado,
       locacaoMulta: locacaoDados.locacaoMulta
-    });
+    }, { transaction: t });
   }
 
   static async getById(id) {
@@ -17,11 +17,12 @@ class Locacao {
     return locacaoById;
   }
 
-  static async getByClienteId(id) {
+  static async getByClienteId(id, t) {
     let locacaoByClienteId = await locacaoModel.findAll({
       where: {
         idCliente: id
-      }
+      },
+      transaction: t
     });
 
     locacaoByClienteId = locacaoByClienteId[locacaoByClienteId.length - 1].dataValues.idLocacao;
@@ -44,22 +45,13 @@ class Locacao {
     return locacaoByCliente
   }
 
-  static async getRelacao() {
-    let relacoes = await this.getAll();
-
-    let relacoesArr = []
-
-    for (let i = 0; i < relacoes.length; i++) {
-      let relacao = await db.sequelize.query(
-        `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
-                cliente.clienteQtdLocada, dependentes.depNome
-         FROM   teste.dependentes as dependentes, teste.clientes as cliente, teste.clientedependentes as relacao 
-         WHERE  relacao.idCliente = ${relacoes[i].idCliente} and cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
-      )
-
-      relacoesArr.push([relacoes[i], relacao]);
-    }
-    return relacoes;
+  static async getRelacao(clienteID, t) {
+    let relacao = await db.sequelize.query(
+      `SELECT cliente.idCliente, cliente.clienteNome, produto.tituloProduto, produto.idProduto
+      FROM livrariasibd.clientes as cliente, livrariasibd.locacoes as locacoes, livrariasibd.locacaoprodutos as relacao, livrariasibd.produtos as produto
+      WHERE cliente.idCliente = ${clienteID} and locacoes.idCliente = ${clienteID} and locacoes.idLocacao = relacao.idLocacao and relacao.idProduto = produto.idProduto;`
+    )
+    return relacao;
   }
 }
 

@@ -1,0 +1,161 @@
+.precificar-info-background-imagem {
+  background-image: url("../../img/fundo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center, bottom;
+}
+
+.precificar-info-container1 {
+  background-color: #312C2C;
+  width: 70%;
+  height: 85%;
+  border-radius: 20px;
+}
+
+.precificar-info-conteudo-cabeçalho {
+  height: 9%;
+  flex-direction: row;
+}
+
+.precificar-info-cabeçalho-esquerdo {
+  justify-content: center;
+  width: 50%;
+}
+  
+.precificar-info-cabeçalho-esquerdo h1 {
+  margin-left: 20px;
+  color: #FFFFFF;
+  font-size: 25px;
+}
+
+.precificar-info-cabeçalho-direito {
+  width: 50%;
+  justify-content: end;
+  align-items: center;
+  margin-right: 25px;
+}
+  
+.precificar-info-cabeçalho-direito h1 {
+  color: #FFFFFF;
+  font-size: 18px;
+}
+  
+.precificar-info-seta {
+  width: 50px;
+  height: 40px;
+}
+
+.precificar-info-container2 {
+  height: 88%;
+  background-color:#433F3F;
+  flex-direction: row;
+}
+
+.precificar-info-precificar-info {
+  width: 80%;
+}
+  
+.precificar-info-botoes-form {
+  height: 85px;
+  justify-content: space-around;
+  align-items: center;
+}
+  
+.precificar-info-menu-superior-botao {
+  width: 23%;
+  height: 40px;
+  border: dashed 1px #9500CA;
+}
+  
+.precificar-info-menu-superior-botao-texto {
+  font-size: 14px;
+}
+  
+.precificar-info-form-cadastro {
+  background-color: #D9D9D9;
+  height: 620px;
+  border-radius: 25px;
+  margin-left: 20px;
+}
+  
+.precificar-info-form-titulo {
+  margin-left: 20px;
+  height: 40px;
+  justify-content: center;
+  border-bottom: 3px dashed rgba(0, 0, 0, 0.15);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+  
+.precificar-info-form-titulo h1 {
+  font-size: 20px;
+}
+  
+.precificar-info-formulario {
+  height: 100%;
+}
+
+.precificar-info-formulario h1 {
+margin-left: 20px;
+font-size: 17px;
+margin-top: 20px;
+margin-left: 50px;
+}
+
+.precificar-info-form-apenas {
+  height: 85%;
+}
+
+.precificar-info-linha1 .precificar-info-linha2 .precificar-info-linha3{
+  width: 100%;
+  justify-content: space-around;
+}
+
+.coluna{
+  width: 100%;
+  flex-direction: column;
+}
+
+.precificar-info-linha1{
+  margin-left: 35px;
+}
+  
+.precificar-info-outros-painel {
+  width: 18%;
+  margin-left: 30px;
+  margin-right: 10px;
+}
+  
+.precificar-info-outros-titulos {
+  height: 15%;
+  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+}
+  
+.input-form-cadastrar {
+  height: 35px;
+  width: 250px;
+}
+
+.precificar-info-outros-botoes {
+  background-color: rgba(217, 217, 217, 0.08);
+  height: 340px;
+  color: #FFFFFF;
+  border-radius: 25px;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+.precificar-info-outros-botao {
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  border: dashed 1px #9500CA;
+}
+
+.dependente{
+  color: rgba(0, 0, 0, 0.38);;
+  margin-left: 40px;
+}

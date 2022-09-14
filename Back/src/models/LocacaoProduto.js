@@ -3,11 +3,11 @@ const locacao = require("./Locacao.js");
 const produto = require("./produto.js");
 
 class LocacaoProduto {
-  static async add(locaoId, produtoId) {
+  static async add(locaoId, produtoId, t) {
     return await locacaoProdutoModel.create({
       idLocacao: locaoId,
       idProduto: produtoId
-    });
+    }, { transaction: t });
   }
 }
 

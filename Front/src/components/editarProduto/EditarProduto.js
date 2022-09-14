@@ -16,7 +16,7 @@ function EditarProduto({ link }) {
   }, [])
 
   useEffect(() => {
-    let produtoID = location.state;
+    let produtoID = location.state.produtoID;
 
     pegaInfo(link, produtoID, setInfo);
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -34,7 +34,7 @@ function Login({ link }) {
         <button className="login-submit link jso negrito" onClick={() => login(usuario, senha, link, irParaMenu)}>ENTRAR</button>
       </div>
       <div className="login-rodape">
-        <h1> UFRRJ SOFTWARES  - 2022 </h1>
+        <h1> UFRRJ SOFTWARES - 2022 </h1>
       </div>
     </div>
   );

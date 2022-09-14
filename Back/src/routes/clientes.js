@@ -10,14 +10,16 @@ const { dependenteClass } = require("../models/dependente.js");
 
 cliente.get("/relacoes", async function (req, res) {
   let relacoes = await clienteClass.BuscaTodasRelacoes();
-
+  
   res.send({ data: relacoes });
 })
 
 cliente.route("/")
-  // .get(function (req, res) {
-  //   res.sendFile(path.join(__dirname, "../", "/teste/clientes.html"));
-  // })
+  .get(async function (req, res) {
+    let clientes = await clienteClass.getAll();
+    
+    res.send({data: clientes});
+  })
 
   .post(async function (req, res) {
     let clienteDados = req.body.dados;

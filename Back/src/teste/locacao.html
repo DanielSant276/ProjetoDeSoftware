@@ -215,7 +215,7 @@
         dataDevolucao: dataDevolucao,
         dataLocada: dataLocada,
         locacaoEstado: "locado",
-        clienteId: document.getElementsByName("cliente-id")[0].value,
+        clienteId: 1,
         produtoId: produtoId
       }
 
@@ -224,7 +224,7 @@
           locacao
         },
         function (data, status) {
-          console.log(data.data);
+          console.log(data);
         }
       )
     }

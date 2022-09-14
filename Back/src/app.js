@@ -45,6 +45,8 @@ routes.use("/locacao", locacao);
 // usado apenas para criar no banco de dados os gêneros, retirar depois
 // routes.use("/genero", genero);
 
+// Apenas guardando aqui
+// throw new Exception()
 
 app.use(routes);
 

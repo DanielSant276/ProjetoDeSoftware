@@ -3,7 +3,7 @@ import Login from "./components/login/login";
 import Menu from "./components/menu/menu";
 import CadastrarProduto from "./components/cadastrarProduto/cadastrarProduto";
 import Locacao from "./components/locacao/locacao";
-import Precificar from "./components/multasInfo/multasInfo";
+import Precificar from "./components/precificar/precificar";
 import CadastrarCliente from "./components/cadastroCliente/cadastroCliente";
 import EditarProduto from "./components/editarProduto/EditarProduto";
 import ProcurarProduto from "./components/procurarProduto/procurarProduto";
@@ -35,7 +35,6 @@ export default function Rotas() {
       <Route path="/mostrarClientes" element={<MostrarClientes link={link} />} /> { /**/}
       <Route path="/precificarLocacao" element={<PrecificarLocacao link={link} />} /> { /**/}
 
-      {/* Falta tela de mostrar clientes: seguir tela em html mandada por discord, e colocar nome do dependente */}
       <Route path="/locacao" element={<Locacao link={link} />} /> { /*  */}
       <Route path="/precificar" element={<Precificar link={link} />} /> {/* Essa tela irá virar tela de precificar locacao */}
     </Routes>

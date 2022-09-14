@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const locacao = express.Router();
+const db = require("../models/db.js");
 
 const { locacaoClass } = require("../models/Locacao");
 const { locacaoProdutoClass } = require("../models/LocacaoProduto");
@@ -12,10 +13,6 @@ locacao.route("/:id")
   .put(async function (req, res) {
 
   })
-  .delete(async function (req, res) {
-
-    res.send("deletado");
-  })
 
 locacao.route("/")
   .get(async function (req, res) {
@@ -24,51 +21,42 @@ locacao.route("/")
   .post(async function (req, res) {
     let locacaoDados = req.body.locacao;
 
-    // let criaLocacao;
-    // // Cria locacao
+    try {
+      const result = await db.sequelize.transaction(async (t) => {
+        // Cria locacao
+        let criaLocacao = await locacaoClass.add(locacaoDados, t);
+
+        // Busca locacao
+        let getLocacao = await locacaoClass.getByClienteId(locacaoDados.clienteId, t);
+        console.log(getLocacao);
+
+        // Cria relação cliente e locacao
+        let criaRelacoes;
+        for (let i = 0; i < locacaoDados.produtoId.length; i++) {
+          criaRelacoes = await locacaoProdutoClass.add(getLocacao, locacaoDados.produtoId[i], t);
+        }
+        console.log(criaRelacoes)
+
+        // Cria relação locacao e produto
+        let getRelacao = await locacaoClass.getRelacao(locacaoDados.clienteId, t);
+        console.log(getRelacao);
+      })
+    }
+    catch (error) {
+      console.log("entrou no erro");
+    }
+
+    // 
+    // let getRelacao
     // try {
-    //   criaLocacao = await locacaoClass.add(locacaoDados);
+    //   
     // }
     // catch (error) {
     //   console.log(error);
-    //   console.log("criar locacao");
+    //   console.log("gera relação");
     // }
 
-    // // Busca locacao
-    let getLocacao;
-    try {
-      getLocacao = await locacaoClass.getByClienteId(locacaoDados.clienteId);
-      console.log("get locacao");
-    }
-    catch (error) {
-      console.log(error);
-      console.log("recebe locacao id");
-    }
-
-    // Cria relação cliente e locacao
-    // let criaRelacoes
-    // try {
-    //   for (let i = 0; i < locacaoDados.produtoId.length; i++) {
-    //     criaRelacoes = await locacaoProdutoClass.add(getLocacao, locacaoDados.produtoId[i]);
-    //   }
-    //   console.log("terminado");
-    // }
-    // catch (error) {
-    //   console.log(error);
-    //   console.log("cria relacação")
-    // }
-
-    // Cria relação locacao e produto
-    let getRelacao
-    try {
-      getRelacao = await locacaoClass.getRelacao(getLocacao, locacaoDados.produtoId);
-    }
-    catch (error) {
-      console.log(error);
-      console.log("gera relação");
-    }
-
-    res.send(getRelacao);
+    // res.send(getRelacao);
   })
 
 module.exports = locacao;
