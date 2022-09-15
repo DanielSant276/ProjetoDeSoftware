@@ -3,7 +3,6 @@ import Login from "./components/login/login";
 import Menu from "./components/menu/menu";
 import CadastrarProduto from "./components/cadastrarProduto/cadastrarProduto";
 import Locacao from "./components/locacao/locacao";
-import Precificar from "./components/precificar/precificar";
 import CadastrarCliente from "./components/cadastroCliente/cadastroCliente";
 import EditarProduto from "./components/editarProduto/EditarProduto";
 import ProcurarProduto from "./components/procurarProduto/procurarProduto";
@@ -12,6 +11,7 @@ import AlterarSenha from "./components/alterarSenha/alterarSenha";
 import SelecionarLivro from "./components/selecionarLivros/selecionarLivros";
 import MostrarClientes from "./components/mostrarClientes/mostrarClientes";
 import PrecificarLocacao from "./components/precificarLocacao/precificarLocacao";
+// import Precificar from "./components/precificar/precificar";
 // import SenhaSegura from "./components/senhaSegura/senhaSegura";
 // import MoldeTeste from "./components/molde/molde";
 // import MoldeCadastro from "./components/moldeCadastro/MoldeCadastro";
@@ -36,7 +36,7 @@ export default function Rotas() {
       <Route path="/precificarLocacao" element={<PrecificarLocacao link={link} />} /> { /**/}
 
       <Route path="/locacao" element={<Locacao link={link} />} /> { /*  */}
-      <Route path="/precificar" element={<Precificar link={link} />} /> {/* Essa tela irá virar tela de precificar locacao */}
+      {/* <Route path="/precificar" element={<Precificar link={link} />} /> Essa tela irá virar tela de precificar locacao */}
     </Routes>
   )
 }

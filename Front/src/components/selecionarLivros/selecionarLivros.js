@@ -13,6 +13,7 @@ function SelecionarLivro({ link }) {
 
   useEffect(() => {
     receberLivros(setLivros, link)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [livros, setLivros] = useState([]);
@@ -36,7 +37,7 @@ function SelecionarLivro({ link }) {
   };
 
   function enviarParaPrecificar() {
-    navigate("/precificar", { state:{ precificarProdutos: selecionado }})
+    navigate("/precificarLocacao", { state:{ precificarProdutos: selecionado }})
 }
 
 return (

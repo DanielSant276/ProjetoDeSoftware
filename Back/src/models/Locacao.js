@@ -30,6 +30,16 @@ class Locacao {
     return locacaoByClienteId;
   }
 
+  static async getByClienteIdNoTransaction(id) {
+    let locacaoByClienteId = await locacaoModel.findAll({
+      where: {
+        idCliente: id
+      }
+    });
+
+    return locacaoByClienteId;
+  }
+
   static async getAll() {
     const locacaos = await locacaoModel.findAll();
     return locacaos;
@@ -45,13 +55,25 @@ class Locacao {
     return locacaoByCliente
   }
 
-  static async getRelacao(clienteID, t) {
+  static async getProdutos(locacaoId) {
     let relacao = await db.sequelize.query(
-      `SELECT cliente.idCliente, cliente.clienteNome, produto.tituloProduto, produto.idProduto
-      FROM livrariasibd.clientes as cliente, livrariasibd.locacoes as locacoes, livrariasibd.locacaoprodutos as relacao, livrariasibd.produtos as produto
-      WHERE cliente.idCliente = ${clienteID} and locacoes.idCliente = ${clienteID} and locacoes.idLocacao = relacao.idLocacao and relacao.idProduto = produto.idProduto;`
+      `SELECT produto.idProduto, produto.tituloProduto
+       FROM   livrariasibd.locacoes as locacoes, livrariasibd.locacaoprodutos as relacao, livrariasibd.produtos as produto
+       WHERE  locacoes.idLocacao = ${locacaoId} and relacao.idLocacao = ${locacaoId} and relacao.idProduto = produto.idProduto;`
     )
     return relacao;
+  }
+
+  static async editarLocacao(locacao, t) {
+    const modificaLocacao = await locacaoModel.update({
+      locacaoEstado: locacao.locacaoEstado,
+      locacaoMulta: locacao.locacaoMulta
+    },
+      {
+        where: {
+          idLocacao: locacao.idLocacao
+        }, transaction: t
+      })
   }
 }
 

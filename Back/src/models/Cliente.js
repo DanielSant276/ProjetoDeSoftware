@@ -49,7 +49,7 @@ class Cliente {
     const relacao = await db.sequelize.query(
       `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
               cliente.clienteQtdLocada, dependentes.depNome
-       FROM   teste.dependentes as dependentes, teste.clientes as cliente, teste.clientedependentes as relacao 
+       FROM   livrariasibd.dependentes as dependentes, livrariasibd.clientes as cliente, livrariasibd.clientedependentes as relacao 
        WHERE  relacao.idCliente = ${dados.id} and cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
     );
 
@@ -66,7 +66,7 @@ class Cliente {
       let relacao = await db.sequelize.query(
         `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
                 cliente.clienteQtdLocada, dependentes.depNome
-         FROM   teste.dependentes as dependentes, teste.clientes as cliente, teste.clientedependentes as relacao 
+         FROM   livrariasibd.dependentes as dependentes, livrariasibd.clientes as cliente, livrariasibd.clientedependentes as relacao 
          WHERE  relacao.idCliente = ${relacoes[i].idCliente} and cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
       )
 
@@ -81,7 +81,7 @@ class Cliente {
     const relacoes = await db.sequelize.query(
       `SELECT cliente.idCliente, cliente.clienteNome, cliente.clienteCPF, cliente.clienteEndereco, cliente.clienteTelefone,
               cliente.clienteQtdLocada, dependentes.depNome
-       FROM   teste.dependentes as dependentes, teste.clientes as cliente, teste.clientedependentes as relacao 
+       FROM   livrariasibd.dependentes as dependentes, livrariasibd.clientes as cliente, livrariasibd.clientedependentes as relacao 
        WHERE  cliente.idCliente = relacao.idCliente and relacao.idDependente = dependentes.idDependente`
     );
 
