@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./selecionarLivros.css";
 import polygon from '../../img/Polygon.svg'
+import lupa from '../../img/lupa.svg';
 import { useNavigate } from 'react-router-dom';
 import { receberLivros } from "../../controller/receberLivros.js";
 
@@ -61,8 +62,9 @@ return (
               <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
                 <p className="cadastrar-produto-menu-superior-botao-texto negrito">LISTAR TUDO</p>
               </div>
-              <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-produto-menu-superior-botao-texto negrito">PROCURAR PRODUTO</p>
+              <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro linha">
+                <input className="selecionar-livros-busca negrito" placeholder="PROCURAR PRODUTO"></input>
+                <img className="procurar-produto-lupa" src={lupa} alt="" />
               </div>
               <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
                 <p className="cadastrar-produto-menu-superior-botao-texto negrito">EDITAR PRODUTO</p>

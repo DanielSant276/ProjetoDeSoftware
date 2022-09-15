@@ -101,3 +101,18 @@
   .selecionar-livros-disponivel {
     width: 20%;
   }
+
+    .selecionar-livros-busca {
+    border-radius: 20px;
+    padding-left: 4%;
+    width: 100%;
+    height: 100%;
+    background-color: #5F5C5C;
+    /* padding-right: 4%; */
+  }
+
+  .selecionar-livros-busca, input::placeholder{
+    color:#FFFFFF;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+  }
