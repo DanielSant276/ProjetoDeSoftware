@@ -1,6 +1,7 @@
 import React from 'react'
 import "./locacao.css";
 import polygon from "../../img/Polygon.svg";
+import lupa from "../../img/lupa.svg";
 import { useNavigate } from 'react-router-dom';
 
 function Locacao({}) {
@@ -36,8 +37,9 @@ function Locacao({}) {
                   <div className="locacao-menu-superior-botao botao-form-cadastrar alinha-centro">
                     <p className="locacao-menu-superior-botao-texto negrito">LISTAR TUDO</p>
                   </div>
-                  <div className="locacao-menu-superior-botao botao-form-cadastrar alinha-centro">
-                    <p className="locacao-menu-superior-botao-texto negrito">BUSCAR CLIENTE</p>
+                  <div className="locacao-menu-superior-botao botao-form-cadastrar alinha-centro linha">
+                    <input className="locacao-input negrito texto-centro" placeholder="BUSCAR CLIENTES"></input>
+                    <img className="procurar-produto-lupa" src={lupa} alt="" />
                   </div>
                   <div className="locacao-menu-superior-botao botao-form-cadastrar alinha-centro">
                     <p className="locacao-menu-superior-botao-texto negrito">CADASTRAR CLIENTE</p>

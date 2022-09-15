@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./mostrarClientes.css";
 import polygon from "../../img/Polygon.svg";
+import lupa from "../../img/lupa.svg";
 import { useNavigate } from 'react-router-dom';
 import { receberClientes } from '../../controller/receberClientes';
 
@@ -46,8 +47,10 @@ function MostrarClientes({ link }) {
                   <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro">
                     <p className="mostrar-clientes-menu-superior-botao-texto negrito">LISTAR TUDO</p>
                   </div>
-                  <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro">
-                    <p className="mostrar-clientes-menu-superior-botao-texto negrito">BUSCAR CLIENTE</p>
+                  {/* input e a lupa */}
+                  <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro linha">
+                    <input className="mostrar-clientes-input negrito texto-centro" placeholder="BUSCAR CLIENTES"></input>
+                    <img className="procurar-produto-lupa" src={lupa} alt="" />
                   </div>
                   <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro">
                     <p className="mostrar-clientes-menu-superior-botao-texto negrito">CADASTRAR CLIENTE</p>
