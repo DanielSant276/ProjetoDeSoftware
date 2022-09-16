@@ -23,19 +23,20 @@ export default function Rotas() {
   return (
     <Routes>
       {/* path=/qualquerCoisa element{funcaoRenderizar} */}
-      <Route path="/" exact element={<Login link={link} />} /> {/* verificar a sanitização de input */}
-      <Route path="/menu" element={<Menu link={link} />} /> {/* Feito, pedir para o daniel conferir depois */}
-      <Route path="/cadastrarProduto" element={<CadastrarProduto link={link} />} /> {/* verificar a sanitização de input  */}
-      <Route path="/cadastroCliente" element={<CadastrarCliente link={link} />} /> {/* verificar a sanitização do nome do dependente */}
-      <Route path="/alterarSenha" element={<AlterarSenha link={link} />} /> {/* verificar a sanitização de input */}
-      <Route path="/cadastrarUsuario" element={<CadastrarUsuario link={link} />} /> {/* verificar a sanitização de input */}
-      <Route path="/editarProduto" element={<EditarProduto link={link} />} /> {/* não permitir números negativos nos inputs exemplares e quantidade de páginas */}
-      <Route path="/selecionarLivros" element={<SelecionarLivro link={link} />} /> {/* Feito, pedir para o daniel conferir depois */}
-      <Route path="/procurarProduto" element={<ProcurarProduto link={link} />} /> { /* feito, verificar a sanitização de input */}
-      <Route path="/mostrarClientes" element={<MostrarClientes link={link} />} /> { /**/}
-      <Route path="/precificarLocacao" element={<PrecificarLocacao link={link} />} /> { /**/}
+      <Route path="/" exact element={<Login link={link} />} /> {/* Ajustado */}
+      <Route path="/menu" element={<Menu link={link} />} /> {/* Ajustado */}
+      <Route path="/cadastroCliente" element={<CadastrarCliente link={link} />} /> {/* Ajustado */}
+      <Route path="/mostrarClientes" element={<MostrarClientes link={link} />} /> { /* Ajustado */}
+      <Route path="/locacao" element={<Locacao link={link} />} /> { /* Ajustado */}
+      <Route path="/selecionarLivros" element={<SelecionarLivro link={link} />} /> {/* Ajustado */}
+      <Route path="/precificarLocacao" element={<PrecificarLocacao link={link} />} /> { /* Ajustado, falta ver a parte que a ana mandou*/}
+      <Route path="/procurarProduto" element={<ProcurarProduto link={link} />} /> { /* Ajustado */}
+      <Route path="/editarProduto" element={<EditarProduto link={link} />} /> {/* Ajustado */}
+      <Route path="/cadastrarProduto" element={<CadastrarProduto link={link} />} /> {/* Ajustado */}
+      <Route path="/alterarSenha" element={<AlterarSenha link={link} />} /> {/* Ajustado */}
+      <Route path="/cadastrarUsuario" element={<CadastrarUsuario link={link} />} /> {/* Ajustado */}
+      
 
-      <Route path="/locacao" element={<Locacao link={link} />} /> { /*  */}
       {/* <Route path="/precificar" element={<Precificar link={link} />} /> Essa tela irá virar tela de precificar locacao */}
     </Routes>
   )

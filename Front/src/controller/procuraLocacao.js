@@ -49,15 +49,16 @@ export function procuraLocacao(setLocacao, setLoading, id, link) {
 
 
 async function verificaLocacao(locacoes, link) {
-  let dataFake = new Date("2022-09-30T09:43:45.541Z");
+  // Para testar funcionamento do atraso
+  // let dataFake = new Date("2022-09-30T09:43:45.541Z");
 
   for (let i = 0; i < locacoes.length; i++) {
     let dataAgora = new Date();
     let dataDevolucao = new Date(locacoes[i].dataDevolucao);
-    if (dataFake > dataDevolucao) {
+    if (dataAgora > dataDevolucao && locacoes[i].locacaoEstado == "Locado") {
       // Como a subtração vem em milissegundos, estou dividindo pela quantidade de 
       // milissegundos em um dia e arredondado para cima
-      let tempoPassado = Math.ceil((dataFake - dataDevolucao)/86400000);
+      let tempoPassado = Math.ceil((dataAgora - dataDevolucao)/86400000);
       editarLocaco(locacoes[i], tempoPassado, link);
     }
   }
@@ -81,4 +82,15 @@ function editarLocaco(locacao, tempoPassado, link) {
       console.log(data.mensagem);
     }
   });
+}
+
+export function devolverLocacao(id, link) {
+  $.ajax({
+    url: link + "/locacao/devolvido/" + id,
+    method: "PUT",
+    success: function (data, status) {
+      console.log(data.mensagem);
+    }
+  });
+  window.location.reload();
 }

@@ -9,6 +9,16 @@ class LocacaoProduto {
       idProduto: produtoId
     }, { transaction: t });
   }
+
+  static async verificaLocacoes(produtoId) {
+    let locacao = await locacaoProdutoModel.findAll({
+      where: {
+        idProduto: produtoId
+      }
+    })
+
+    return locacao;
+  }
 }
 
 const locacaoProdutoModel = db.sequelize.define('locacaoProdutos', {

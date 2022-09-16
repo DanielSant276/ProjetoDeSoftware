@@ -6,6 +6,7 @@ const livro = express.Router();
 const { generoClass } = require('../models/Genero');
 const { produtoClass } = require("../models/Produto");
 const { produtoGeneroClass } = require("../models/ProdutoGenero");
+const { locacaoProdutoClass } = require('../models/LocacaoProduto.js');
 
 livro.route("/generos")
   .get(async function (req, res) {
@@ -48,7 +49,7 @@ livro.route("/:id")
     // Modifica os valores relacionados ao produto
     try {
       const result = await db.sequelize.transaction(async (t) => {
-        let modificaProduto = await produtoClass.editarProduto(produtoDado, t);
+        let modificaProduto = await produtoClass.editarProduto(produtoDados, t);
         let getGeneros = await generoClass.getGeneros(produtoDados.generos, t);
         let getGenerosRelacao = await produtoGeneroClass.getByProdutoID(produtoDados.id, t);
         let modificaGeneroRelacao = await produtoGeneroClass.editarGeneroRelacao(getGeneros[0].dataValues.idGenero, getGenerosRelacao, t);
@@ -63,20 +64,26 @@ livro.route("/:id")
   .delete(async function (req, res) {
     let produtoID = req.params.id
 
-    // Deleta a relação entre produto e genero
-    try {
-      const result = await db.sequelize.transaction(async (t) => {
-        // deleta a relação entre o produto e o genero
-        let deleteRelacaoProdutoGenero = await produtoGeneroClass.deletarProdutoGenero(produtoID, t);
+    // Verifica se o produto faz parte de alguma locacao
+    let verificaLocacoes = await locacaoProdutoClass.verificaLocacoes(produtoID)
+    if (verificaLocacoes.length > 0) {
+      res.send({ mensagem: "Produto precisa ser devolvido antes" });
+    }
+    else {
+      // Deleta a relação entre produto e genero
+      try {
+        const result = await db.sequelize.transaction(async (t) => {
+          // deleta a relação entre o produto e o genero
+          let deleteRelacaoProdutoGenero = await produtoGeneroClass.deletarProdutoGenero(produtoID, t);
 
-        // deleta o produto
-        let deleteProduto = await produtoClass.deletarProduto(produtoID, t);
-      })
-
-      res.send({ mensagem: "deletado" });
-    } catch (error) {
-      console.log(error);
-      console.log("erro ao deletar o produto");
+          // deleta o produto
+          let deleteProduto = await produtoClass.deletarProduto(produtoID, t);
+        })
+        res.send({ mensagem: "deletado" });
+      } catch (error) {
+        console.log(error);
+        res.send({ mensagem: "erro ao deletar o produto" });
+      }
     }
   })
 
@@ -118,7 +125,7 @@ livro.route("/")
       })
     }
     catch (error) {
-      res.send({ status: '500', mensagem: "Algo deu errado" });
+      res.send({ mensagem: "Algo deu errado" });
       console.log(error);
     }
   })

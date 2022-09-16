@@ -80,6 +80,14 @@ function CadastrarCliente({ link }) {
     
     return dados
   }
+
+  function irParaListaClientes() {
+    navigate("/mostrarClientes");
+  }
+  
+  function irParaCadastroClientes() {
+    navigate("/cadastroCliente");
+  }
   
   return (
     <div className="cadastrar-cliente-background-imagem principal">
@@ -98,16 +106,10 @@ function CadastrarCliente({ link }) {
         <div className="cadastrar-cliente-container2">
           <div className="cadastrar-cliente-cadastrar-cliente">
             <div className="cadastrar-cliente-botoes-form linha">
-              <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">LISTAR TUDO</p>
+              <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => {irParaListaClientes()}}>
+                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">LISTAR CLIENTES</p>
               </div>
-              <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">PROCURAR CLIENTE</p>
-              </div>
-              <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-cliente-menu-superior-botao-texto negrito">EDITAR CLIENTE</p>
-              </div>
-              <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro">
+              <div className="cadastrar-cliente-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => {irParaCadastroClientes()}}>
                 <p className="cadastrar-cliente-menu-superior-botao-texto negrito">CADASTRAR CLIENTES</p>
               </div>
             </div>
@@ -140,7 +142,7 @@ function CadastrarCliente({ link }) {
                 </div>
 
                 <div className="cadastrar-cliente-cadastrar-botao link">
-                  <p className="cadastrar-cliente-cadastrar-botao-text negrito" onClick={() => cadastrarCliente(montaObj(), link)}>CONFIRMAR</p>
+                  <p className="cadastrar-cliente-cadastrar-botao-text negrito" onClick={() => cadastrarCliente(montaObj(), irParaListaClientes, link)}>CONFIRMAR</p>
                 </div>
               </div>
             </div>
@@ -150,7 +152,7 @@ function CadastrarCliente({ link }) {
             <div className="cadastrar-cliente-outros-titulo">
               <h1>OUTROS</h1>
             </div>
-            <div className="cadastrar-cliente-outros-botoes">
+            <div className="cadastrar-cliente-outros-botoes" onClick={() => {alert("ainda por implementar")}}>
               <div className="cadastrar-cliente-outros-botao botao-form-cadastrar link">
                 <p>CLIENTES</p>
               </div>

@@ -16,6 +16,10 @@ function Login({ link }) {
     navigate("/menu")
   }
 
+  function irParaEsqueceuSenha() {
+    navigate("/alterarSenha")
+  }
+
   return (
     <div className="principal login-background-imagem">
       <p className="principal-bem-vindo space-5 negrito">Bem-vindo,</p>
@@ -23,12 +27,12 @@ function Login({ link }) {
         <div className="space-40" name="form">
           <div className="login-campo">
             <p className="login-label login-texto1 space-20 jso negrito">USUÁRIO</p>
-            <input className="login-input background-cor-padrao space-20" type="name"  onChange={onChangeUsuario} />
+            <input className="login-input background-cor-padrao space-20" type="name" onChange={onChangeUsuario} />
           </div>
           <div className="login-campo">
             <p className="login-label login-texto2 space-20 jso negrito">SENHA</p>
             <input className="login-input background-cor-padrao space-5" type="password" onChange={onChangeSenha} />
-            <p className="login-esqueceu-senha laranja negrito link">esqueceu sua senha?</p>
+            <p className="login-esqueceu-senha laranja negrito link" onClick={() => { irParaEsqueceuSenha() }}>esqueceu sua senha?</p>
           </div>
         </div>
         <button className="login-submit link jso negrito" onClick={() => login(usuario, senha, link, irParaMenu)}>ENTRAR</button>

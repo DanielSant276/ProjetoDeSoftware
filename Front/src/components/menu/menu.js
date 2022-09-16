@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import '../menu/menu.css';
 import imagem from '../../img/Polygon.svg';
-import Locacao from '../locacao/locacao';
 import { useNavigate } from 'react-router-dom';
 
 function Menu({ link }) {
   const navigate = useNavigate();
 
-  const [usuario] = useState("Nome do Gerente");
-
-  // const [modal, setModal] = useState(0);
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [usuario] = useState("");
 
 
   function irParaConsultas() {   //Painel de lista de livros
@@ -22,20 +18,20 @@ function Menu({ link }) {
   }
   
   function irParaCadastro() {   //Cadastro = De novos clientes
-    navigate("/cadastroCliente")
+    navigate("/mostrarClientes")
   }
 
-  function irParaBuscarLivros() {
-    navigate("/procurarProduto")
-  }
+  // function irParaBuscarLivros() {
+  //   navigate("/procurarProduto")
+  // }
 
-  function irParaMultas() {
-    navigate("/precificar")
-  }
+  // function irParaMultas() {
+  //   navigate("/precificar")
+  // }
 
-  function irParaCadastrarFunc() {
-    navigate("/cadastrarUsuario")
-  }
+  // function irParaCadastrarFunc() {
+  //   navigate("/cadastrarUsuario")
+  // }
 
 
   return (
@@ -45,13 +41,13 @@ function Menu({ link }) {
         </div>
         <div className='menu-botoes linha alinha-centro espaco-entre'>
           <div className='menu-botao-painel margem-direita  alinha-centro negrito' onClick={() => irParaConsultas()}>
-            <p>PAINEL</p>
+            <p>PRODUTOS</p>
           </div>
           <div className='menu-botao-painel margem-direita alinha-centro negrito' onClick={() => irParaCadastrarUsuario()}>
-            <p>CONFIGURAÇÃO</p>
+            <p>NOVA CONTA</p>
           </div>
           <div className='menu-botao-painel negrito alinha-centro' onClick={() => irParaCadastro()}>
-            <p>CADASTRO</p>
+            <p>CLIENTES</p>
           </div>
         </div>
         <div className='menu-cabeçalho-direito'>
@@ -68,13 +64,13 @@ function Menu({ link }) {
       <div className='menu-botoes-principais espaco-entre alinha-centro'>
         {/* implementar um switch entre os modais, por enquanto, abre o mesmo;
             achar o erro de css que faz a página ficar desconfigurada e sem os tamanhos certos */}
-        <div className='menu-botao-principal-1 alinha-centro menu-botao-principal menu-box-sahedow negrito space-20' onClick={() => irParaBuscarLivros()}>
+        <div className='menu-botao-principal-1 alinha-centro menu-botao-principal menu-box-sahedow negrito space-20' onClick={() => alert("mais acessados ainda não implementado")}>
           <p>BUSCAR LIVRO</p>
         </div>
-        <div className='menu-botao-principal-2 alinha-centro menu-botao-principal menu-box-sahedow negrito space-20' onClick={() => irParaCadastrarFunc() }>
+        <div className='menu-botao-principal-2 alinha-centro menu-botao-principal menu-box-sahedow negrito space-20' onClick={() => alert("mais acessados ainda não implementado") }>
           <p>CADASTRAR FUNCIONÁRIO</p>
         </div>
-        <div className='menu-botao-principal-3 alinha-centro menu-botao-principal menu-box-sahedow negrito' onClick={() => irParaMultas() }>
+        <div className='menu-botao-principal-3 alinha-centro menu-botao-principal menu-box-sahedow negrito' onClick={() => alert("mais acessados ainda não implementado") }>
           <p>QUADRO DE MULTAS</p>
         </div>
 

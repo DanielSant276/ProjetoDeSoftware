@@ -14,15 +14,23 @@ export function receberGeneros(setGenerosOpcoes, link) {
   );
 }
 
-export function criarLivro(produto, link) {
+export function criarLivro(produto, link, irParaListaProdutos) {
   console.log(produto);
   $.post(link + "/livros",
     {
       produto
     },
     function (data, status) {
-      console.log(data);
-      // Fazer chamada de callback para outra tela;
+      if (data.mensagem == "Enviado com sucesso") {
+        alert("Produto criado");
+        irParaListaProdutos()
+      }
+      else if (data.mensagem == "Algo deu errado") {
+        alert("Ocorreu algum erro");
+      }
+      else {
+        alert("Ocorreu algum erro inesperado");
+      }
     }
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import "./EditarProduto.css";
 import polygon from '../../img/Polygon.svg'
@@ -71,11 +71,19 @@ function EditarProduto({ link }) {
 
     console.log(dados.generos);
 
-    editar(dados, link)
+    editar(dados, link, irParaListaProdutos)
   }
   
   function irParaMenu() {
     navigate("/menu")
+  }
+
+  function irParaListaProdutos() {
+    navigate("/procurarProduto")
+  }
+
+  function irParaCadastraProdutos() {
+    navigate("/cadastrarProduto")
   }
 
   return (
@@ -95,17 +103,11 @@ function EditarProduto({ link }) {
         <div className="editar-produto-container2">
           <div className="editar-produto-editar-produto">
             <div className="editar-produto-botoes-form linha">
-              <div className="editar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="editar-produto-menu-superior-botao-texto negrito">LISTAR TUDO</p>
+              <div className="editar-produto-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => { irParaListaProdutos() }}>
+                <p className="editar-produto-menu-superior-botao-texto negrito">LISTAR PRODUTOS</p>
               </div>
-              <div className="editar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="editar-produto-menu-superior-botao-texto negrito">PROCURAR PRODUTO</p>
-              </div>
-              <div className="editar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="editar-produto-menu-superior-botao-texto negrito">EDITAR PRODUTO</p>
-              </div>
-              <div className="editar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="editar-produto-menu-superior-botao-texto negrito">editar PRODUTOS</p>
+              <div className="editar-produto-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => { irParaCadastraProdutos() }}>
+                <p className="editar-produto-menu-superior-botao-texto negrito">CADASTRAR PRODUTOS</p>
               </div>
             </div>
 
@@ -150,7 +152,7 @@ function EditarProduto({ link }) {
                     <input className="input-form-cadastrar" value={numExemplares} onChange={onChangeNumExemplares} type="number" />
 
                     {/* é apenas o ano */}
-                    <label className="label-form-editar">LANÇAMENTO</label>
+                    <label className="label-form-editar">ANO LANÇAMENTO</label>
                     <input className="input-form-cadastrar" value={lancamento} onChange={onChangeLancamento} type="text" />
 
                     <label className="label-form-editar">DESCRIÇÃO</label>
@@ -170,7 +172,7 @@ function EditarProduto({ link }) {
             <div className="editar-produto-outros-titulo">
               <h1>OUTROS</h1>
             </div>
-            <div className="editar-produto-outros-botoes">
+            <div className="editar-produto-outros-botoes" onClick={() => { alert("ainda por implementar") }}>
               <div className="editar-produto-outros-botao botao-form-cadastrar link">
                 <p>CLIENTES</p>
               </div>

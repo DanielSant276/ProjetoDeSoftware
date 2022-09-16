@@ -34,14 +34,23 @@ function montarObj(data) {
   return novoObj;
 }
 
-export function editar(dados, link) {
+export function editar(dados, link, irParaListaProdutos) {
   console.log("editar")
   $.ajax({
     url: link + "/livros/" + dados.id,
     method: "PUT",
     data: dados,
     success: function (data, status) {
-      console.log(data);
+      if(data.mensagem == "enviado") {
+        alert("Produto editado");
+        irParaListaProdutos();
+      }
+      else if(data.mensagem == "falha no envio") {
+        alert("Erro na edição");
+      }
+      else {
+        alert("Ocorreu algum erro na edição");
+      }
     }
   });
 }

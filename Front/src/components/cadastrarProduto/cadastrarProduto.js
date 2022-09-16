@@ -45,10 +45,19 @@ function CadastrarProduto({ link }) {
 
   // gerar a lógica dos inputs
   function verificarInputs () {
-    criarLivro(produto, link)
+    criarLivro(produto, link, irParaListaProdutos);
   }
+
   function irParaMenu(){
-    navigate("/menu")
+    navigate("/menu");
+  }
+
+  function irParaListaProdutos() {
+    navigate("/procurarProduto");
+  }
+
+  function irParaCadastraProdutos() {
+    navigate("/cadastrarProduto");
   }
 
   return (
@@ -68,17 +77,11 @@ function CadastrarProduto({ link }) {
         <div className="cadastrar-produto-container2">
           <div className="cadastrar-produto-cadastrar-produto">
             <div className="cadastrar-produto-botoes-form linha">
-              <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
+              <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => { irParaListaProdutos() }}>
                 <p className="cadastrar-produto-menu-superior-botao-texto negrito">LISTAR TUDO</p>
               </div>
-              <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-produto-menu-superior-botao-texto negrito">PROCURAR PRODUTO</p>
-              </div>
-              <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-produto-menu-superior-botao-texto negrito">cadastrar PRODUTO</p>
-              </div>
-              <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="cadastrar-produto-menu-superior-botao-texto negrito">cadastrar PRODUTOS</p>
+              <div className="cadastrar-produto-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => { irParaCadastraProdutos() }}>
+                <p className="cadastrar-produto-menu-superior-botao-texto negrito">CADASTRAR PRODUTOS</p>
               </div>
             </div>
 
@@ -134,7 +137,7 @@ function CadastrarProduto({ link }) {
             <div className="cadastrar-produto-outros-titulo">
               <h1>OUTROS</h1>
             </div>
-            <div className="cadastrar-produto-outros-botoes">
+            <div className="cadastrar-produto-outros-botoes" onClick={() => { alert("ainda por implementar") }}>
               <div className="cadastrar-produto-outros-botao botao-form-cadastrar link">
                 <p>CLIENTES</p>
               </div>

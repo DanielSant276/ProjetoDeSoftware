@@ -25,7 +25,7 @@ function CadastrarUsuario({link}) {
       senha: senha
     }
 
-    cadastrarUsuarioBack(userData, link, irParaCadastroCliente);
+    cadastrarUsuarioBack(userData, link, irParaMenu);
   } 
 
   const [usuario, setUsuario] = useState();
@@ -34,8 +34,8 @@ function CadastrarUsuario({link}) {
   const onChangeUsuario = (event) => setUsuario(event.target.value);
   const onChangeSenha = (event) => setSenha(event.target.value);
   
-  function irParaCadastroCliente() {
-    navigate("/cadastroCliente")
+  function irParaMenu() {
+    navigate("/menu")
   }
 
   return (
@@ -48,13 +48,13 @@ function CadastrarUsuario({link}) {
       
       <div className='cadastro-usuario'>
       <p className="cadastro-usuario-label cadastro-usuario-texto1 space-20 jso negrito">USUÁRIO</p>
-        <input className="cadastro-usuario-input background-cor-padrao space-20" type="name" value={usuario} onChange={onChangeUsuario} /*{ ... register("USUARIO", { required: true })}*//>
+        <input className="cadastro-usuario-input background-cor-padrao space-20" type="name" onChange={onChangeUsuario} /*{ ... register("USUARIO", { required: true })}*//>
         {/*errors.USUARIO && <span>PREENCHA O CAMPO</span>*/}
       </div>
 
       <div className='cadastro-senha'>
       <p className="cadastro-usuario-label cadastro-usuario-texto2 space-20 jso negrito">SENHA</p>
-        <input className="cadastro-usuario-input background-cor-padrao space-5" type="password" value={senha} onChange={onChangeSenha} /*{ ... register("SENHA", { required: true })}*//>
+        <input className="cadastro-usuario-input background-cor-padrao space-5" type="password" onChange={onChangeSenha} /*{ ... register("SENHA", { required: true })}*//>
         {/*errors.SENHA && <span>PREENCHA O CAMPO</span>*/}
       </div>
       <div>

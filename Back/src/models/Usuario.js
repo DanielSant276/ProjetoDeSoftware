@@ -16,6 +16,15 @@ class Usuario {
     return usuarioById;
   }
 
+  static async getByLogin(login) {
+    const usuarioByLogin = await usuarioModel.findAll({
+      where: {
+        login: login
+      }
+    });
+    return usuarioByLogin;
+  }
+
   static async getAll() {
     const usuarios = await usuarioModel.findAll();
     return usuarios;

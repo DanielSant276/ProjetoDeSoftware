@@ -30,11 +30,22 @@ export function deletarLivro(livroID, link) {
     url: link + "/livros/" + livroID,
     method: "DELETE",
     success: function (data, status) {
-      console.log(data);
-      window.location.reload();
+      if (data.mensagem == "deletado") {
+        alert("Deletado com sucesso");
+        window.location.reload();
+      }
+      else if (data.mensagem == "Produto precisa ser devolvido antes") {
+        alert("Produto precisa ser devolvido antes de ser deletado");
+      }
+      else if (data.mensagem == "erro ao deletar o produto") {
+        alert("Erro ao deletar o produto");
+      }
+      else {
+        alert("Ocorreu um erro, contactar o suporte");
+      }
     },
     error: function (error) {
-      console.log(error);
+      alert("Ocorreu um erro, contactar o suporte");
     }
   });
 }

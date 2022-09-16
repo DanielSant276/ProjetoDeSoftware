@@ -21,8 +21,17 @@ function ProcurarProduto({ link }) {
   function paginaEditar(id) {
     navigate("/editarProduto", { state: { produtoID: id } })
   }
+
   function irParaMenu() {
     navigate("/menu")
+  }
+
+  function irParaListaProdutos() {
+    navigate("/procurarProduto")
+  }
+
+  function irParaCadastraProdutos() {
+    navigate("/cadastrarProduto")
   }
 
   return (
@@ -42,18 +51,15 @@ function ProcurarProduto({ link }) {
         <div className="procurar-produto-container2">
           <div className="procurar-produto-procurar-produto">
             <div className="procurar-produto-botoes-form linha">
-              <div className="procurar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="procurar-produto-menu-superior-botao-texto negrito">LISTAR TUDO</p>
+              <div className="procurar-produto-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => { irParaListaProdutos() }}>
+                <p className="procurar-produto-menu-superior-botao-texto negrito">LISTAR PRODUTOS</p>
               </div>
               <div className="procurar-produto-menu-superior-botao botao-form-cadastrar alinha-centro linha">
                 {/* arrumar o input com a imagem no css e aqui no html */}
                 <input className="procurar-produto-input negrito texto-centro" placeholder="PROCURAR PRODUTO" value={busca} onChange={onChangeBusca}></input>
                 <img className="procurar-produto-lupa" src={lupa} alt="" />
               </div>
-              <div className="procurar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
-                <p className="procurar-produto-menu-superior-botao-texto negrito">EDITAR PRODUTO</p>
-              </div>
-              <div className="procurar-produto-menu-superior-botao botao-form-cadastrar alinha-centro">
+              <div className="procurar-produto-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => { irParaCadastraProdutos() }}>
                 <p className="procurar-produto-menu-superior-botao-texto negrito">CADASTRAR PRODUTOS</p>
               </div>
             </div>
@@ -76,48 +82,16 @@ function ProcurarProduto({ link }) {
                 <label className="procurar-produto-botao"></label>
               </div>
 
-              <div className="procurar-produto-label linha negrito space-20">
-                <label className="procurar-produto-id">1</label>
-                <label className="procurar-produto-titulo roxo">testeteste</label>
-                <input className="procurar-produto-botao procurar-produto-botao-formatacao" type="submit" value="EDITAR" />
-                <input className="procurar-produto-botao procurar-produto-botao-formatacao" type="submit" value="DELETAR" />
-              </div>
 
-              {/* conteúdo da div: ID, título, status */}
-
-              {/* <div className="linha">
-                <h2 className="space-20 espaco-teste-1">ID</h2>
-                <h2 className="space-20 espaco-teste-2">TÍTULO</h2>
-                <div className="espaco-teste3"></div>
-                <div className="espaco-teste3"></div>
-              </div> */}
-              {/* 
               {livros.map((item) =>
                 (item.tituloProduto.toUpperCase().startsWith(busca.toUpperCase()) || busca === "") &&
-                <div className="linha">
-                  <div className="procurar-produto-id negrito alinha-centro coluna">
-                    <p className="negrito">{item.idProduto}</p>
-                  </div>
-                  <div className="procurar-produto-titulo linha negrito alinha-centro coluna">
-                    <p className="roxo negrito">{item.tituloProduto}</p>
-                  </div> */}
-              {/* <div className="procurar-produto-status linha negrito alinha-centro coluna">
-                      <h2 className="space-20">STATUS</h2>
-                      <p className="negrito">ALOCADO</p>
-                    </div> */}
-
-              {/* front dos botões de editar e devolver, precisa formatar direito o botão e retirar o espaço no final
-                dos botões */}
-
-              {/* <div className="procurar-produto-botao linha negrito alinha-centro coluna">
-                    <h2 className>&nbsp;</h2>
-                    <div className="linha texto-centro">
-                      <div className="procurar-produto-botao-formatacao procurar-produto-separar-editar link" onClick={() => paginaEditar(item.idProduto)}>EDITAR</div>
-                      <div className="procurar-produto-botao-formatacao procurar-produto-separar-status link" onClick={() => deletarLivro(item.idProduto, link)}>DELETAR</div>
-                    </div>
-                  </div>
+                <div className="procurar-produto-label linha negrito space-20">
+                  <label className="procurar-produto-id">{item.idProduto}</label>
+                  <label className="procurar-produto-titulo roxo">{item.tituloProduto}</label>
+                  <input className="procurar-produto-botao procurar-produto-botao-formatacao link" type="submit" value="EDITAR" onClick={() => paginaEditar(item.idProduto)} />
+                  <input className="procurar-produto-botao procurar-produto-botao-formatacao link" type="submit" value="DELETAR" onClick={() => deletarLivro(item.idProduto, link)} />
                 </div>
-              )} */}
+              )}
             </div>
           </div>
 
@@ -125,7 +99,7 @@ function ProcurarProduto({ link }) {
             <div className="procurar-produto-outros-titulo">
               <h1>OUTROS</h1>
             </div>
-            <div className="procurar-produto-outros-botoes">
+            <div className="procurar-produto-outros-botoes" onClick={() => { alert("ainda por implementar") }}>
               <div className="procurar-produto-outros-botao botao-form-cadastrar link">
                 <p>CLIENTES</p>
               </div>

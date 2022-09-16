@@ -6,12 +6,27 @@ const usuario = express.Router();
 const SHA256 = require("../../sha");
 const { usuarioClass } = require("../models/usuario.js");
 
+usuario.route("/:usuario")
+  .get(async function (req, res) {
+    let login = req.params.usuario;
+    
+    let verificaUsuario = await usuarioClass.getByLogin(login);
+
+    if (verificaUsuario.length == 1) {
+      res.send({ mensagem: "Usuario validadao" });
+    }
+    else {
+      console.log("entrou aqui")
+      res.send({ mensagem: "Usuario não cadastrado" });
+    }
+  })
+
 usuario.route("/")
   .post(async function (req, res) {
     let usuarioDados = {
       login: req.body.userData.usuario,
-      senha: SHA256.sha256ByDaniel(req.body.userData.senha),
-      tipo: "Gerente"
+      senha: req.body.userData.senha,
+      tipo: "Atendente"
     }
 
     try {
@@ -35,7 +50,7 @@ usuario.route("/")
     let login = {
       idUsuario: 1, //Trocar essa parte aqui
       usuario: req.body.usuario,
-      senha: SHA256.sha256ByDaniel(req.body.senha)
+      senha: req.body.senha
     }
 
     try {

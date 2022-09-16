@@ -1,9 +1,10 @@
 import $ from 'jquery';
+const SHA256 = require("./sha.js");
 
 export function login(usuario, senha, link, goToAnotherPage) {
   let user = {
     usuario: usuario,
-    senha: senha
+    senha: SHA256.sha256ByDaniel(senha)
   }
 
   if (user.usuario && user.senha) {

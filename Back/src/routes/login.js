@@ -1,7 +1,6 @@
 const express = require('express');
 const login = express.Router();
 
-const SHA256 = require("../../sha");
 const { usuarioClass } = require("../models/usuario.js");
 
 login.route("/")
@@ -10,10 +9,12 @@ login.route("/")
 
     let user = {
       usuario: req.body.user.usuario,
-      senha: SHA256.sha256ByDaniel(req.body.user.senha)
+      senha: req.body.user.senha
     }
 
     let verificaLogin = await usuarioClass.confereLogin(user.usuario, user.senha);
+
+    console.log(verificaLogin);
 
     if (verificaLogin.length == 1) {
       res.send({ mensagem: "Usuário validado" });

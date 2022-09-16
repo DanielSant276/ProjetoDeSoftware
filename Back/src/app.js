@@ -3,6 +3,7 @@ const app = express();
 const bp = require("body-parser");
 const cors = require('cors');
 
+// Cria os bancos de dados
 // const { clienteModel } = require("./models/cliente.js");
 // const { dependenteModel } = require("./models/dependente.js");
 // const { clienteDependenteModel } = require("./models/clienteDependente.js");
@@ -32,7 +33,7 @@ const livro = require("./routes/livro");
 const listarLivros = require("./routes/listarLivros");
 const locacao = require("./routes/locacao");
 // usado apenas para criar no banco de dados os gêneros, retirar depois
-// const genero = require("./routes/genero");
+const genero = require("./routes/genero");
 
 const routes = require("./routes/index");
 
@@ -43,7 +44,7 @@ routes.use("/livros", livro);
 routes.use("/listarLivros", listarLivros);
 routes.use("/locacao", locacao);
 // usado apenas para criar no banco de dados os gêneros, retirar depois
-// routes.use("/genero", genero);
+routes.use("/genero", genero);
 
 // Apenas guardando aqui
 // throw new Exception()
@@ -51,12 +52,12 @@ routes.use("/locacao", locacao);
 app.use(routes);
 
 // Somente uma requisição para criar as tabelas no banco de dados
-// app.get("/criar", function (req, res) {
-//   for (i = 0; i < models.length; i++) {
-//     models[i].sync({ force: true })
-//   }
-//   res.send("Terminado");
-// })
+app.get("/criar", function (req, res) {
+  for (i = 0; i < models.length; i++) {
+    models[i].sync({ force: true })
+  }
+  res.send("Terminado");
+})
 
 app.listen(5000, function () {
   console.log("Server iniciado!");

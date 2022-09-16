@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import "./mostrarClientes.css";
 import polygon from "../../img/Polygon.svg";
 import lupa from "../../img/lupa.svg";
@@ -6,22 +6,41 @@ import { useNavigate } from 'react-router-dom';
 import { receberClientes } from '../../controller/receberClientes';
 
 function MostrarClientes({ link }) {
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    receberClientes(setClientes, link);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const [clientes, setClientes] = useState([]);
+  const [busca, setBusca] = useState("");
+
+  const onChangeBusca = event => setBusca(event.target.value);
+
+  useEffect(() => {
+    console.log(clientes);
+  }, [clientes]);
 
   function irParaMenu() {
     navigate("/menu")
   }
 
-  useEffect(() => {
-    receberClientes(setClientes, link)
-  }, []);
+  function irParaListaClientes() {
+    navigate("/mostrarClientes");
+  }
 
-  const [clientes, setClientes] = useState([]);
+  function irParaCadastroClientes() {
+    navigate("/cadastroCliente");
+  }
 
-  useEffect(() => {
-    console.log(clientes);
-  }, [clientes]);
+  function irParaSelecionarLivros(clienteID) {
+    navigate("/selecionarLivros", { state: { clienteID: clienteID } });
+  }
+
+  function irParaVerificarLocacao(clienteID) {
+    navigate("/locacao", { state: { clienteID: clienteID } })
+  }
 
   return (
     <>
@@ -44,25 +63,27 @@ function MostrarClientes({ link }) {
             <div className="mostrar-clientes-container2">
               <div className="mostrar-clientes-mostrar-clientes">
                 <div className="mostrar-clientes-botoes-form linha">
-                  <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro">
-                    <p className="mostrar-clientes-menu-superior-botao-texto negrito">LISTAR TUDO</p>
+                  <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => { irParaListaClientes() }}>
+                    <p className="mostrar-clientes-menu-superior-botao-texto negrito">LISTAR CLIENTES</p>
                   </div>
                   {/* input e a lupa */}
                   <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro linha">
-                    <input className="mostrar-clientes-input negrito texto-centro" placeholder="BUSCAR CLIENTES"></input>
+                    <input className="mostrar-clientes-input negrito texto-centro" placeholder="BUSCAR CLIENTES" value={busca} onChange={onChangeBusca}></input>
                     <img className="procurar-produto-lupa" src={lupa} alt="" />
                   </div>
-                  <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro">
+                  <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro link" onClick={() => { irParaCadastroClientes() }}>
                     <p className="mostrar-clientes-menu-superior-botao-texto negrito">CADASTRAR CLIENTE</p>
-                  </div>
-                  <div className="mostrar-clientes-menu-superior-botao botao-form-cadastrar alinha-centro">
-                    <p className="mostrar-clientes-menu-superior-botao-texto negrito">XXXXXXXXXX</p>
                   </div>
                 </div>
 
                 <div className="mostrar-clientes-form-cadastro">
                   <div className="mostrar-clientes-form-titulo">
-                    <h1 className="negrito laranja">MOSTRAR CLIENTES</h1>
+                    {(busca !== "") &&
+                      <div className="linha">
+                        <h1 className="negrito"> você buscou por: &nbsp;</h1>
+                        <h1 className="roxo negrito">"{busca}"</h1>
+                      </div>
+                    }
                   </div>
 
                   <div className="mostrar-clientes-formulario">
@@ -72,21 +93,26 @@ function MostrarClientes({ link }) {
                           <p className="mostrar-clientes-form-botao-texto negrito">ID</p>
                         </div>
                         <div className="mostrar-clientes-form alinha-centro">
-                          <p className="mostrar-clientes-form-esquerdo-texto negrito">TÍTULO</p>
+                          <p className="mostrar-clientes-form-esquerdo-texto negrito">NOME</p>
+                        </div>
+                        <div className="mostrar-clientes-form alinha-centro">
+                          <p className="mostrar-clientes-form-esquerdo-texto negrito">CPF</p>
                         </div>
                       </div>
-                      {/* {clientes.map((nome) =>
+                      {clientes.map((nome) =>
+                        (nome.clienteNome.toUpperCase().startsWith(busca.toUpperCase()) || nome.clienteCPF.startsWith(busca) || busca === "") &&
                         <div key={nome.idCliente} className="linha">
-                          <p>{nome.clienteNome}</p>
-                          <p>{nome.clienteCPF}</p>
+                          <p className="mostrar-clientes-form-esquerdo-texto">{nome.idCliente}</p>
+                          <p className="mostrar-clientes-form-esquerdo-texto">{nome.clienteNome}</p>
+                          <p className="mostrar-clientes-form-esquerdo-texto">{nome.clienteCPF}</p>
                           <div className="mostrar-clientes-form-botao alinha-centro link">
-                            <p className="mostrar-clientes-form-botao-texto negrito preto">REALIZAR LOCACAO</p>
+                            <p className="mostrar-clientes-form-botao-texto negrito preto" onClick={() => { irParaSelecionarLivros(nome.idCliente) }}>REALIZAR LOCACAO</p>
                           </div>
                           <div className="mostrar-clientes-form-botao alinha-centro link">
-                            <p className="mostrar-clientes-form-botao-texto negrito preto">VERIFICAR LOCAÇÃO</p>
+                            <p className="mostrar-clientes-form-botao-texto negrito preto" onClick={() => { irParaVerificarLocacao(nome.idCliente) }}>VERIFICAR LOCAÇÃO</p>
                           </div>
                         </div>
-                      )} */}
+                      )}
                     </div>
                   </div>
                 </div>
@@ -96,7 +122,7 @@ function MostrarClientes({ link }) {
                 <div className="locacao-outros-titulos">
                   <h1>OUTROS</h1>
                 </div>
-                <div className="locacao-outros-botoes">
+                <div className="locacao-outros-botoes" onClick={() => { alert("ainda por implementar") }}>
                   <div className="locacao-outros-botao botao-form-cadastrar link">
                     <p>CLIENTES</p>
                   </div>

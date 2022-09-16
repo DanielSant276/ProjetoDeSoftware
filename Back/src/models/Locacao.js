@@ -75,6 +75,17 @@ class Locacao {
         }, transaction: t
       })
   }
+
+  static async devolverLocacao(id, t) {
+    const modificaLocacao = await locacaoModel.update({
+      locacaoEstado: "Devolvido"
+    },
+      {
+        where: {
+          idLocacao: id
+        }, transaction: t
+      })
+  }
 }
 
 const locacaoModel = db.sequelize.define('locacoes', {

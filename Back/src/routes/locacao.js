@@ -6,6 +6,20 @@ const db = require("../models/db.js");
 const { locacaoClass } = require("../models/Locacao");
 const { locacaoProdutoClass } = require("../models/LocacaoProduto");
 
+locacao.route("/devolvido/:id")
+  .put(async function (req, res) {
+    let devolucaoId = req.params.id
+
+    try {
+      const result = await db.sequelize.transaction(async (t) => {
+        let devolveLocacao = await locacaoClass.devolverLocacao(devolucaoId, t)
+      })
+    }
+    catch (error) {
+      console.log(error);
+    }
+  })
+
 locacao.route("/:id")
   .get(async function (req, res) {
     let usuarioId = req.params.id
@@ -18,6 +32,8 @@ locacao.route("/:id")
       let produtos = await locacaoClass.getProdutos(locacaoId)
       let idProdutos = [];
       let tituloProdutos = [];
+
+      // console.log(produtos[i]);
 
       for (let j = 0; j < produtos[i].length; j++) {
         idProdutos.push(produtos[i][j].idProduto);
@@ -65,9 +81,10 @@ locacao.route("/")
           criaRelacoes = await locacaoProdutoClass.add(getLocacao, locacaoDados.produtoId[i], t);
         }
       })
+      res.send({ mensagem: "Realizada locação" });
     }
     catch (error) {
-      console.log("entrou no erro");
+      res.send({ mensagem: "Ocorreu erro" });
     }
   })
 

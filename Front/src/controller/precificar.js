@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export function precificar(produtos, setPreco) {
+export function precificar(produtos, setPreco, setPrecoOriginal) {
   // preenche parte do preço
   let valor;
   let quantidade = produtos.length
@@ -13,9 +13,10 @@ export function precificar(produtos, setPreco) {
   }
   
   setPreco(valor.toFixed(2));
+  setPrecoOriginal(valor.toFixed(2));
 }
 
-export function dataDefinicao(produtos, setDataAtual, setDataDevolucao) {
+export function dataDefinicao(produtos, setDataAtual, setDataDevolucao, setDataDevolucaoOriginal) {
   // preenche data de devolução
   let dataLocada = new Date();
   dataLocada = dataLocada.toLocaleDateString();
@@ -25,6 +26,7 @@ export function dataDefinicao(produtos, setDataAtual, setDataDevolucao) {
   const tempoPadrao = 5 + (produtos.length - 1) * 7;
   let dataDevolucao = tempo(dataLocada, tempoPadrao);
   setDataDevolucao(dataDevolucao);
+  setDataDevolucaoOriginal(dataDevolucao);
 }
 
 function tempo(data, tempo) {
@@ -61,7 +63,12 @@ export function adicionarMaisUmaSemana(dataDevolucao, setDataDevolucao, preco, s
   setPreco(valor)
 }
 
-export function enviarParaBack(dataAtual, dataDevolucao, produtos, preco, link) {
+export function resetarEntrega(setDataDevolucao, dataDevolucaoOriginal, setPreco, precoOriginal) {
+    setDataDevolucao(dataDevolucaoOriginal);  
+    setPreco(precoOriginal)
+}
+
+export function enviarParaBack(dataAtual, dataDevolucao, produtos, preco, link, irParaListaClientes) {
   let dataLocada = dataAtual.slice(6) + "-" + dataAtual.slice(3, 5) + "-" + dataAtual.slice(0, 2);
   let dataFinal = dataDevolucao.slice(6) + "-" + dataDevolucao.slice(3, 5) + "-" + dataDevolucao.slice(0, 2);
 
@@ -86,7 +93,13 @@ export function enviarParaBack(dataAtual, dataDevolucao, produtos, preco, link) 
       locacao
     },
     function (data, status) {
-      console.log(data);
+      if (data.mensagem == "Realizada locação") {
+        alert("Locação realizada com sucesso");
+        irParaListaClientes();
+      }
+      else if (data.mensagem == "Ocorreu erro") {
+        alert("Ocorreu um erro, contate o suporte");
+      }
     }
   )
 }
